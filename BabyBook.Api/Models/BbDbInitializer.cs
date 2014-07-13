@@ -36,7 +36,7 @@ namespace BabyBook.Api.Models
 
             foreach (var centro in context.Centros)
             {
-                context.Alumnos.Add(new Alumno() {Nombre = "Alumno" + centro.Id,Centro = centro, FechaAlta=DateTime.Today});
+                context.Alumnos.Add(new Alumno() { Nombre = "Alumno" + centro.Id, Centro = centro, FechaAlta = DateTime.Today });
             }
 
             context.SaveChanges();

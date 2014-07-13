@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabyBook.Api", "BabyBook.Api\BabyBook.Api.csproj", "{9302D705-E369-43F8-9A92-4384F5A784AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabyBook.Web", "BabyBook.Web\BabyBook.Web.csproj", "{187A8CDC-5DBE-4A58-B14F-342D3D4D60D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9302D705-E369-43F8-9A92-4384F5A784AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9302D705-E369-43F8-9A92-4384F5A784AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9302D705-E369-43F8-9A92-4384F5A784AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187A8CDC-5DBE-4A58-B14F-342D3D4D60D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187A8CDC-5DBE-4A58-B14F-342D3D4D60D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187A8CDC-5DBE-4A58-B14F-342D3D4D60D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187A8CDC-5DBE-4A58-B14F-342D3D4D60D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

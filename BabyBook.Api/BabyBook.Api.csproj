@@ -120,6 +120,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CentrosController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\AuthContext.cs" />
     <Compile Include="Models\BbContext.cs" />

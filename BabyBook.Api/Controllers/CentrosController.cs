@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BabyBook.Api.Models;
 using BabyBook.Api.Repositories;
 
 namespace BabyBook.Api.Controllers
@@ -18,11 +19,17 @@ namespace BabyBook.Api.Controllers
             _repository = new CentroRepository();
         }
 
-        [Authorize]
-        [Route("")]
-        public IHttpActionResult Get()
+        //[Authorize]
+        //[Route("")]
+        //public IHttpActionResult Get()
+        //{
+        //    return Ok(_repository.GetAll());
+        //}
+
+        public IEnumerable<Centro> Get()
         {
-            return Ok(_repository.GetAll());
+            
+            return _repository.GetAll();
         }
     }
 }

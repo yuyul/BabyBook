@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,13 +17,15 @@ namespace BabyBook.Api.Models
         }
 
         public int Id { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public DateTime FechaAlta { get; set; }
         public DateTime? FechaBaja { get; set; }
-
+        
         public virtual ICollection<Alumno> Alumnos { get; set; }
         public virtual ICollection<Profesor> Profesores { get; set; }
         public virtual ICollection<Clase> Clases { get; set; }
+
     }
 }
