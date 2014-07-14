@@ -22,19 +22,20 @@ namespace BabyBook.Api.Controllers
         }
 
         //[Authorize]
-        //[Route("")]
-        //public IHttpActionResult Get()
-        //{
-        //    return Ok(_repository.GetAll());
-        //}
-
-        public IEnumerable<Centro> Get()
+        [Route("")]
+        public IHttpActionResult Get()
         {
-
-            var name = ClaimsPrincipal.Current.Identity.Name;
             var name1 = User.Identity.Name;
-
-            return _repository.GetAll();
+            return Ok(_repository.GetAll());
         }
+
+        //public IEnumerable<Centro> Get()
+        //{
+
+        //    var name = ClaimsPrincipal.Current.Identity.Name;
+        //    var name1 = User.Identity.Name;
+
+        //    return _repository.GetAll();
+        //}
     }
 }

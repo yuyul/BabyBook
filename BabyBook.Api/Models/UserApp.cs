@@ -6,12 +6,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BabyBook.Api.Models
 {
-    public class AuthContext: IdentityDbContext<IdentityUser>
+    public class UserApp: IdentityUser
     {
-        public AuthContext()
-            : base("BBContext")
-        {
-            
-        }
+        public string HomeTown { get; set; }
+        public virtual ICollection<Centro> Centros { get; set; }
     }
 }

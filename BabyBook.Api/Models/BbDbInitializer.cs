@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BabyBook.Api.Models
 {
@@ -10,11 +12,33 @@ namespace BabyBook.Api.Models
     {
         protected override void Seed(BbContext context)
         {
+            var UserManager = new UserManager<UserApp>(new UserStore<UserApp>(context));
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            string Name = "Admin";
+            string password = "123456";
+
+            if (!RoleManager.RoleExists(Name))
+            {
+                var roleresult = RoleManager.Create(new IdentityRole(Name));
+            }
+
+            var user = new UserApp();
+
+            user.UserName = Name;
+
+            var adminresult = UserManager.Create(user, password);
+
+            if (adminresult.Succeeded)
+            {
+                var result = UserManager.AddToRole(user.Id, Name);
+            }
+
             int contador = 0;
 
             for (contador = 1; contador < 10; contador++)
             {
-                context.Centros.Add(new Centro() { Nombre = "Centro" + contador, Direccion = "Direccion" + contador, FechaAlta = DateTime.Today });
+                context.Centros.Add(new Centro() { Nombre = "Centro" + contador, Direccion = "Direccion" + contador, FechaAlta = DateTime.Today, Gestor = user});
             }
 
 

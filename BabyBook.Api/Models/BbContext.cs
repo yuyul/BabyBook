@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,14 +7,14 @@ using System.Web;
 
 namespace BabyBook.Api.Models
 {
-    public class BbContext: DbContext
+    public class BbContext : IdentityDbContext<UserApp>
     {
 
         public BbContext()
             : base("name=BbContext")
         {
             
-           //Database.SetInitializer<BbContext>(new BbDbInitializer());
+           Database.SetInitializer<BbContext>(new BbDbInitializer());
         }
 
         public virtual DbSet<Centro> Centros { get; set; }
@@ -23,6 +24,8 @@ namespace BabyBook.Api.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Centro>()
                 .HasMany(e => e.Alumnos)
                 .WithRequired(e => e.Centro)
@@ -40,6 +43,14 @@ namespace BabyBook.Api.Models
                 .WithRequired(e => e.Centro)
                 .HasForeignKey(e => e.CentroId)
                 .WillCascadeOnDelete(true);
+
+            //modelBuilder.Entity<UserApp>().HasMany(e=>e.Centros).WithRequired(e=>e.Gestor).HasForeignKey(e=>e.GestorId).WillCascadeOnDelete(true);
+                
+                
+
+            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
     }
 }

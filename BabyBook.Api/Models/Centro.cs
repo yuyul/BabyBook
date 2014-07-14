@@ -27,5 +27,7 @@ namespace BabyBook.Api.Models
         public virtual ICollection<Profesor> Profesores { get; set; }
         public virtual ICollection<Clase> Clases { get; set; }
 
+        public string GestorId { get; set; }
+        public virtual UserApp Gestor { get; set; }
     }
 }

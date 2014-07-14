@@ -11,19 +11,19 @@ namespace BabyBook.Api.Repositories
 {
     public class AuthRepository: IDisposable
     {
-        private AuthContext _ctx;
+        private BbContext _ctx;
 
-        private UserManager<IdentityUser> _userManager;
+        private UserManager<UserApp> _userManager;
 
         public AuthRepository()
         {
-            _ctx = new AuthContext();
-            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
+            _ctx = new BbContext();
+            _userManager = new UserManager<UserApp>(new UserStore<UserApp>(_ctx));
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
-            IdentityUser user = new IdentityUser
+            UserApp user = new UserApp()
             {
                 UserName = userModel.UserName
             };
@@ -33,9 +33,9 @@ namespace BabyBook.Api.Repositories
             return result;
         }
 
-        public async Task<IdentityUser> FindUser(string userName, string password)
+        public async Task<UserApp> FindUser(string userName, string password)
         {
-            IdentityUser user = await _userManager.FindAsync(userName, password);
+            UserApp user = await _userManager.FindAsync(userName, password);
 
             return user;
         }
