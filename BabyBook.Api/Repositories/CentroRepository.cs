@@ -19,6 +19,8 @@ namespace BabyBook.Api.Repositories
         public IEnumerable<Centro> GetAll()
         {
             List<Centro> centros = _ctx.Centros.Where(c => c.FechaBaja == null).ToList();
+            //var query = _ctx.Centros.Where(c => c.FechaBaja == null).Select(Centro);
+                                   
 
             return centros;
         }

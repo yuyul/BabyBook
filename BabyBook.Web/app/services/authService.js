@@ -6,7 +6,8 @@
 
         var _authentication = {
             isAuth: false,
-            userName: ""
+            userName: "",
+            roleName: ""
         };
 
         var _saveRegistration = function(registration) {
@@ -18,6 +19,15 @@
             });
         };
 
+        var _getInfoUser = function () {
+            var resultado = "";
+            $http.get(serviceBase + 'api/account/InfoUser').then(function(results) {
+                resultado =  results.data;
+            });
+
+            return resultado;
+        };
+
         var _login = function(loginData) {
 
             var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
@@ -26,10 +36,13 @@
 
             $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function(response) {
 
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
+
 
                 _authentication.isAuth = true;
                 _authentication.userName = loginData.userName;
+                _authentication.roleName = _getInfoUser();
+
+                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, roleName: _authentication.roleName });
 
                 deferred.resolve(response);
             }).error(function(err, status) {
@@ -46,6 +59,7 @@
 
             _authentication.isAuth = false;
             _authentication.userName = "";
+            _authentication.roleName = "";
         };
 
         var _fillAuthData = function() {
@@ -55,6 +69,7 @@
             if (authData) {
                 _authentication.isAuth = true;
                 _authentication.userName = authData.userName;
+                _authentication.roleName = authData.roleName;
             }
         };
 

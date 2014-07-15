@@ -21,7 +21,19 @@ namespace BabyBook.Api.Controllers
             _repo = new AuthRepository();
         }
 
-        // POST api/Account/Register
+        [Authorize]
+        [Route("InfoUser")]
+        [HttpGet]
+        public async Task<IHttpActionResult> InfoUser()
+        {
+
+            var roleName = await _repo.GetInfoUser(User.Identity.Name);
+
+            return Ok(roleName);
+        }
+
+
+            // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(UserModel userModel)

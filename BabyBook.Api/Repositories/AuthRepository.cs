@@ -21,14 +21,31 @@ namespace BabyBook.Api.Repositories
             _userManager = new UserManager<UserApp>(new UserStore<UserApp>(_ctx));
         }
 
+        public async Task<string> GetInfoUser(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+
+            RoleManager<IdentityRole> rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_ctx));
+
+            var role = await rolemanager.FindByIdAsync(user.Roles.ToList()[0].RoleId);
+
+            
+            return role.Name;
+        }
+
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
             UserApp user = new UserApp()
             {
                 UserName = userModel.UserName
             };
-
+            
             var result = await _userManager.CreateAsync(user, userModel.Password);
+
+            if (result.Succeeded )
+            {
+                result = await _userManager.AddToRoleAsync(user.Id, "Gestor");
+            }
 
             return result;
         }

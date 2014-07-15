@@ -21,7 +21,7 @@ namespace BabyBook.Api.Controllers
             _repository = new CentroRepository();
         }
 
-        //[Authorize]
+        [Authorize]
         [Route("")]
         public IHttpActionResult Get()
         {

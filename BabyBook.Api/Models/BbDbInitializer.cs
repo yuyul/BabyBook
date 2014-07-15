@@ -23,6 +23,10 @@ namespace BabyBook.Api.Models
                 var roleresult = RoleManager.Create(new IdentityRole(Name));
             }
 
+            RoleManager.Create(new IdentityRole("Gestor"));
+            RoleManager.Create(new IdentityRole("Profesor"));
+            RoleManager.Create(new IdentityRole("Familiar"));
+
             var user = new UserApp();
 
             user.UserName = Name;
@@ -38,7 +42,7 @@ namespace BabyBook.Api.Models
 
             for (contador = 1; contador < 10; contador++)
             {
-                context.Centros.Add(new Centro() { Nombre = "Centro" + contador, Direccion = "Direccion" + contador, FechaAlta = DateTime.Today, Gestor = user});
+                context.Centros.Add(new Centro() { Nombre = "Centro" + contador, Direccion = "Direccion" + contador, FechaAlta = DateTime.Today, GestorId = user.Id});
             }
 
 
