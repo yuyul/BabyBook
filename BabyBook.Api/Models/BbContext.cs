@@ -14,7 +14,7 @@ namespace BabyBook.Api.Models
             : base("name=BbContext")
         {
             
-           //Database.SetInitializer<BbContext>(new BbDbInitializer());
+           Database.SetInitializer<BbContext>(new BbDbInitializer());
         }
 
         public virtual DbSet<Centro> Centros { get; set; }
