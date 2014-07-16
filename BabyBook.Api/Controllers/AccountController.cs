@@ -1,4 +1,5 @@
-﻿using BabyBook.Api.Models;
+﻿using System.Web.Script.Serialization;
+using BabyBook.Api.Models;
 using BabyBook.Api.Repositories;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,14 @@ namespace BabyBook.Api.Controllers
         {
 
             var roleName = await _repo.GetInfoUser(User.Identity.Name);
+            
+            RoleModel role = new RoleModel
+            {
+                RoleName =  roleName,
+                UserName = User.Identity.Name
+            };
 
-            return Ok(roleName);
+            return Ok(role);
         }
 
 

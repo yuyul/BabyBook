@@ -67,21 +67,16 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\centrosController.js" />
-    <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
-    <Content Include="app\controllers\pedidosController.js" />
     <Content Include="app\controllers\signupController.js" />
-    <Content Include="app\controllers\testController.js" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\centrosService.js" />
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
-    <Content Include="app\views\orders.html" />
     <Content Include="app\views\signup.html" />
-    <Content Include="app\views\test.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\loading-bar.css" />

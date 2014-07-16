@@ -127,6 +127,7 @@
     <Compile Include="Models\Centro.cs" />
     <Compile Include="Models\Clase.cs" />
     <Compile Include="Models\Profesor.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\UserApp.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

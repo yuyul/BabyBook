@@ -20,12 +20,19 @@
         };
 
         var _getInfoUser = function () {
-            var resultado = "";
             $http.get(serviceBase + 'api/account/InfoUser').then(function(results) {
-                resultado =  results.data;
+
+                var roleData = {
+                    roleName: "",
+                    userName: ""
+                };
+
+                roleData = results.data;
+
+                _authentication.roleName = roleData.roleName;
             });
 
-            return resultado;
+            
         };
 
         var _login = function(loginData) {
@@ -40,7 +47,7 @@
 
                 _authentication.isAuth = true;
                 _authentication.userName = loginData.userName;
-                _authentication.roleName = _getInfoUser();
+                _getInfoUser();
 
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, roleName: _authentication.roleName });
 
