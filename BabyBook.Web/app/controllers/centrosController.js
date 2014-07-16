@@ -5,7 +5,7 @@
 
         $scope.centros = [];
 
-        centrosService.getCentros().then(function(results) {
+        centrosService.getCentrosByUser().then(function(results) {
 
             $scope.centros = results.data;
         }, function(error) {

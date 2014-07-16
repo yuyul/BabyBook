@@ -13,7 +13,7 @@
 
         authService.login($scope.loginData).then(function (response) {
 
-            $location.path('/centros');
+            $location.path('/home');
 
         },
          function (err) {

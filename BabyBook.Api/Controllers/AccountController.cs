@@ -25,10 +25,10 @@ namespace BabyBook.Api.Controllers
         [Authorize]
         [Route("InfoUser")]
         [HttpGet]
-        public async Task<IHttpActionResult> InfoUser()
+        public IHttpActionResult InfoUser()
         {
 
-            var roleName = await _repo.GetInfoUser(User.Identity.Name);
+            var roleName = _repo.GetInfoUser(User.Identity.Name);
             
             RoleModel role = new RoleModel
             {

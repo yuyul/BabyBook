@@ -25,8 +25,17 @@ namespace BabyBook.Api.Controllers
         [Route("")]
         public IHttpActionResult Get()
         {
-            var name1 = User.Identity.Name;
+            
             return Ok(_repository.GetAll());
+        }
+
+        [Authorize]
+        [Route("GetByUserId")]
+        public IHttpActionResult GetByUserId()
+        {
+            var userName = User.Identity.Name;
+
+            return Ok(_repository.GetByUserId(userName));
         }
 
         //public IEnumerable<Centro> Get()
@@ -37,5 +46,7 @@ namespace BabyBook.Api.Controllers
 
         //    return _repository.GetAll();
         //}
+
+
     }
 }

@@ -6,5 +6,5 @@
 
     $scope.isAdmin = authentication.roleName === "Admin";
     $scope.isGestor = authentication.roleName === "Gestor";
-
+    $scope.authentication = authentication;
 }]);

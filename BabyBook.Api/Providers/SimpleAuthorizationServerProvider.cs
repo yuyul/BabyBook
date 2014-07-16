@@ -4,9 +4,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using BabyBook.Api.Models;
 using BabyBook.Api.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Owin.Security;
 
 namespace BabyBook.Api.Providers
 {
@@ -37,7 +40,19 @@ namespace BabyBook.Api.Providers
             identity.AddClaim(new Claim("role", "user"));
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
 
-            context.Validated(identity);
+            //context.Validated(identity);
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+                {
+                    { 
+                        "as:client_id", (context.ClientId == null) ? string.Empty : context.ClientId
+                    },
+                    { 
+                        "userName", context.UserName
+                    }
+                });
+
+            var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
 
         }
     }

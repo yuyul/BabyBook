@@ -20,19 +20,19 @@
         };
 
         var _getInfoUser = function () {
-            $http.get(serviceBase + 'api/account/InfoUser').then(function(results) {
 
-                var roleData = {
-                    roleName: "",
-                    userName: ""
-                };
+            var roleData = {
+                roleName: "",
+                userName: ""
+            };
 
-                roleData = results.data;
+            $http.get(serviceBase + 'api/account/InfoUser').success(function(results) {
+                roleData = results.roleName;
 
-                _authentication.roleName = roleData.roleName;
+                //_authentication.roleName = roleData.roleName;
             });
 
-            
+            return roleData.roleName;
         };
 
         var _login = function(loginData) {
@@ -44,10 +44,11 @@
             $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function(response) {
 
 
-
+                console.log(response);
                 _authentication.isAuth = true;
                 _authentication.userName = loginData.userName;
-                _getInfoUser();
+                //_getInfoUser();
+                _authentication.roleName = _getInfoUser();
 
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, roleName: _authentication.roleName });
 

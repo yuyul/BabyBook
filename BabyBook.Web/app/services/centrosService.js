@@ -11,7 +11,15 @@
             });
         };
 
+        var _getCentrosByUser = function() {
+            return $http.get(serviceBase + 'api/centros/GetByUserId').then(function(results) {
+                return results;
+            });
+        };
+
         centrosServiceFactory.getCentros = _getCentros;
+        centrosServiceFactory.getCentrosByUser = _getCentrosByUser;
+
         return centrosServiceFactory;
     }
 ]);
