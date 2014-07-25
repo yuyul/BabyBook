@@ -38,6 +38,15 @@ namespace BabyBook.Api.Controllers
             return Ok(_repository.GetByUserId(userName));
         }
 
+        [Authorize]
+        [Route("")]
+        public IHttpActionResult AddCentro(Centro centro)
+        {
+            var userName = User.Identity.Name;
+
+            return Ok(_repository.AddCentro(userName, centro));
+        }
+
         //public IEnumerable<Centro> Get()
         //{
 

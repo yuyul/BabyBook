@@ -17,16 +17,6 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
-    $routeProvider.when("/test", {
-        controller: "testController",
-        templateUrl: "/app/views/test.html"
-    });
-
-    $routeProvider.when("/pedidos", {
-        controller: "pedidosController",
-        templateUrl: "/app/views/orders.html"
-    });
-
     $routeProvider.when("/centros", {
         controller: "centrosController",
         templateUrl: "/app/views/centros.html"
@@ -35,6 +25,11 @@ app.config(function($routeProvider) {
     $routeProvider.when("/admin/centros", {
         controller: "adminCentrosController",
         templateUrl: "/app/views/centros.html"
+    });
+
+    $routeProvider.when("/centros/new", {
+        controller: "centrosController",
+        templateUrl: "/app/views/newCentro.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });

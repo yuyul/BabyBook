@@ -5,18 +5,18 @@ using System.Web;
 
 namespace BabyBook.Api.Models
 {
-    public class Clase
+    public class Curso
     {
-        public Clase()
+        public Curso()
         {
             Matriculas = new HashSet<Matricula>();
         }
 
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int CentroId { get; set; }
-        public virtual Centro Centro { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
 
         public ICollection<Matricula> Matriculas { get; set; } 
+
     }
 }

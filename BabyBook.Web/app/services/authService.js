@@ -47,8 +47,7 @@
                 console.log(response);
                 _authentication.isAuth = true;
                 _authentication.userName = loginData.userName;
-                //_getInfoUser();
-                _authentication.roleName = _getInfoUser();
+                _authentication.roleName = response.roleName;
 
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, roleName: _authentication.roleName });
 

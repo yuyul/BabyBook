@@ -8,6 +8,11 @@ namespace BabyBook.Api.Models
 {
     public class Alumno
     {
+        public Alumno()
+        {
+            Matriculas = new HashSet<Matricula>();
+        }
+
         public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
@@ -21,6 +26,6 @@ namespace BabyBook.Api.Models
         public int CentroId { get; set; }
         public virtual Centro Centro { get; set; }
 
-    
+        public ICollection<Matricula> Matriculas { get; set; } 
     }
 }

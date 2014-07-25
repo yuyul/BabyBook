@@ -24,7 +24,7 @@ namespace BabyBook.Api.Repositories
             _userManager = new UserManager<UserApp>(new UserStore<UserApp>(_ctx));
         }
 
-        public string GetInfoUser(string userName)
+        public string GetRoleName(string userName)
         {
             var user = _userManager.FindByName(userName);
 

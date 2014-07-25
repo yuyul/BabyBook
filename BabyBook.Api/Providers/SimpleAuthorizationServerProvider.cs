@@ -33,27 +33,41 @@ namespace BabyBook.Api.Providers
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
+
+                string roleName =  _repo.GetRoleName(context.UserName);
+
+                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                identity.AddClaim(new Claim("sub", context.UserName));
+                identity.AddClaim(new Claim("role", "user"));
+                identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+
+                //context.Validated(identity);
+                var props = new AuthenticationProperties(new Dictionary<string, string>
+                    {
+                        { 
+                            "roleName", roleName
+                        },
+                        { 
+                            "userName", context.UserName
+                        }
+                    });
+
+                var ticket = new AuthenticationTicket(identity, props);
+                context.Validated(ticket);
             }
 
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
-            identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+            
 
-            //context.Validated(identity);
-            var props = new AuthenticationProperties(new Dictionary<string, string>
-                {
-                    { 
-                        "as:client_id", (context.ClientId == null) ? string.Empty : context.ClientId
-                    },
-                    { 
-                        "userName", context.UserName
-                    }
-                });
+        }
 
-            var ticket = new AuthenticationTicket(identity, props);
-            context.Validated(ticket);
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
 
+            return Task.FromResult<object>(null);
         }
     }
 }

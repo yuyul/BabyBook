@@ -17,8 +17,15 @@
             });
         };
 
+        var _addCentro = function(centro) {
+            return $http.post(serviceBase + 'api/centros/', centro).then(function(results) {
+                return results;
+            });
+        };
+
         centrosServiceFactory.getCentros = _getCentros;
         centrosServiceFactory.getCentrosByUser = _getCentrosByUser;
+        centrosServiceFactory.addCentro = _addCentro;
 
         return centrosServiceFactory;
     }

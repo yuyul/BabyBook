@@ -1,0 +1,11 @@
+﻿<form>
+    <h2>Nuevo Centro</h2>
+    <label>Nombre</label>
+    <input type="text" class="form-control" placeholder="NombreCentro" data-ng-model="centro.Nombre"/>
+    <label>Dirección</label>
+    <input type="text" class="form-control" placeholder="Direccion del Centro" data-ng-model="centro.Direccion"/>
+    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addCentro()">Guardar</button>
+    <div data-ng-hide="message == ''" class="alert alert-danger">
+        {{message}}
+    </div>
+</form>

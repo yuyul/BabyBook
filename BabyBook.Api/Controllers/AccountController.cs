@@ -22,22 +22,22 @@ namespace BabyBook.Api.Controllers
             _repo = new AuthRepository();
         }
 
-        [Authorize]
-        [Route("InfoUser")]
-        [HttpGet]
-        public IHttpActionResult InfoUser()
-        {
+        //[Authorize]
+        //[Route("InfoUser")]
+        //[HttpGet]
+        //public IHttpActionResult InfoUser()
+        //{
 
-            var roleName = _repo.GetInfoUser(User.Identity.Name);
+        //    var roleName = _repo.GetInfoUser(User.Identity.Name);
             
-            RoleModel role = new RoleModel
-            {
-                RoleName =  roleName,
-                UserName = User.Identity.Name
-            };
+        //    RoleModel role = new RoleModel
+        //    {
+        //        RoleName =  roleName,
+        //        UserName = User.Identity.Name
+        //    };
 
-            return Ok(role);
-        }
+        //    return Ok(role);
+        //}
 
 
             // POST api/Account/Register

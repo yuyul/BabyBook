@@ -1,9 +1,16 @@
 ﻿app.controller('centrosController', [
-    '$scope', 'centrosService', function($scope, centrosService) {
+    '$scope', '$location', 'centrosService', function($scope, $location, centrosService) {
 
         console.log('centros');
 
         $scope.centros = [];
+
+        $scope.centro = {
+            Nombre: '',
+            Direccion: ''
+        };
+
+        $scope.message = '';
 
         centrosService.getCentrosByUser().then(function(results) {
 
@@ -12,5 +19,14 @@
             console.log('error');
         });
 
+        $scope.addCentro = function() {
+            centrosService.addCentro($scope.centro).then(function(response) {
+                $location.path('/home');
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+
+
+        };
     }
 ]);

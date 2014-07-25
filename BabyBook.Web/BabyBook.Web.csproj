@@ -78,6 +78,7 @@
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
+    <Content Include="app\views\newCentro.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />

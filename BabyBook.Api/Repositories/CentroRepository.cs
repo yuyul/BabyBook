@@ -41,6 +41,20 @@ namespace BabyBook.Api.Repositories
             return query.ToList();
         }
 
+        public Centro AddCentro(string userName, Centro centro)
+        {
+            string userId = _userManager.FindByName(userName).Id;
+
+            centro.FechaAlta = DateTime.Today;
+            centro.GestorId = userId;
+
+            Centro newCentro = _ctx.Centros.Add(centro);
+
+            _ctx.SaveChanges();
+
+            return newCentro;
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();
