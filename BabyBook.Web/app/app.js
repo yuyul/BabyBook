@@ -32,6 +32,11 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/newCentro.html"
     });
 
+    $routeProvider.when("/admin/usuarios", {
+        controller: "usuariosController",
+        templateUrl: "/app/views/usuarios.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 

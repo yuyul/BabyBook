@@ -55,6 +55,17 @@ namespace BabyBook.Api.Repositories
             return newCentro;
         }
 
+        public bool DeleteCentro(int centroId)
+        {
+            Centro centro = _ctx.Centros.Find(centroId);
+
+            centro.FechaBaja = DateTime.Today;
+
+            _ctx.SaveChanges();
+
+            return true;
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();
