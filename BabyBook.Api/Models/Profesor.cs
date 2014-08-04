@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,5 +12,10 @@ namespace BabyBook.Api.Models
         public string Nombre { get; set; }
         public int CentroId { get; set; }
         public virtual Centro Centro { get; set; }
+
+        
+        public int? ClaseId { get; set; }
+        public virtual Clase Clase { get; set; }
+    
     }
 }

@@ -121,6 +121,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CentrosController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProfesoresController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\201407251524446_InitialCreate.cs" />
     <Compile Include="Migrations\201407251524446_InitialCreate.Designer.cs">
@@ -129,6 +130,10 @@
     <Compile Include="Migrations\201407251539410_AddMatricula.cs" />
     <Compile Include="Migrations\201407251539410_AddMatricula.Designer.cs">
       <DependentUpon>201407251539410_AddMatricula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407302054569_ProfesorClase.cs" />
+    <Compile Include="Migrations\201407302054569_ProfesorClase.Designer.cs">
+      <DependentUpon>201407302054569_ProfesorClase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
@@ -146,6 +151,7 @@
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\CentroRepository.cs" />
+    <Compile Include="Repositories\ProfesorRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407251539410_AddMatricula.resx">
       <DependentUpon>201407251539410_AddMatricula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407302054569_ProfesorClase.resx">
+      <DependentUpon>201407302054569_ProfesorClase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
