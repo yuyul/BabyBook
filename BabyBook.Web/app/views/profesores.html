@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Clase</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="profesor in profesores">
+                    <td>
+                        {{profesor.id}}
+                    </td>
+                    <td>
+                        {{profesor.nombre}}
+                    </td>
+                    <td>
+                        {{profesor.claseId}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
