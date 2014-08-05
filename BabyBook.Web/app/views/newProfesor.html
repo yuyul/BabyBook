@@ -1,0 +1,9 @@
+﻿<form>
+    <h2>Nuevo Profesor</h2>
+    <label>Nombre</label>
+    <input type="text" class="form-control" placeholder="NombreProfesor" data-ng-model="profesor.Nombre" />
+    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addProfesor()">Guardar</button>
+    <div data-ng-hide="message == ''" class="alert alert-danger">
+        {{message}}
+    </div>
+</form>

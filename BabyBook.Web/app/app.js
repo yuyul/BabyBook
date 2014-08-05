@@ -42,6 +42,11 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/profesores.html"
     });
 
+    $routeProvider.when("/profesores/new", {
+        controller: "profesoresController",
+        templateUrl: "/app/views/newProfesor.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
@@ -49,6 +54,7 @@ app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
 
-app.run(['authService', function(authService) {
+app.run(['authService', '$rootScope', function (authService, $rootScope) {
     authService.fillAuthData();
+    $rootScope.centroSeleccionado = '';
 }]);

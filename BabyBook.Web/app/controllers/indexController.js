@@ -1,4 +1,4 @@
-﻿app.controller('indexController', ['$scope', '$location', 'authService', 'Session', function ($scope, $location, authService, Session) {
+﻿app.controller('indexController', ['$scope', '$location', 'authService', '$rootScope', function ($scope, $location, authService, $rootScope) {
 
     console.log('index');
 
@@ -9,5 +9,4 @@
 
     $scope.authentication = authService.authentication;
 
-    $scope.centroId = Session.centro;
 }]);

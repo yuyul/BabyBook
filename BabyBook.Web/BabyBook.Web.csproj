@@ -78,12 +78,12 @@
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\centrosService.js" />
     <Content Include="app\services\profesoresService.js" />
-    <Content Include="app\services\Session.js" />
     <Content Include="app\services\usuariosService.js" />
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\newCentro.html" />
+    <Content Include="app\views\newProfesor.html" />
     <Content Include="app\views\profesores.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\usuarios.html" />
