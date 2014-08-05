@@ -19,7 +19,7 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}} ({{authentication.roleName}})</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}} ({{authentication.roleName}}) [{{centroId}}]</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
@@ -66,6 +66,8 @@
     <script src="app/services/authService.js"></script>
     <script src="app/services/centrosService.js"></script>
     <script src="app/services/usuariosService.js"></script>
+    <script src="app/services/profesoresService.js"></script>
+    <script src="app/services/Session.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/homeController.js"></script>
     <script src="app/controllers/indexController.js"></script>
@@ -74,5 +76,6 @@
     <script src="app/controllers/centrosController.js"></script>
     <script src="app/controllers/adminCentrosController.js"></script>
     <script src="app/controllers/usuariosController.js"></script>
+    <script src="app/controllers/profesoresController.js"></script>
 </body>
 </html>

@@ -5,11 +5,13 @@
         var profesoresServiceFactory = {};
 
         var _getProfesoresByCentro = function(centro) {
-            return $http.get(serviceBase + 'api/profesores/GetByCentro/' + centro).then(function(results) {
+            return $http.get(serviceBase + 'api/profesores/getbycentroid/' + centro).then(function(results) {
                 return results;
             });
         };
 
         profesoresServiceFactory.getProfesoresByCentro = _getProfesoresByCentro;
+
+        return profesoresServiceFactory;
     }
 ]);

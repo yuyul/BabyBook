@@ -11,7 +11,6 @@
                     <th>Nombre</th>
                     <th>Dirección</th>
                     <th>Fecha Alta</th>
-                    <th>Activo</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +28,7 @@
                         {{centro.fechaAlta}}
                     </td>
                     <td>
-                        <input type="checkbox" data-ng-model="centro.EstaActivo" disabled="disabled"/>
+                        <btn ng-click="seleccionaCentro(centro.id)">Selecciona</btn>
                     </td>
                 </tr>
             </tbody>

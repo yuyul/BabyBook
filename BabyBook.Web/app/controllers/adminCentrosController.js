@@ -1,5 +1,5 @@
 ﻿app.controller('adminCentrosController', [
-    '$scope', 'centrosService', function ($scope, centrosService) {
+    '$scope', 'centrosService', 'Session', function ($scope, centrosService, Session) {
 
         console.log('centros');
 
@@ -12,5 +12,9 @@
             console.log('error');
         });
 
+        $scope.seleccionaCentro = function (centroId) {
+            $scope.centroId = centroId;
+            Session.centro = centroId;
+        };
     }
 ]);

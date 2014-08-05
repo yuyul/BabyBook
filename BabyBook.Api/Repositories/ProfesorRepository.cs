@@ -21,5 +21,24 @@ namespace BabyBook.Api.Repositories
 
             return profesores;
         }
+
+        public IEnumerable<Profesor> GetAll()
+        {
+            return _ctx.Profesores.ToList();
+        }
+
+        public Profesor GetById(int id)
+        {
+            return _ctx.Profesores.Find(id);
+        }
+
+        public Profesor AddProfesor(Profesor profesor)
+        {
+            Profesor newProfesor = _ctx.Profesores.Add(profesor);
+
+            _ctx.SaveChanges();
+
+            return newProfesor;
+        }
     }
 }

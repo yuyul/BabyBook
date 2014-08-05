@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BabyBook.Api.Models;
+using BabyBook.Api.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BabyBook.Api.Models;
-using BabyBook.Api.Repositories;
 
 namespace BabyBook.Api.Controllers
 {
@@ -18,10 +18,38 @@ namespace BabyBook.Api.Controllers
             _repository = new ProfesorRepository();
         }
 
-        [Authorize]
-        public IEnumerable<Profesor> GetByCentro(int centroId)
+        // GET api/profesores
+        public IEnumerable<Profesor> Get()
         {
-            return _repository.GetByCentro(centroId);
+            return _repository.GetAll();
+        }
+
+        // GET api/profesores/5
+        public Profesor Get(int id)
+        {
+            return _repository.GetById(id);
+        }
+
+        [ActionName("getbycentroid")]
+        public IEnumerable<Profesor> GetByCentroId(int id)
+        {
+            return _repository.GetByCentro(id);
+        }
+
+        // POST api/profesores
+        public void Post([FromBody]Profesor value)
+        {
+            _repository.AddProfesor(value);
+        }
+
+        // PUT api/profesores/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/profesores/5
+        public void Delete(int id)
+        {
         }
     }
 }
