@@ -16,7 +16,10 @@ namespace BabyBook.Api.Models
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
 
-        public ICollection<Matricula> Matriculas { get; set; } 
+        public ICollection<Matricula> Matriculas { get; set; }
+
+        public int CentroId { get; set; }
+        public Centro Centro { get; set; }
 
     }
 }

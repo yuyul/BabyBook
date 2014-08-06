@@ -1,0 +1,11 @@
+﻿<form>
+    <h2>Nuevo Curso</h2>
+    <label>Fecha Inicio</label>
+    <input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="curso.fechaInicio"/>
+    <label>Fecha Fin</label>
+    <input type="text" class="form-control" placeholder="31/12/2000" data-ng-model="curso.fechaFin"/>
+    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createCurso()">Guardar</button>
+    <div data-ng-hide="message == ''" class="alert alert-danger">
+        {{message}}
+    </div>
+</form>

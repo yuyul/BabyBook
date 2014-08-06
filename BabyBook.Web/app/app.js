@@ -47,6 +47,26 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/newProfesor.html"
     });
 
+    $routeProvider.when("/clases", {
+        controller: "clasesController",
+        templateUrl: "/app/views/clases.html"
+    });
+
+    $routeProvider.when("/clases/new", {
+        controller: "clasesController",
+        templateUrl: "/app/views/newClase.html"
+    });
+
+    $routeProvider.when("/cursos", {
+        controller: "cursosController",
+        templateUrl: "/app/views/cursos.html"
+    });
+
+    $routeProvider.when("/cursos/new", {
+        controller: "cursosController",
+        templateUrl: "/app/views/newCurso.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 

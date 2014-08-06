@@ -68,6 +68,8 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\adminCentrosController.js" />
     <Content Include="app\controllers\centrosController.js" />
+    <Content Include="app\controllers\clasesController.js" />
+    <Content Include="app\controllers\cursosController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
@@ -77,12 +79,18 @@
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\centrosService.js" />
+    <Content Include="app\services\clasesService.js" />
+    <Content Include="app\services\cursosService.js" />
     <Content Include="app\services\profesoresService.js" />
     <Content Include="app\services\usuariosService.js" />
     <Content Include="app\views\centros.html" />
+    <Content Include="app\views\clases.html" />
+    <Content Include="app\views\cursos.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\newCentro.html" />
+    <Content Include="app\views\newClase.html" />
+    <Content Include="app\views\newCurso.html" />
     <Content Include="app\views\newProfesor.html" />
     <Content Include="app\views\profesores.html" />
     <Content Include="app\views\signup.html" />

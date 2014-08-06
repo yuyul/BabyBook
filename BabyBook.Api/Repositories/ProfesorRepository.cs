@@ -40,5 +40,17 @@ namespace BabyBook.Api.Repositories
 
             return newProfesor;
         }
+
+        public Profesor UpdateProfesor(int id, Profesor profesor)
+        {
+            Profesor editProfesor = _ctx.Profesores.Find(id);
+
+            editProfesor.Nombre = profesor.Nombre;
+            editProfesor.ClaseId = profesor.ClaseId;
+
+            _ctx.SaveChanges();
+
+            return editProfesor;
+        }
     }
 }

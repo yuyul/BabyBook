@@ -43,8 +43,9 @@ namespace BabyBook.Api.Controllers
         }
 
         // PUT api/profesores/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Profesor value)
         {
+            _repository.UpdateProfesor(id, value);
         }
 
         // DELETE api/profesores/5

@@ -15,6 +15,7 @@ namespace BabyBook.Api.Models
             Alumnos = new HashSet<Alumno>();
             Profesores = new HashSet<Profesor>();
             Clases = new HashSet<Clase>();
+            Cursos = new HashSet<Curso>();
         }
 
         public int Id { get; set; }
@@ -27,6 +28,8 @@ namespace BabyBook.Api.Models
         public virtual ICollection<Alumno> Alumnos { get; set; }
         public virtual ICollection<Profesor> Profesores { get; set; }
         public virtual ICollection<Clase> Clases { get; set; }
+
+        public virtual ICollection<Curso> Cursos { get; set; }
 
         public string GestorId { get; set; }
         //public virtual UserApp Gestor { get; set; }

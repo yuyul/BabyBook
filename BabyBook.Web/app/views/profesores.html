@@ -10,6 +10,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Clase</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +24,30 @@
                     <td>
                         {{profesor.claseId}}
                     </td>
+                    <td>
+                        <btn ng-click="mostrarClases(profesor)">Asignar Clase</btn>
+                    </td>
                 </tr>
             </tbody>
         </table>
+
+        <div>
+            <form>
+                <h2>Profesor: {{profesor.nombre}}</h2>
+                <label>Clases</label>
+                <table>
+                    <tr data-ng-repeat="clase in clases">
+                        <td>{{clase.nombre}}</td>
+                        <td>
+                            <btn ng-click="asignarClase(clase.id)">Asignar</btn>
+                        </td>
+                    </tr>
+                </table>
+
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </form>
+        </div>
     </div>
 </div>

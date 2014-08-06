@@ -70,6 +70,12 @@ namespace BabyBook.Api.Models
                 .HasForeignKey(e=>e.ClaseId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Centro>()
+                .HasMany(e => e.Cursos)
+                .WithRequired(e => e.Centro)
+                .HasForeignKey(e => e.CentroId)
+                .WillCascadeOnDelete(false);
+
             //modelBuilder.Entity<UserApp>().HasMany(e=>e.Centros).WithRequired(e=>e.Gestor).HasForeignKey(e=>e.GestorId).WillCascadeOnDelete(true);
                 
                 

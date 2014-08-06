@@ -16,8 +16,16 @@
             });
         };
 
+        var _updateProfesor = function (profesor) {
+
+            return $http.put(serviceBase + 'api/profesores/' + profesor.id, profesor).then(function(response) {
+                return response;
+            });
+        };
+
         profesoresServiceFactory.getProfesoresByCentro = _getProfesoresByCentro;
         profesoresServiceFactory.createProfesor = _createProfesor;
+        profesoresServiceFactory.updateProfesor = _updateProfesor;
 
         return profesoresServiceFactory;
     }

@@ -1,8 +1,9 @@
-﻿app.controller('profesoresController', ['$scope', '$location', 'profesoresService', '$rootScope', function ($scope, $location, profesoresService, $rootScope) {
+﻿app.controller('profesoresController', ['$scope', '$location', 'profesoresService', '$rootScope', 'clasesService', function ($scope, $location, profesoresService, $rootScope, clasesService) {
 
     console.log('profesores');
 
     $scope.profesores = [];
+    $scope.clases = [];
 
     $scope.profesor = {
         Nombre: '',
@@ -27,6 +28,28 @@
         }, function(err) {
             $scope.message = err.error_description;
         });
+    };
+
+    $scope.mostrarClases = function (profesor) {
+        $scope.profesor = profesor;
+
+        clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
+            $scope.clases = results.data;
+        }, function (error) {
+            console.log('error');
+        });
+
+    };
+
+    $scope.asignarClase = function (claseId) {
+        $scope.profesor.claseId = claseId;
+
+        profesoresService.updateProfesor($scope.profesor).then(function (response) {
+            $location.path('/home');
+        }, function (error) {
+            console.log('error');
+        });
+
     };
 
 }]);

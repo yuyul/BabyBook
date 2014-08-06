@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+        <p><a class="btn btn-info" href="#/clases/new" role="button">Nueva Clase</a></p>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="clase in clases">
+                    <td>
+                        {{clase.id}}
+                    </td>
+                    <td>
+                        {{clase.nombre}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
