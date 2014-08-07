@@ -7,6 +7,12 @@ app.config(function($routeProvider) {
             templateUrl: "/app/views/home.html"
         });
 
+    $routeProvider.when("/home/:role",
+        {
+            controller: "homeyController",
+            templateUrl: "/app/views/homey.html"
+        });
+
     $routeProvider.when("/login", {
         controller: "loginController",
         templateUrl: "/app/views/login.html"
@@ -65,6 +71,16 @@ app.config(function($routeProvider) {
     $routeProvider.when("/cursos/new", {
         controller: "cursosController",
         templateUrl: "/app/views/newCurso.html"
+    });
+
+    $routeProvider.when("/alumnos", {
+        controller: "alumnosController",
+        templateUrl: "/app/views/alumnos.html"
+    });
+
+    $routeProvider.when("/alumnos/new", {
+        controller: "alumnosController",
+        templateUrl: "/app/views/newAlumno.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });

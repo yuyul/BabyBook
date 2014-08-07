@@ -22,7 +22,7 @@
 
         clasesService.createClase($scope.clase).then(function (response) {
             $location.path('/home');
-        }, function ($err) {
+        }, function (err) {
             $scope.message = err.error_description;
         });
     };

@@ -1,4 +1,14 @@
-﻿<div data-ng-show="isAdmin">
+﻿<div ng-hide="centerSelected">
+    <h1>No ha seleccionado ningun centro con el que trabajar.</h1>
+    <table>
+        <tr data-ng-repeat="centro in centros">
+            <td>{{ centro.nombre }}</td>
+            <td><btn ng-click="seleccionaCentro(centro.id)">Seleccionar</btn></td>
+        </tr>
+    </table>
+</div>
+
+<div data-ng-show="isAdmin">
     <h2>Administrador</h2>
     <p><a class="btn btn-info" href="#/admin/centros" role="button">Ver Centros</a></p>
     <p><a class="btn btn-info" href="#/admin/usuarios" role="button">Ver Usuarios</a></p>

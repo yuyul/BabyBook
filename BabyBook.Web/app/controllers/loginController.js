@@ -12,8 +12,9 @@
     $scope.login = function () {
 
         authService.login($scope.loginData).then(function (response) {
-
+            
             $location.path('/home');
+            //$location.path('/home/' + response.roleName);
 
         },
          function (err) {
