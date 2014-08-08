@@ -9,6 +9,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +20,12 @@
                     </td>
                     <td>
                         {{alumno.nombre}}
+                    </td>
+                    <td>
+                        {{alumno.primerApellido + ' ' + alumno.segundoApellido}}
+                    </td>
+                    <td>
+                        <a href="#/alumnos/edit/{{alumno.id}}">Editar</a>
                     </td>
                 </tr>
             </tbody>

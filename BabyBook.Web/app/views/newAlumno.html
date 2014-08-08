@@ -1,11 +1,11 @@
 ﻿<form>
     <h2>Nuevo Alumno</h2>
     <label>Nombre</label>
-    <input type="text" class="form-control" placeholder="NombreAlumno" data-ng-model="alumno.Nombre"/>
+    <input type="text" class="form-control" placeholder="NombreAlumno" data-ng-model="alumno.nombre"/>
     <label>Primer Apellido</label>
-    <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="centro.PrimerApellido"/>
+    <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="alumno.primerApellido"/>
     <label>Segundo Apellido</label>  
-    <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="centro.SegundoApellido"/>
+    <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido"/>
     <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createAlumno()">Guardar</button>
     <div data-ng-hide="message == ''" class="alert alert-danger">
         {{message}}

@@ -1,4 +1,4 @@
-﻿app.controller('homeController', ['$scope', '$location', 'authService', '$rootScope', 'centrosService',  function ($scope, $location, authService, $rootScope, centrosService) {
+﻿app.controller('homeController', ['$scope', '$location', 'authService', '$rootScope', 'centrosService', '$route', function ($scope, $location, authService, $rootScope, centrosService, $route) {
 
     console.log('home');
 
@@ -14,6 +14,7 @@
 
     $scope.seleccionaCentro = function (centroId) {
         $rootScope.centroSeleccionado = centroId;
+        $route.reload();
     };
 
     centrosService.getCentrosByUser().then(function (results) {

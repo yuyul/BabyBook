@@ -123,6 +123,7 @@
     <Compile Include="Controllers\CentrosController.cs" />
     <Compile Include="Controllers\ClasesController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProfesoresController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Repositories\CentroRepository.cs" />
     <Compile Include="Repositories\ClaseRepository.cs" />
     <Compile Include="Repositories\CursosRepository.cs" />
+    <Compile Include="Repositories\MatriculRepository.cs" />
     <Compile Include="Repositories\ProfesorRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />

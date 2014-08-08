@@ -83,6 +83,12 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/newAlumno.html"
     });
 
+    $routeProvider.when("/alumnos/edit/:id",
+        {
+            controller: "alumnosController",
+            templateUrl: "/app/views/newAlumno.html"
+        });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 

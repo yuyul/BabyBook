@@ -17,14 +17,34 @@ namespace BabyBook.Api.Repositories
 
         public IEnumerable<Alumno> GetByCentro(int centroId)
         {
-            return _ctx.Alumnos.ToList();
+            return _ctx.Alumnos.Where(c=>c.CentroId==centroId).ToList();
         }
 
         public Alumno AddAlumno(Alumno alumno)
         {
             Alumno newAlumno = _ctx.Alumnos.Add(alumno);
 
+            _ctx.SaveChanges();
+
             return newAlumno;
+        }
+
+        public Alumno GetById(int id)
+        {
+            return _ctx.Alumnos.Find(id);
+        }
+
+        public Alumno UpdateAlumno(int id, Alumno alumno)
+        {
+            Alumno updatedAlumno = _ctx.Alumnos.Find(id);
+
+            updatedAlumno.Nombre = alumno.Nombre;
+            updatedAlumno.PrimerApellido = alumno.PrimerApellido;
+            updatedAlumno.SegundoApellido = alumno.SegundoApellido;
+
+            _ctx.SaveChanges();
+
+            return updatedAlumno;
         }
     }
 }

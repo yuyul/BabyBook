@@ -25,9 +25,10 @@ namespace BabyBook.Api.Controllers
         }
 
         // GET api/alumnos/5
-        public string Get(int id)
+        [ActionName("getbyuserid")]
+        public Alumno Get(int id)
         {
-            return "value";
+            return _repository.GetById(id);
         }
 
         [ActionName("getbycentroid")]
@@ -44,8 +45,9 @@ namespace BabyBook.Api.Controllers
         }
 
         // PUT api/alumnos/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Alumno value)
         {
+            _repository.UpdateAlumno(id, value);
         }
 
         // DELETE api/alumnos/5
