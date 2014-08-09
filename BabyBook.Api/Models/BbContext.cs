@@ -22,7 +22,7 @@ namespace BabyBook.Api.Models
         public virtual DbSet<Profesor> Profesores { get; set; }
         public virtual DbSet<Clase> Clases { get; set; }
         public virtual DbSet<Curso> Cursos { get; set; }
-        public virtual DbSet<Matricula> Matriculas { get; set; }
+        public virtual DbSet<AlumnoClase> AlumnosClases { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,13 +47,13 @@ namespace BabyBook.Api.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Alumno>()
-                .HasMany(e=>e.Matriculas)
+                .HasMany(e=>e.Clases)
                 .WithRequired(e=>e.Alumno)
                 .HasForeignKey(e=>e.AlumnoId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Clase>()
-                .HasMany(e=>e.Matriculas)
+                .HasMany(e=>e.Alumnos)
                 .WithRequired(e=>e.Clase)
                 .HasForeignKey(e=>e.ClaseId)
                 .WillCascadeOnDelete(false);

@@ -41,6 +41,7 @@ namespace BabyBook.Api.Repositories
             updatedAlumno.Nombre = alumno.Nombre;
             updatedAlumno.PrimerApellido = alumno.PrimerApellido;
             updatedAlumno.SegundoApellido = alumno.SegundoApellido;
+            updatedAlumno.FechaNacimiento = alumno.FechaNacimiento;
 
             _ctx.SaveChanges();
 

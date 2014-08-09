@@ -18,18 +18,6 @@ namespace BabyBook.Api.Controllers
             _repository = new ClaseRepository();
         }
 
-        // GET api/clases
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/clases/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         [ActionName("getbycentroid")]
         public IEnumerable<Clase> GetByCentroId(int id)
         {
@@ -37,19 +25,45 @@ namespace BabyBook.Api.Controllers
         }
 
         // POST api/clases
-        public void Post([FromBody]Clase value)
+        [HttpPost]
+        [ActionName("NuevaClase")]
+        public void NuevaClase([FromBody]Clase value)
         {
             _repository.AddClase(value);
         }
-
-        // PUT api/clases/5
-        public void Put(int id, [FromBody]string value)
+        
+        [HttpPost]
+        [ActionName("AsignarAlumno")]
+        public void AsignarAlumno([FromBody] IEnumerable<AlumnoClase> value)
         {
+            foreach (var asignacion in value)
+            {
+                _repository.AsignarAlumno(asignacion);    
+            }
+            
         }
 
-        // DELETE api/clases/5
-        public void Delete(int id)
-        {
-        }
+        //// GET api/clases
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        //// GET api/clases/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
+
+        //// PUT api/clases/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
+
+        //// DELETE api/clases/5
+        //public void Delete(int id)
+        //{
+        //}
+
     }
 }

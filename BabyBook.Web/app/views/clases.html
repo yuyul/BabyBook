@@ -9,6 +9,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,8 +20,36 @@
                     <td>
                         {{clase.nombre}}
                     </td>
+                    <td>
+                        <!--<btn ng-click="asignarAlumnos(clase.id)">Asignar Alumnos</btn>-->
+                        <btn ng-click="mostrarAlumnos(clase)">Asignar Alumnos</btn>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        
+        <div>
+            <form>
+                <h2>Clase: {{clase.nombre}}</h2>
+                <label>Curso</label>
+                    <select class="form-control" ng-model="cursoSeleccionado" ng-options="curso as curso.descripcion for curso in cursos"></select>
+                    {{cursoSeleccionado.id}}
+                <label>Alumnos</label>
+                <table>
+                    <tr data-ng-repeat="alumno in alumnos">
+                        <td>{{alumno.nombre + ' ' + alumno.primerApellido + ' ' + alumno.segundoApellido}}</td>
+                        <td><input type="checkbox" name="seleccionado" data-ng-model="alumno.seleccionado"></></td>
+                    </tr>
+                </table>
+
+
+                <btn ng-click="asignarAlumnos(clase.id)">Asignar</btn>
+
+
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </form>
+        </div>
     </div>
 </div>

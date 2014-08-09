@@ -9,6 +9,7 @@
         segundoApellido: '',
         fechaAlta: '',
         fechaBaja: '',
+        fechaNacimiento: '',
         centroId: ''
     };
     

@@ -10,13 +10,20 @@
     };
 
     var _createClase = function (clase) {
-        return $http.post(serviceBase + 'api/clases', clase).then(function(response) {
+        return $http.post(serviceBase + 'api/clases/NuevaClase', clase).then(function(response) {
+            return response;
+        });
+    };
+
+    var _asignarAlumno = function(asignacion) {
+        return $http.post(serviceBase + 'api/clases/asignaralumno', asignacion).then(function(response) {
             return response;
         });
     };
 
     clasesServiceFactory.getClasesByCentro = _getClasesByCentro;
     clasesServiceFactory.createClase = _createClase;
+    clasesServiceFactory.asignarAlumnos = _asignarAlumno;
 
     return clasesServiceFactory;
 

@@ -6,6 +6,8 @@
     <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="alumno.primerApellido"/>
     <label>Segundo Apellido</label>  
     <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido"/>
+    <label>Fecha Nacimiento</label>
+    <input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="alumno.fechaNacimiento" />
     <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createAlumno()">Guardar</button>
     <div data-ng-hide="message == ''" class="alert alert-danger">
         {{message}}

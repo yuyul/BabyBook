@@ -28,5 +28,14 @@ namespace BabyBook.Api.Repositories
 
             return newClase;
         }
+
+        public AlumnoClase AsignarAlumno(AlumnoClase asignacion)
+        {
+            AlumnoClase newAsignacion = _ctx.AlumnosClases.Add(asignacion);
+
+            _ctx.SaveChanges();
+
+            return newAsignacion;
+        }
     }
 }

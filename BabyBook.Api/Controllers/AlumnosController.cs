@@ -25,7 +25,7 @@ namespace BabyBook.Api.Controllers
         }
 
         // GET api/alumnos/5
-        [ActionName("getbyuserid")]
+        [ActionName("getbyid")]
         public Alumno Get(int id)
         {
             return _repository.GetById(id);

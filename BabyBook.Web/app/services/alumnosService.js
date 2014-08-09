@@ -11,7 +11,7 @@
     };
 
     var _getAlumnoById = function (id) {
-        return $http.get(serviceBase  + 'api/alumnos/getbyuserid/' + id).then(function(results) {
+        return $http.get(serviceBase  + 'api/alumnos/getbyid/' + id).then(function(results) {
             return results;
         });
     };

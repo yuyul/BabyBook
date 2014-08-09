@@ -1,10 +1,12 @@
-﻿app.controller('cursosController', ['$scope', '$location', 'cursosService', '$rootScope', function ($scope, $location, cursosService, $rootScope) {
+﻿app.controller('cursosController', ['$scope', '$location', 'cursosService', '$rootScope', '$routeParams', function ($scope, $location, cursosService, $rootScope, $routeParams) {
 
     console.log('cursos');
 
     $scope.cursos = [];
 
     $scope.curso = {
+        id: '',
+        descripcion: '',
         fechaInicio: '',
         fechaFin: '',
         centroId: ''
@@ -12,20 +14,38 @@
 
     $scope.message = '';
 
-    cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function (results) {
-        $scope.cursos = results.data;
-    }, function (error) {
-        console.log('error');
-    });
+    if ($routeParams.id === undefined) {
+        cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function(results) {
+            $scope.cursos = results.data;
+        }, function(error) {
+            console.log('error');
+        });
+    } else {
+        cursosService.getCursoById($routeParams.id).then(function(results) {
+            $scope.curso = results.data;
+        }, function(error) {
+            console.log('error');
+        });
+    }
 
     $scope.createCurso = function () {
-        $scope.curso.centroId = $rootScope.centroSeleccionado;
 
-        cursosService.createCurso($scope.curso).then(function (response) {
-            $location.path('/home');
-        }, function (err) {
-            $scope.message = err.error_description;
-        });
+        if ($scope.curso.id === '') {
+            $scope.curso.centroId = $rootScope.centroSeleccionado;
+
+            cursosService.createCurso($scope.curso).then(function(response) {
+                $location.path('/home');
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+        } else {
+            cursosService.updateCurso($scope.curso).then(function(response) {
+                $location.path('/cursos');
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+            
+        }
     };
 
 

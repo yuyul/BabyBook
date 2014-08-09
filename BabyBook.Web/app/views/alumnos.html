@@ -10,6 +10,8 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Fecha Alta</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -23,6 +25,12 @@
                     </td>
                     <td>
                         {{alumno.primerApellido + ' ' + alumno.segundoApellido}}
+                    </td>
+                    <td>
+                        {{alumno.fechaNacimiento}}
+                    </td>
+                    <td>
+                        {{alumno.fechaAlta}}
                     </td>
                     <td>
                         <a href="#/alumnos/edit/{{alumno.id}}">Editar</a>

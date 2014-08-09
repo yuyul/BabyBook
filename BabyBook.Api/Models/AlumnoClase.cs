@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BabyBook.Api.Models
 {
-    public class Matricula
+    public class AlumnoClase
     {
         public int Id { get; set; }
 

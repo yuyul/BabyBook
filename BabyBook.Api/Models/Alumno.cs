@@ -10,7 +10,7 @@ namespace BabyBook.Api.Models
     {
         public Alumno()
         {
-            Matriculas = new HashSet<Matricula>();
+            Clases   = new HashSet<AlumnoClase>();
         }
 
         public int Id { get; set; }
@@ -23,9 +23,11 @@ namespace BabyBook.Api.Models
 
         public DateTime? FechaBaja { get; set; }
 
+        public DateTime FechaNacimiento { get; set; }
+
         public int CentroId { get; set; }
         public virtual Centro Centro { get; set; }
 
-        public ICollection<Matricula> Matriculas { get; set; } 
+        public ICollection<AlumnoClase> Clases { get; set; } 
     }
 }

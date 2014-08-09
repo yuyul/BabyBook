@@ -15,6 +15,11 @@ namespace BabyBook.Api.Repositories
             _ctx = new BbContext();
         }
 
+        public Curso GetById(int id)
+        {
+            return _ctx.Cursos.Find(id);
+        }
+
         public IEnumerable<Curso> GetByCentro(int centroId)
         {
             return _ctx.Cursos.Where(c => c.CentroId == centroId);
@@ -27,6 +32,19 @@ namespace BabyBook.Api.Repositories
             _ctx.SaveChanges();
 
             return newcurso;
+        }
+
+        public Curso UpdateCurso(int id, Curso curso)
+        {
+            Curso updatedCurso = _ctx.Cursos.Find(id);
+
+            updatedCurso.FechaInicio = curso.FechaInicio;
+            updatedCurso.FechaFin = curso.FechaFin;
+            updatedCurso.Descripcion = curso.Descripcion;
+
+            _ctx.SaveChanges();
+
+            return updatedCurso;
         }
     }
 }
