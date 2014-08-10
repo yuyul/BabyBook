@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201408091321468_DescripcionCurso.Designer.cs">
       <DependentUpon>201408091321468_DescripcionCurso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408101437140_IndexAlumnoCursoCalse.cs" />
+    <Compile Include="Migrations\201408101437140_IndexAlumnoCursoCalse.Designer.cs">
+      <DependentUpon>201408101437140_IndexAlumnoCursoCalse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\BbContext.cs" />
@@ -210,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408091321468_DescripcionCurso.resx">
       <DependentUpon>201408091321468_DescripcionCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408101437140_IndexAlumnoCursoCalse.resx">
+      <DependentUpon>201408101437140_IndexAlumnoCursoCalse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

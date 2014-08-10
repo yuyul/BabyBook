@@ -37,6 +37,14 @@ namespace BabyBook.Api.Controllers
             return _repository.GetByCentro(id);
         }
 
+
+        [ActionName("getalumnossinasignar")]
+        [HttpGet]
+        public IEnumerable<Alumno> GetAlumnosSinAsignar(int id)
+        {
+            return _repository.GetSinAsignar(id);
+        }
+
         // POST api/alumnos
         public void Post([FromBody]Alumno value)
         {
