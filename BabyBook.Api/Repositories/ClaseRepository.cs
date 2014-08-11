@@ -37,5 +37,15 @@ namespace BabyBook.Api.Repositories
 
             return newAsignacion;
         }
+
+        public void EliminarAsignacionAlumno(AlumnoClase asignacion)
+        {
+            AlumnoClase deleteAsignacion = _ctx.AlumnosClases.Where(a => a.AlumnoId == asignacion.AlumnoId && a.CursoId == asignacion.CursoId).First();
+
+            _ctx.AlumnosClases.Remove(deleteAsignacion);
+
+            _ctx.SaveChanges();
+
+        }
     }
 }

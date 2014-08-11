@@ -6,9 +6,11 @@
 
     $scope.isAdmin = authentication.roleName === "Admin";
     $scope.isGestor = authentication.roleName === "Gestor" && $rootScope.centroSeleccionado != "";
+    $scope.isProfesor = authentication.roleName === "Profesor";
+
     $scope.authentication = authentication;
 
-    $scope.centerSelected = $rootScope.centroSeleccionado != "";
+    $scope.centerSelected = $rootScope.centroSeleccionado != "" ;
 
     $scope.centros = [];
 

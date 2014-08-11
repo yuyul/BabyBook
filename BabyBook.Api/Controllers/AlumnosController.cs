@@ -45,6 +45,19 @@ namespace BabyBook.Api.Controllers
             return _repository.GetSinAsignar(id);
         }
 
+        [ActionName("getalumnosbyclase")]
+        [HttpGet]
+        public IEnumerable<Alumno> GetAlumnosByClase(int id)
+        {
+            return _repository.GetAlumnoByClase(id);
+        }
+
+        [ActionName("getalumnosbyprofesorcurso")]
+        public IEnumerable<Alumno> GetAlumnosByProfesorcurso(int profesorId, int cursoId)
+        {
+            return _repository.GetAlumnoByProfesorCurso(profesorId,cursoId);
+        }
+
         // POST api/alumnos
         public void Post([FromBody]Alumno value)
         {

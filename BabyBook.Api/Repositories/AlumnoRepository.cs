@@ -22,17 +22,42 @@ namespace BabyBook.Api.Repositories
             return _ctx.Alumnos.Where(c=>c.CentroId==centroId).ToList();
         }
 
-        public IEnumerable<Alumno> GetSinAsignar(int cursoId)
+        public IEnumerable<Alumno> GetSinAsignar(int centroId)
         {
-            var query = (
+            /*var query = (
                 from a  in _ctx.Alumnos
                 join b in _ctx.AlumnosClases on a.Id equals b.AlumnoId into inners
-                
                 from ab in inners.DefaultIfEmpty()
                 select a
                 );
 
+            return query.ToList();*/
+
+            var query = (from Alumnoes in _ctx.Alumnos
+                         join AlumnoClases in _ctx.AlumnosClases on new { Id = Alumnoes.Id } equals new { Id = AlumnoClases.AlumnoId } into AlumnoClases_join
+                         from AlumnoClases in AlumnoClases_join.DefaultIfEmpty()
+                         where
+                           AlumnoClases.AlumnoId == null &&
+                           Alumnoes.CentroId == centroId
+                         select Alumnoes);
             return query.ToList();
+
+        }
+
+        public IEnumerable<Alumno> GetAlumnoByClase(int claseId)
+        {
+            var query = (
+                from Alumnoes in _ctx.Alumnos
+                join AlumnoClases in _ctx.AlumnosClases
+                      on new { Alumnoes.Id, ClaseId = claseId }
+                  equals new { Id = AlumnoClases.AlumnoId, AlumnoClases.ClaseId }
+                where
+                  Alumnoes.CentroId == 11
+                select Alumnoes
+                );
+
+            return query.ToList();
+
         }
 
         public Alumno AddAlumno(Alumno alumno)
@@ -61,6 +86,20 @@ namespace BabyBook.Api.Repositories
             _ctx.SaveChanges();
 
             return updatedAlumno;
+        }
+
+        public IEnumerable<Alumno> GetAlumnoByProfesorCurso(int profesorId, int cursoId)
+        {
+            var query = (
+                from AlumnoClases in _ctx.AlumnosClases
+                join Alumnoes in _ctx.Alumnos on new { AlumnoId = AlumnoClases.AlumnoId } equals new { AlumnoId = Alumnoes.Id }
+                where
+                  AlumnoClases.ClaseId == 12 &&
+                  AlumnoClases.CursoId == 4
+                select Alumnoes
+                );
+
+            return query.ToList();
         }
     }
 }

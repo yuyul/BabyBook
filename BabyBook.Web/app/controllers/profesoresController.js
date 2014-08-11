@@ -1,4 +1,4 @@
-﻿app.controller('profesoresController', ['$scope', '$location', 'profesoresService', '$rootScope', 'clasesService', function ($scope, $location, profesoresService, $rootScope, clasesService) {
+﻿app.controller('profesoresController', ['$scope', '$location', 'profesoresService', '$rootScope', 'clasesService', 'alumnosService', function ($scope, $location, profesoresService, $rootScope, clasesService, alumnosService) {
 
     console.log('profesores');
 
@@ -13,12 +13,22 @@
 
     $scope.message = '';
 
-    profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function(results) {
-        $scope.profesores = results.data;
-    }, function(error)
-    {
-        console.log('error');
-    });
+    $scope.alumnos = [];
+
+    if ($location.path() == "/profesores") {
+        profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
+            $scope.profesores = results.data;
+        }, function (error) {
+            console.log('error');
+        });
+    } else {
+        alumnosService.getAlumnosByProfesor("1", "3").then(function (results) {
+            $scope.alumnos = results.data;
+        }, function (error) {
+            console.log('error');
+        });
+        $scope.message = $location.path();
+    }
 
     $scope.addProfesor = function() {
         $scope.profesor.CentroId = $rootScope.centroSeleccionado;
@@ -51,5 +61,7 @@
         });
 
     };
+
+
 
 }]);

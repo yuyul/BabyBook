@@ -43,6 +43,16 @@ namespace BabyBook.Api.Controllers
             
         }
 
+        [ActionName("EliminarAsignacionAlumno")]
+        [HttpPost]
+        public void EliminarAsignacionAlumno([FromBody] IEnumerable<AlumnoClase> value)
+        {
+            foreach (var asignacion in value)
+            {
+                _repository.EliminarAsignacionAlumno(asignacion);
+            }
+        }
+
         //// GET api/clases
         //public IEnumerable<string> Get()
         //{

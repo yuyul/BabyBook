@@ -11,6 +11,7 @@
                     <th>Descripción</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
+                    <th>Activo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -27,6 +28,9 @@
                     </td>
                     <td>
                         {{curso.fechaFin}}
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="curso.activo" />
                     </td>
                     <td>
                         <a href="#/cursos/edit/{{curso.id}}">Editar</a>

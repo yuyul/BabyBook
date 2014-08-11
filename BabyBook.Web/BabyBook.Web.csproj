@@ -99,6 +99,7 @@
     <Content Include="app\views\newCurso.html" />
     <Content Include="app\views\newProfesor.html" />
     <Content Include="app\views\profesores.html" />
+    <Content Include="app\views\profesor\alumnos.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\usuarios.html" />
     <Content Include="content\css\bootstrap.css" />
@@ -106,6 +107,7 @@
     <Content Include="content\css\loading-bar.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
+    <Content Include="content\images\muñeco.jpg" />
     <Content Include="Index.html" />
     <Content Include="scripts\angular-local-storage.js" />
     <Content Include="scripts\angular-route.js" />

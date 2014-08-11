@@ -95,6 +95,12 @@ app.config(function($routeProvider) {
             templateUrl: "/app/views/newAlumno.html"
         });
 
+    $routeProvider.when("/profesor/alumnos",
+        {
+            controller: "profesoresController",
+            templateUrl: "/app/views/profesor/alumnos.html"
+        });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 

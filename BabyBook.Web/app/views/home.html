@@ -22,6 +22,12 @@
     <p><a class="btn btn-info" href="#/alumnos" role="button">Ver Alumnos</a></p>
 </div>
 
+<div data-ng-show="isProfesor">
+    <h2>Profesor</h2>
+
+        <p><a class="btn btn-info" href="#/profesor/alumnos" role="button">Ver Alumnos</a></p>
+</div>
+
 <div class="row" data-ng-hide="authentication.isAuth">
     <div class="col-md-2">
         &nbsp;

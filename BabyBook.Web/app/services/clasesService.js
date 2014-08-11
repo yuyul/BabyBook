@@ -21,9 +21,17 @@
         });
     };
 
+    var _eliminarAsignacionAlumno = function (asignacion) {
+        return $http.post(serviceBase + 'api/clases/eliminarasignacionalumno', asignacion).then(function (response) {
+            return response;
+        });
+
+    };
+
     clasesServiceFactory.getClasesByCentro = _getClasesByCentro;
     clasesServiceFactory.createClase = _createClase;
     clasesServiceFactory.asignarAlumnos = _asignarAlumno;
+    clasesServiceFactory.eliminarAsignacion = _eliminarAsignacionAlumno;
 
     return clasesServiceFactory;
 
