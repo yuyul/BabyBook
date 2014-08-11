@@ -71,6 +71,7 @@
     <Content Include="app\controllers\centrosController.js" />
     <Content Include="app\controllers\clasesController.js" />
     <Content Include="app\controllers\cursosController.js" />
+    <Content Include="app\controllers\dataController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\homeyController.js" />
     <Content Include="app\controllers\indexController.js" />
@@ -90,6 +91,7 @@
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\clases.html" />
     <Content Include="app\views\cursos.html" />
+    <Content Include="app\views\data.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\homey.html" />
     <Content Include="app\views\login.html" />
@@ -104,6 +106,7 @@
     <Content Include="app\views\usuarios.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\colorpicker.css" />
     <Content Include="content\css\loading-bar.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
@@ -111,7 +114,9 @@
     <Content Include="Index.html" />
     <Content Include="scripts\angular-local-storage.js" />
     <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-wysiwyg.js" />
     <Content Include="scripts\angular.js" />
+    <Content Include="scripts\bootstrap-colorpicker-module.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="Web.config" />

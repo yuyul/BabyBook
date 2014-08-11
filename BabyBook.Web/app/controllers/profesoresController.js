@@ -27,7 +27,7 @@
         }, function (error) {
             console.log('error');
         });
-        $scope.message = $location.path();
+        //$scope.message = $location.path();
     }
 
     $scope.addProfesor = function() {
@@ -61,7 +61,5 @@
         });
 
     };
-
-
 
 }]);

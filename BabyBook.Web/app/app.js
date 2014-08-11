@@ -1,4 +1,4 @@
-﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'wysiwyg.module']);
 
 app.config(function($routeProvider) {
 
@@ -99,6 +99,12 @@ app.config(function($routeProvider) {
         {
             controller: "profesoresController",
             templateUrl: "/app/views/profesor/alumnos.html"
+        });
+
+    $routeProvider.when("/data",
+        {
+            controller: "dataController",
+            templateUrl:"/app/views/data.html"
         });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
