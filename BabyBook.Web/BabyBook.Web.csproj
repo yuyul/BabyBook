@@ -112,6 +112,12 @@
     <Content Include="content\css\site.css" />
     <Content Include="content\images\muñeco.jpg" />
     <Content Include="Index.html" />
+    <Content Include="scripts\angular-file-upload-html5-shim.js" />
+    <Content Include="scripts\angular-file-upload-html5-shim.min.js" />
+    <Content Include="scripts\angular-file-upload-shim.js" />
+    <Content Include="scripts\angular-file-upload-shim.min.js" />
+    <Content Include="scripts\angular-file-upload.js" />
+    <Content Include="scripts\angular-file-upload.min.js" />
     <Content Include="scripts\angular-local-storage.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-wysiwyg.js" />

@@ -43,6 +43,8 @@ namespace BabyBook.Api.Controllers
         }
 
         // PUT api/profesores/5
+        [ActionName("updateProfesor")]
+        [HttpPut]
         public void Put(int id, [FromBody]Profesor value)
         {
             _repository.UpdateProfesor(id, value);

@@ -1,4 +1,4 @@
-﻿app.factory('alumnosService', ['$http', function ($http) {
+﻿app.factory('alumnosService', ['$http', '$upload', function ($http, $upload) {
 
     var serviceBase = "http://localhost:61073/";
 
@@ -16,17 +16,45 @@
         });
     };
 
+    var _uploadAlumno = function (dataalumno, file) {
+        $upload.upload(
+            {
+                url: serviceBase + 'api/alumnos/uploadAlumno',
+                data: { alumno: dataalumno },
+                file: file
+            }).progress(function (evt) {
+                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            }).success(function (data, status, headers, config) {
+                console.log(data);
+                return data;
+            });
+    };
+
+    var _updateAlumno = function (id, dataalumno, file) {
+        $upload.upload(
+            {
+                url: serviceBase + 'api/alumnos/updateAlumno/' + id,
+                data: { alumno: dataalumno },
+                file: file
+            }).progress(function (evt) {
+                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            }).success(function (data, status, headers, config) {
+                console.log(data);
+                return data;
+            });
+    };
+
     var _createAlumno = function (alumno) {
-        return $http.post(serviceBase + 'api/alumnos', alumno).then(function (response) {
+        return $http.post(serviceBase + 'api/alumnos/creaAlumno', alumno).then(function (response) {
             return response;
         });
     };
 
-    var _updateAlumno = function (alumno) {
+   /* var _updateAlumno = function (alumno) {
         return $http.put(serviceBase + 'api/alumnos/' + alumno.id, alumno).then(function (response) {
             return response;
         });
-    };
+    };*/
 
     var _getAlumnosSinAsignar = function (centroId) {
         return $http.get(serviceBase + 'api/alumnos/getalumnossinasignar/' + centroId).then(function (results) {
@@ -53,6 +81,7 @@
     alumnosServiceFactory.getAlumnosSinAsignar = _getAlumnosSinAsignar;
     alumnosServiceFactory.getAlumnosByClase = _getAlumnosByClase;
     alumnosServiceFactory.getAlumnosByProfesor = _getAlumnosByProfesor;
+    alumnosServiceFactory.uploadAlumno = _uploadAlumno;
 
     return alumnosServiceFactory;
 

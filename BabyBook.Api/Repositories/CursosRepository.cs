@@ -22,12 +22,14 @@ namespace BabyBook.Api.Repositories
 
         public IEnumerable<Curso> GetByCentro(int centroId)
         {
-            return _ctx.Cursos.Where(c => c.CentroId == centroId);
+            return _ctx.Cursos.Where(c => c.CentroId == centroId && c.Activo==true);
         }
 
         public Curso AddCurso(Curso curso)
         {
             Curso newcurso = _ctx.Cursos.Add(curso);
+
+            newcurso.Activo = true;
 
             _ctx.SaveChanges();
 

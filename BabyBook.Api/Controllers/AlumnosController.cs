@@ -1,10 +1,14 @@
 ﻿using BabyBook.Api.Models;
 using BabyBook.Api.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace BabyBook.Api.Controllers
@@ -16,12 +20,6 @@ namespace BabyBook.Api.Controllers
         public AlumnosController()
         {
             _repository = new AlumnoRepository();
-        }
-
-        // GET api/alumnos
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         // GET api/alumnos/5
@@ -59,10 +57,53 @@ namespace BabyBook.Api.Controllers
         }
 
         // POST api/alumnos
+        [ActionName("creaAlumno")]
+        [HttpPost]
         public void Post([FromBody]Alumno value)
         {
             value.FechaAlta = DateTime.Today;
             _repository.AddAlumno(value);
+        }
+
+        [ActionName("uploadAlumno")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> UploadAlumno()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                this.Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
+            }
+
+            var provider = GetMultipartProvider();
+            var result = await Request.Content.ReadAsMultipartAsync(provider);
+
+            var originalFileName = "niño.jpg";
+
+            if (result.FileData.Count > 0)
+            {
+                originalFileName = GetDeserializedFileName(result.FileData.First());
+
+                var uploadFileInfo = new FileInfo(result.FileData.First().LocalFileName);
+
+                if (File.Exists(uploadFileInfo.DirectoryName + '\\' + originalFileName))
+                {
+                    File.Delete(uploadFileInfo.DirectoryName + '\\' + originalFileName);
+                }
+
+                File.Move(uploadFileInfo.FullName, uploadFileInfo.DirectoryName + '\\' + originalFileName);
+            }
+
+
+            Alumno fileUploadObj = (Alumno)GetFormData<Alumno>(result);
+
+            fileUploadObj.FechaAlta = DateTime.Today;
+            fileUploadObj.Foto = originalFileName;
+
+            _repository.AddAlumno(fileUploadObj);
+
+            var returnData = "ReturnTest";
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
+            
         }
 
         // PUT api/alumnos/5
@@ -71,9 +112,85 @@ namespace BabyBook.Api.Controllers
             _repository.UpdateAlumno(id, value);
         }
 
+        public async Task<HttpResponseMessage> UpdateAlumno(int id)
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                this.Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
+            }
+
+            var provider = GetMultipartProvider();
+            var result = await Request.Content.ReadAsMultipartAsync(provider);
+
+            var originalFileName = "";
+
+            if (result.FileData.Count > 0)
+            {
+                originalFileName = GetDeserializedFileName(result.FileData.First());
+
+                var uploadFileInfo = new FileInfo(result.FileData.First().LocalFileName);
+
+                if (File.Exists(uploadFileInfo.DirectoryName + '\\' + originalFileName))
+                {
+                    File.Delete(uploadFileInfo.DirectoryName + '\\' + originalFileName);
+                }
+
+                File.Move(uploadFileInfo.FullName, uploadFileInfo.DirectoryName + '\\' + originalFileName);
+
+            }
+
+
+            Alumno fileUploadObj = (Alumno)GetFormData<Alumno>(result);
+
+            fileUploadObj.FechaAlta = DateTime.Today;
+            if (originalFileName != "") fileUploadObj.Foto = originalFileName;
+
+            _repository.UpdateAlumno(id, fileUploadObj);
+
+            var returnData = "ReturnTest";
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
+        }
+
         // DELETE api/alumnos/5
         public void Delete(int id)
         {
+        }
+
+        // You could extract these two private methods to a separate utility class since
+        // they do not really belong to a controller class but that is up to you
+        private MultipartFormDataStreamProvider GetMultipartProvider()
+        {
+            // IMPORTANT: replace "(tilde)" with the real tilde character
+            // (our editor doesn't allow it, so I just wrote "(tilde)" instead)
+            var uploadFolder = "~/Public/alumnos"; // you could put this to web.config
+            var root = HttpContext.Current.Server.MapPath(uploadFolder);
+            Directory.CreateDirectory(root);
+            return new MultipartFormDataStreamProvider(root);
+        }
+
+        // Extracts Request FormatData as a strongly typed model
+        private object GetFormData<T>(MultipartFormDataStreamProvider result)
+        {
+            if (result.FormData.HasKeys())
+            {
+                var unescapedFormData = Uri.UnescapeDataString(result.FormData
+                    .GetValues(0).FirstOrDefault() ?? String.Empty);
+                if (!String.IsNullOrEmpty(unescapedFormData))
+                    return JsonConvert.DeserializeObject<T>(unescapedFormData);
+            }
+
+            return null;
+        }
+
+        private string GetDeserializedFileName(MultipartFileData fileData)
+        {
+            var fileName = GetFileName(fileData);
+            return JsonConvert.DeserializeObject(fileName).ToString();
+        }
+
+        public string GetFileName(MultipartFileData fileData)
+        {
+            return fileData.Headers.ContentDisposition.FileName;
         }
     }
 }

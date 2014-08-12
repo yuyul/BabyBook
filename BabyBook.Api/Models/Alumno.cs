@@ -28,6 +28,8 @@ namespace BabyBook.Api.Models
         public int CentroId { get; set; }
         public virtual Centro Centro { get; set; }
 
-        public ICollection<AlumnoClase> Clases { get; set; } 
+        public ICollection<AlumnoClase> Clases { get; set; }
+
+        public string Foto { get; set; }
     }
 }

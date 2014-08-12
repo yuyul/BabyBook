@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Public\alumnos\niño.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,10 @@
     <Compile Include="Migrations\201408101437140_IndexAlumnoCursoCalse.cs" />
     <Compile Include="Migrations\201408101437140_IndexAlumnoCursoCalse.Designer.cs">
       <DependentUpon>201408101437140_IndexAlumnoCursoCalse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408121428408_addFotoAlumno.cs" />
+    <Compile Include="Migrations\201408121428408_addFotoAlumno.Designer.cs">
+      <DependentUpon>201408121428408_addFotoAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
@@ -217,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408101437140_IndexAlumnoCursoCalse.resx">
       <DependentUpon>201408101437140_IndexAlumnoCursoCalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408121428408_addFotoAlumno.resx">
+      <DependentUpon>201408121428408_addFotoAlumno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

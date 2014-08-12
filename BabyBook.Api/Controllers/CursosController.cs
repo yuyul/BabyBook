@@ -18,12 +18,6 @@ namespace BabyBook.Api.Controllers
             _repository = new CursosRepository();
         }
 
-        // GET api/cursos
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/cursos/5
         [ActionName("getbyid")]
         public Curso Get(int id)

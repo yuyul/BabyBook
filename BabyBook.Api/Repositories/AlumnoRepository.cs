@@ -19,7 +19,7 @@ namespace BabyBook.Api.Repositories
 
         public IEnumerable<Alumno> GetByCentro(int centroId)
         {
-            return _ctx.Alumnos.Where(c=>c.CentroId==centroId).ToList();
+            return _ctx.Alumnos.Where(c=>c.CentroId==centroId && c.FechaBaja==null).ToList();
         }
 
         public IEnumerable<Alumno> GetSinAsignar(int centroId)
@@ -38,7 +38,8 @@ namespace BabyBook.Api.Repositories
                          from AlumnoClases in AlumnoClases_join.DefaultIfEmpty()
                          where
                            AlumnoClases.AlumnoId == null &&
-                           Alumnoes.CentroId == centroId
+                           Alumnoes.CentroId == centroId &&
+                           Alumnoes.FechaBaja == null
                          select Alumnoes);
             return query.ToList();
 
@@ -51,8 +52,8 @@ namespace BabyBook.Api.Repositories
                 join AlumnoClases in _ctx.AlumnosClases
                       on new { Alumnoes.Id, ClaseId = claseId }
                   equals new { Id = AlumnoClases.AlumnoId, AlumnoClases.ClaseId }
-                where
-                  Alumnoes.CentroId == 11
+                where   
+                    Alumnoes.FechaBaja == null
                 select Alumnoes
                 );
 
@@ -82,6 +83,7 @@ namespace BabyBook.Api.Repositories
             updatedAlumno.PrimerApellido = alumno.PrimerApellido;
             updatedAlumno.SegundoApellido = alumno.SegundoApellido;
             updatedAlumno.FechaNacimiento = alumno.FechaNacimiento;
+            updatedAlumno.Foto = alumno.Foto;
 
             _ctx.SaveChanges();
 
@@ -93,9 +95,11 @@ namespace BabyBook.Api.Repositories
             var query = (
                 from AlumnoClases in _ctx.AlumnosClases
                 join Alumnoes in _ctx.Alumnos on new { AlumnoId = AlumnoClases.AlumnoId } equals new { AlumnoId = Alumnoes.Id }
+                join Profesors in _ctx.Profesores on new { ClaseId = AlumnoClases.ClaseId } equals new { ClaseId = (Int32)Profesors.ClaseId }
                 where
-                  AlumnoClases.ClaseId == 12 &&
-                  AlumnoClases.CursoId == 4
+                    Profesors.Id == profesorId &&
+                  AlumnoClases.CursoId == cursoId &&
+                  Alumnoes.FechaBaja == null
                 select Alumnoes
                 );
 

@@ -18,7 +18,7 @@
 
         var _updateProfesor = function (profesor) {
 
-            return $http.put(serviceBase + 'api/profesores/' + profesor.id, profesor).then(function(response) {
+            return $http.put(serviceBase + 'api/profesores/updateProfesor/' + profesor.id, profesor).then(function (response) {
                 return response;
             });
         };

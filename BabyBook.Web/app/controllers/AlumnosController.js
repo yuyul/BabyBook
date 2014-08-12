@@ -15,6 +15,11 @@
     
     $scope.message = '';
 
+    $scope.files = [];
+
+    $scope.onFileSelect = function ($files) {
+        $scope.files = $files;
+    }
 
     if ($routeParams.id === undefined) {
         alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -25,6 +30,19 @@
             $scope.alumno = results.data;
         });
     }
+
+    $scope.uploadAlumno = function () {
+
+        var alumno = {
+            nombre: $scope.alumno.nombre,
+            primerApellido: $scope.alumno.primerApellido,
+            segundoApellido: $scope.alumno.segundoApellido,
+            fechaNacimiento: $scope.alumno.fechaNacimiento,
+            centroId: $rootScope.centroSeleccionado
+        };
+
+        alumnosService.uploadAlumno(alumno, $scope.files[0]);
+    };
 
     $scope.createAlumno = function () {
 
@@ -37,11 +55,13 @@
                 $scope.message = err.error_description;
             });
         } else {
-            alumnosService.updateAlumno($scope.alumno).then(function (response) {
+            /*alumnosService.updateAlumno($scope.alumno).then(function (response) {
                 $location.path('/alumnos');
             }, function (err) {
                 $scope.message = err.error_description;
-            });
+            });*/
+
+            alumnosService.updateAlumno($scope.alumno.id, $scope.alumno, $scope.files[0]);
         }
     };
 }]);
