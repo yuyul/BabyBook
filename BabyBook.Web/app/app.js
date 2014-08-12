@@ -63,6 +63,11 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/newClase.html"
     });
 
+    $routeProvider.when("/clases/edit/:id", {
+        controller: "clasesController",
+        templateUrl: "/app/views/newclase.html"
+    });
+
     $routeProvider.when("/cursos", {
         controller: "cursosController",
         templateUrl: "/app/views/cursos.html"

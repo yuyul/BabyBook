@@ -20,6 +20,11 @@ namespace BabyBook.Api.Repositories
             return _ctx.Clases.Where(c => c.CentroId == centroId).ToList();
         }
 
+        public Clase GetByClaseId(int claseId)
+        {
+            return _ctx.Clases.Find(claseId);
+        }
+
         public Clase AddClase(Clase clase)
         {
             Clase newClase = _ctx.Clases.Add(clase);
@@ -46,6 +51,15 @@ namespace BabyBook.Api.Repositories
 
             _ctx.SaveChanges();
 
+        }
+
+        public void UpdateClase(int id, Clase clase)
+        {
+            Clase updateClase = _ctx.Clases.Find(id);
+
+            updateClase.Nombre = clase.Nombre;
+
+            _ctx.SaveChanges();
         }
     }
 }

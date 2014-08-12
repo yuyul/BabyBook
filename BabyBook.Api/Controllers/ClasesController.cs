@@ -18,6 +18,13 @@ namespace BabyBook.Api.Controllers
             _repository = new ClaseRepository();
         }
 
+        [ActionName("getbyclaseid")]
+        [HttpGet]
+        public Clase GetByClaseId(int id)
+        {
+            return _repository.GetByClaseId(id);
+        }
+
         [ActionName("getbycentroid")]
         public IEnumerable<Clase> GetByCentroId(int id)
         {
@@ -65,10 +72,13 @@ namespace BabyBook.Api.Controllers
         //    return "value";
         //}
 
-        //// PUT api/clases/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        // PUT api/clases/5
+        [ActionName("updateclase")]
+        [HttpPut]
+        public void Put(int id, [FromBody]Clase value)
+        {
+            _repository.UpdateClase(id, value);
+        }
 
         //// DELETE api/clases/5
         //public void Delete(int id)

@@ -1,12 +1,13 @@
-﻿app.controller('clasesController', ['$scope', '$location', 'clasesService', '$rootScope', 'alumnosService', 'cursosService', function ($scope, $location, clasesService, $rootScope, alumnosService, cursosService) {
+﻿app.controller('clasesController', ['$scope', '$location', 'clasesService', '$rootScope', 'alumnosService', 'cursosService', '$routeParams', function ($scope, $location, clasesService, $rootScope, alumnosService, cursosService, $routeParams) {
 
     console.log('clases');
 
     $scope.clases = [];
 
     $scope.clase = {
-        Nombre: '',
-        CentroId: ''
+        id: '',
+        nombre: '',
+        centroId: ''
     };
 
     $scope.asignacion = {
@@ -22,20 +23,44 @@
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
 
+    if ($routeParams.id === undefined) {
+        clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function(results) {
+            $scope.clases = results.data;
+        }, function(error) {
+            console.log('error');
+        });
+    } else {
+        clasesService.getByClaseId($routeParams.id).then(function(results) {
+            $scope.clase = results.data;
+        }, function(error) {
+            console.log('error');
+        });
+    }
 
-    clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
-        $scope.clases = results.data;
-    }, function (error) {
-        console.log('error');
-    });
+    $scope.save = function() {
+        if ($scope.clase.id == '') {
+            addClase();
+        } else {
+            updateClase();
+        }
+    };
 
-    $scope.addClase = function () {
+
+    var addClase = function () {
         $scope.clase.CentroId = $rootScope.centroSeleccionado;
 
         clasesService.createClase($scope.clase).then(function (response) {
             $location.path('/home');
         }, function (err) {
             $scope.message = err.error_description;
+        });
+    };
+
+    var updateClase = function () {
+        clasesService.updateClase($scope.clase).then(function (response) {
+            $location('/home');
+        }, function (error) {
+            $scope.message = error.error_description;
         });
     };
 
@@ -125,6 +150,8 @@
 
         clasesService.eliminarAsignacion(asignaciones);
     };
+
+   
 
     var cargaCursos = function () {
         cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function (results) {
