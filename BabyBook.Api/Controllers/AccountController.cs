@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using BabyBook.Api.libs;
 
 namespace BabyBook.Api.Controllers
 {
@@ -50,7 +51,7 @@ namespace BabyBook.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _repo.RegisterUser(userModel);
+            IdentityResult result = await _repo.RegisterUserAsync(userModel, "Gestor");
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -59,6 +60,13 @@ namespace BabyBook.Api.Controllers
                 return errorResult;
             }
 
+            
+            SendMail servioMail = new SendMail();
+
+            string cuerpo = string.Format("El usuario {0} ha sido dado de alta en nuestro sistema.",userModel.UserName);
+
+            servioMail.EnvioMail(userModel.Email, "Alta de cuenta", cuerpo);
+            
             return Ok();
         }
 

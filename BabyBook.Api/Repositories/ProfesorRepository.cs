@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BabyBook.Api.Models;
+using Microsoft.AspNet.Identity;
+using BabyBook.Api.libs;
 
 namespace BabyBook.Api.Repositories
 {
     public class ProfesorRepository
     {
         private BbContext _ctx;
+        private AuthRepository _userRepository;
 
         public ProfesorRepository()
         {
             _ctx = new BbContext();
+            _userRepository = new AuthRepository();
         }
 
         public IEnumerable<Profesor> GetByCentro(int centroId)
@@ -34,9 +38,24 @@ namespace BabyBook.Api.Repositories
 
         public Profesor AddProfesor(Profesor profesor)
         {
+            UserModel user = new UserModel();
+
+            user.UserName = profesor.Nombre;
+            user.Password = profesor.Nombre;
+            user.Email = profesor.Email;
+
+            UserApp userapp = _userRepository.RegisterUser(user, "Profesor");
+
+            profesor.UserId = userapp.Id;
+
             Profesor newProfesor = _ctx.Profesores.Add(profesor);
 
             _ctx.SaveChanges();
+
+            SendMail envioMail = new SendMail();
+
+            envioMail.EnvioMail("julian.caro@gmail.com", "Alta Usuario", "Se ha dado de alta su usuario como profesor.");
+            
 
             return newProfesor;
         }
@@ -46,6 +65,8 @@ namespace BabyBook.Api.Repositories
             Profesor editProfesor = _ctx.Profesores.Find(id);
 
             editProfesor.Nombre = profesor.Nombre;
+            editProfesor.PrimerApellido = profesor.PrimerApellido;
+            editProfesor.SegundoApellido = profesor.SegundoApellido;
             editProfesor.ClaseId = profesor.ClaseId;
 
             _ctx.SaveChanges();

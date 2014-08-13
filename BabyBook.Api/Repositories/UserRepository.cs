@@ -24,5 +24,5 @@ namespace BabyBook.Api.Repositories
         {
             return _userManager.Users;
         }
-    }
+   }
 }

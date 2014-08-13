@@ -6,9 +6,12 @@
     $scope.clases = [];
 
     $scope.profesor = {
-        Nombre: '',
-        CentroId: '',
-        ClaseId: ''
+        nombre: '',
+        primerApellido: '',
+        segundoApelido: '',
+        email: '',
+        centroId: '',
+        claseId: ''
     };
 
     $scope.message = '';
@@ -22,7 +25,7 @@
             console.log('error');
         });
     } else {
-        alumnosService.getAlumnosByProfesor("1", "3").then(function (results) {
+        alumnosService.getAlumnosByProfesor("13", "4").then(function (results) {
             $scope.alumnos = results.data;
         }, function (error) {
             console.log('error');
@@ -30,7 +33,7 @@
         //$scope.message = $location.path();
     }
 
-    $scope.addProfesor = function() {
+    $scope.save = function() {
         $scope.profesor.CentroId = $rootScope.centroSeleccionado;
 
         profesoresService.createProfesor($scope.profesor).then(function(response) {

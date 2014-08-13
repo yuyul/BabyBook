@@ -5,7 +5,7 @@
     var authentication = authService.authentication;
 
     $scope.isAdmin = authentication.roleName === "Admin";
-    $scope.isGestor = authentication.roleName === "Gestor" && $rootScope.centroSeleccionado != "";
+    $scope.isGestor = authentication.roleName === "Gestor";
     $scope.isProfesor = authentication.roleName === "Profesor";
 
     $scope.authentication = authentication;

@@ -36,21 +36,40 @@ namespace BabyBook.Api.Repositories
             return role.Name;
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel)
+        public async Task<IdentityResult> RegisterUserAsync(UserModel userModel, string roleName)
         {
             UserApp user = new UserApp()
             {
-                UserName = userModel.UserName
+                UserName = userModel.UserName,
+                Email = userModel.Email
             };
             
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
             if (result.Succeeded )
             {
-                result = await _userManager.AddToRoleAsync(user.Id, "Gestor");
+                result = await _userManager.AddToRoleAsync(user.Id, roleName);
             }
 
             return result;
+        }
+
+        public UserApp RegisterUser(UserModel userModel, string roleName)
+        {
+            UserApp user = new UserApp()
+            {
+                UserName = userModel.UserName,
+                Email = userModel.Email
+            };
+
+            var result = _userManager.Create(user, userModel.Password);
+
+            if (result.Succeeded)
+            {
+                result = _userManager.AddToRole(user.Id, roleName);
+            }
+
+            return user;
         }
 
         public async Task<UserApp> FindUser(string userName, string password)

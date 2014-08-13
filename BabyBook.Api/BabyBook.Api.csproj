@@ -127,6 +127,7 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProfesoresController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="libs\SendMail.cs" />
     <Compile Include="Migrations\201407251524446_InitialCreate.cs" />
     <Compile Include="Migrations\201407251524446_InitialCreate.Designer.cs">
       <DependentUpon>201407251524446_InitialCreate.cs</DependentUpon>
@@ -162,6 +163,14 @@
     <Compile Include="Migrations\201408121428408_addFotoAlumno.cs" />
     <Compile Include="Migrations\201408121428408_addFotoAlumno.Designer.cs">
       <DependentUpon>201408121428408_addFotoAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408131048419_usuarioprofesor.cs" />
+    <Compile Include="Migrations\201408131048419_usuarioprofesor.Designer.cs">
+      <DependentUpon>201408131048419_usuarioprofesor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408131110452_addprofesoruserid.cs" />
+    <Compile Include="Migrations\201408131110452_addprofesoruserid.Designer.cs">
+      <DependentUpon>201408131110452_addprofesoruserid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
@@ -225,6 +234,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408121428408_addFotoAlumno.resx">
       <DependentUpon>201408121428408_addFotoAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408131048419_usuarioprofesor.resx">
+      <DependentUpon>201408131048419_usuarioprofesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408131110452_addprofesoruserid.resx">
+      <DependentUpon>201408131110452_addprofesoruserid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

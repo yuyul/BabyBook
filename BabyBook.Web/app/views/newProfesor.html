@@ -1,8 +1,18 @@
 ﻿<form>
     <h2>Nuevo Profesor</h2>
     <label>Nombre</label>
-    <input type="text" class="form-control" placeholder="NombreProfesor" data-ng-model="profesor.Nombre" />
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addProfesor()">Guardar</button>
+    <input type="text" class="form-control" placeholder="NombreProfesor" data-ng-model="profesor.nombre" />
+
+    <label>Primer Apellido</label>
+    <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="profesor.primerApellido" />
+
+    <label>Segundo Apellido</label>
+    <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="profesor.segundoApellido" />
+
+    <label>Email</label>
+    <input type="text" class="form-control" placeholder="Email" data-ng-model="profesor.email" />
+
+    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">Guardar</button>
     <div data-ng-hide="message == ''" class="alert alert-danger">
         {{message}}
     </div>
