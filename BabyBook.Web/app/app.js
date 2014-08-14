@@ -106,6 +106,13 @@ app.config(function($routeProvider) {
             templateUrl: "/app/views/profesor/alumnos.html"
         });
 
+    $routeProvider.when("/alumno/agenda/:id",
+        {
+            controller: "agendasController",
+            templateUrl: "/app/views/agenda/agenda.html"
+
+        });
+
     $routeProvider.when("/data",
         {
             controller: "dataController",

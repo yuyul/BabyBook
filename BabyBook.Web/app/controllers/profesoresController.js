@@ -25,7 +25,7 @@
             console.log('error');
         });
     } else {
-        alumnosService.getAlumnosByProfesor("13", "4").then(function (results) {
+        alumnosService.getAlumnosByProfesor().then(function (results) {
             $scope.alumnos = results.data;
         }, function (error) {
             console.log('error');

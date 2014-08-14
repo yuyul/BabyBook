@@ -5,16 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BabyBook.Api.Repositories
 {
     public class AlumnoRepository
     {
         private BbContext _ctx;
+        private UserManager<UserApp> _userManager;
 
         public AlumnoRepository()
         {
             _ctx = new BbContext();
+            _userManager = new UserManager<UserApp>(new UserStore<UserApp>(_ctx));
         }
 
         public IEnumerable<Alumno> GetByCentro(int centroId)
@@ -90,18 +94,37 @@ namespace BabyBook.Api.Repositories
             return updatedAlumno;
         }
 
-        public IEnumerable<Alumno> GetAlumnoByProfesorCurso(int profesorId, int cursoId)
+        //public IEnumerable<Alumno> GetAlumnoByProfesorCurso(int profesorId, int cursoId)
+        //{
+        //    var query = (
+        //        from AlumnoClases in _ctx.AlumnosClases
+        //        join Alumnoes in _ctx.Alumnos on new { AlumnoId = AlumnoClases.AlumnoId } equals new { AlumnoId = Alumnoes.Id }
+        //        join Profesors in _ctx.Profesores on new { ClaseId = AlumnoClases.ClaseId } equals new { ClaseId = (Int32)Profesors.ClaseId }
+        //        where
+        //            Profesors.Id == profesorId &&
+        //          AlumnoClases.CursoId == cursoId &&
+        //          Alumnoes.FechaBaja == null
+        //        select Alumnoes
+        //        );
+
+        //    return query.ToList();
+        //}
+
+        public IEnumerable<Alumno> GetAlumnoByProfesorCurso(string userName)
         {
-            var query = (
+            string userId = _userManager.FindByName(userName).Id;
+
+            var query = ( 
                 from AlumnoClases in _ctx.AlumnosClases
                 join Alumnoes in _ctx.Alumnos on new { AlumnoId = AlumnoClases.AlumnoId } equals new { AlumnoId = Alumnoes.Id }
                 join Profesors in _ctx.Profesores on new { ClaseId = AlumnoClases.ClaseId } equals new { ClaseId = (Int32)Profesors.ClaseId }
+                join Cursos in _ctx.Cursos on new {CursoId = AlumnoClases.CursoId} equals new {CursoId = Cursos.Id}
                 where
-                    Profesors.Id == profesorId &&
-                  AlumnoClases.CursoId == cursoId &&
+                    Profesors.UserId == userId &&
+                  Cursos.Activo == true &&
                   Alumnoes.FechaBaja == null
                 select Alumnoes
-                );
+            );
 
             return query.ToList();
         }

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\adminCentrosController.js" />
+    <Content Include="app\controllers\agendasController.js" />
     <Content Include="app\controllers\AlumnosController.js" />
     <Content Include="app\controllers\centrosController.js" />
     <Content Include="app\controllers\clasesController.js" />
@@ -79,6 +80,7 @@
     <Content Include="app\controllers\profesoresController.js" />
     <Content Include="app\controllers\signupController.js" />
     <Content Include="app\controllers\usuariosController.js" />
+    <Content Include="app\services\agendasService.js" />
     <Content Include="app\services\alumnosService.js" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
@@ -87,6 +89,8 @@
     <Content Include="app\services\cursosService.js" />
     <Content Include="app\services\profesoresService.js" />
     <Content Include="app\services\usuariosService.js" />
+    <Content Include="app\views\agenda\agenda.html" />
+    <Content Include="app\views\agenda\controldiario.html" />
     <Content Include="app\views\alumnos.html" />
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\clases.html" />
@@ -106,6 +110,7 @@
     <Content Include="app\views\usuarios.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\themes\bootstrap.min.css" />
     <Content Include="content\css\colorpicker.css" />
     <Content Include="content\css\loading-bar.css" />
     <Content Include="content\css\loading-bar.min.css" />

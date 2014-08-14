@@ -68,8 +68,8 @@
         });
     };
 
-    var _getAlumnosByProfesor = function (profesorId, cursoId) {
-        return $http.get(serviceBase + 'api/alumnos/getalumnosbyprofesorcurso/?profesorId=' + profesorId + '&cursoId=' + cursoId).then(function (results) {
+    var _getAlumnosByProfesor = function () {
+        return $http.get(serviceBase + 'api/alumnos/getalumnosbyprofesorcurso').then(function (results) {
             return results;
         });
     };

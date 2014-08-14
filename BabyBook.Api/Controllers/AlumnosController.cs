@@ -51,9 +51,11 @@ namespace BabyBook.Api.Controllers
         }
 
         [ActionName("getalumnosbyprofesorcurso")]
-        public IEnumerable<Alumno> GetAlumnosByProfesorcurso(int profesorId, int cursoId)
+        public IEnumerable<Alumno> GetAlumnosByProfesorcurso()
         {
-            return _repository.GetAlumnoByProfesorCurso(profesorId,cursoId);
+            var userName = User.Identity.Name;
+
+            return _repository.GetAlumnoByProfesorCurso(userName);
         }
 
         // POST api/alumnos

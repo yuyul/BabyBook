@@ -120,6 +120,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AgendasController.cs" />
     <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\CentrosController.cs" />
     <Compile Include="Controllers\ClasesController.cs" />
@@ -172,6 +173,10 @@
     <Compile Include="Migrations\201408131110452_addprofesoruserid.Designer.cs">
       <DependentUpon>201408131110452_addprofesoruserid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408141351526_ControlDiario.cs" />
+    <Compile Include="Migrations\201408141351526_ControlDiario.Designer.cs">
+      <DependentUpon>201408141351526_ControlDiario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\BbContext.cs" />
@@ -180,12 +185,14 @@
     <Compile Include="Models\Clase.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\AlumnoClase.cs" />
+    <Compile Include="Models\ControlDiario.cs" />
     <Compile Include="Models\Profesor.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\UserApp.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Repositories\AgendaRepository.cs" />
     <Compile Include="Repositories\AlumnoRepository.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\CentroRepository.cs" />
@@ -240,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408131110452_addprofesoruserid.resx">
       <DependentUpon>201408131110452_addprofesoruserid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408141351526_ControlDiario.resx">
+      <DependentUpon>201408141351526_ControlDiario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
