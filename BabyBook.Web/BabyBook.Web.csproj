@@ -91,6 +91,7 @@
     <Content Include="app\services\usuariosService.js" />
     <Content Include="app\views\agenda\agenda.html" />
     <Content Include="app\views\agenda\controldiario.html" />
+    <Content Include="app\views\agenda\testcontroldiario.html" />
     <Content Include="app\views\alumnos.html" />
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\clases.html" />
@@ -128,6 +129,8 @@
     <Content Include="scripts\angular-wysiwyg.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\bootstrap-colorpicker-module.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="Web.config" />
