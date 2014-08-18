@@ -41,7 +41,7 @@ namespace BabyBook.Api.Repositories
             Curso updatedCurso = _ctx.Cursos.Find(id);
 
             updatedCurso.FechaInicio = curso.FechaInicio;
-            updatedCurso.FechaFin = curso.FechaFin;
+            updatedCurso.FechaFin = curso.FechaFin.Date;
             updatedCurso.Descripcion = curso.Descripcion;
 
             _ctx.SaveChanges();

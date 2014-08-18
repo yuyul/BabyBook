@@ -57,6 +57,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -122,6 +125,9 @@
     <Content Include="content\css\loading-bar.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\fonts\glyphicons-halflings-white.png" />
+    <Content Include="content\fonts\glyphicons-halflings.png" />
     <Content Include="content\images\muñeco.jpg" />
     <Content Include="Index.html" />
     <Content Include="scripts\angular-file-upload-html5-shim.js" />
@@ -143,14 +149,16 @@
     <Content Include="scripts\picker.date.js" />
     <Content Include="scripts\picker.js" />
     <Content Include="scripts\picker.time.js" />
+    <Content Include="scripts\ui-bootstrap-0.11.0.js" />
+    <Content Include="scripts\ui-bootstrap-0.11.0.min.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.11.0.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.11.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="content\fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

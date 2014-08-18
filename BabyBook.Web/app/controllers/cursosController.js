@@ -32,17 +32,17 @@
 
     $scope.createCurso = function () {
 
-        if ($scope.curso.id === '') {
+        if ($scope.newCurso) {
             $scope.curso.centroId = $rootScope.centroSeleccionado;
 
             cursosService.createCurso($scope.curso).then(function(response) {
-                $location.path('/home');
+                
             }, function(err) {
                 $scope.message = err.error_description;
             });
         } else {
             cursosService.updateCurso($scope.curso).then(function(response) {
-                $location.path('/cursos');
+                
             }, function(err) {
                 $scope.message = err.error_description;
             });

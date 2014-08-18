@@ -57,7 +57,6 @@
         $scope.profesor.claseId = claseId;
 
         profesoresService.updateProfesor($scope.profesor).then(function (response) {
-            $location.path('/home');
         }, function (error) {
             console.log('error');
         });

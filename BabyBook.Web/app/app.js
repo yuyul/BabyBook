@@ -1,4 +1,4 @@
-﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'wysiwyg.module', 'angularFileUpload']);
+﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'wysiwyg.module', 'angularFileUpload', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
 

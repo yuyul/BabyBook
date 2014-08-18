@@ -14,7 +14,7 @@
             <tr data-ng-repeat="clase in clases">
                 <td>{{clase.nombre}}</td>
                 <td>
-                    <btn ng-click="asignarClase(clase.id)">Asignar</btn>
+                    <btn data-dismiss="modal" ng-click="asignarClase(clase.id)">Asignar</btn>
                 </td>
             </tr>
         </table>
