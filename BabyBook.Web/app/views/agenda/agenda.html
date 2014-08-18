@@ -15,10 +15,10 @@
             <tbody>
                 <tr data-ng-repeat="control in controles">
                     <td>
-                        {{control.fecha}}
+                        {{control.fecha | date: 'dd-MM-yyyy'}}
                     </td>
                     <td>
-                        <button role="button" class="btn" ng-click="verControl(control)" data-toggle="modal" href="#editModal">Edit</button>
+                        <button role="button" class="btn" ng-click="editControl(control)" data-toggle="modal" href="#editModal">Edit</button>
                     </td>
                 </tr>
             </tbody>

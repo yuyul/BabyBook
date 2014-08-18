@@ -4,7 +4,7 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             <h2>Control diario</h2>
-            <h3>Fecha: {{agenda.fecha}}</h3>
+            <h3>Fecha: {{agenda.fecha | date : 'dd-MM-yyyy'}}</h3>
         </div>
 
         <form>
@@ -14,13 +14,13 @@
                         <label>Ha pasado el día </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="agenda.estadodia" ng-value="1" />Mal</input>
+                        <input type="radio" name="estadodia" ng-model="agenda.estadoDia" ng-value="1" />Mal</input>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="agenda.estadodia" ng-value="2" />Regular</input>
+                        <input type="radio" name="estadodia" ng-model="agenda.estadoDia" ng-value="2" />Regular</input>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="agenda.estadodia" ng-value="3" />Bien</input>
+                        <input type="radio" name="estadodia" ng-model="agenda.estadoDia" ng-value="3" />Bien</input>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
                         <label>
                             Observaciones de la escuela
                         </label>
-                        <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesescuela" textarea-required ng-model="angeda.observacionesescuela" enable-bootstrap-title="true"></wysiwyg>
+                        <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesescuela" textarea-required ng-model="agenda.observacionesCentro" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
 
@@ -97,12 +97,13 @@
                     <div class="col-md-12"
                         <label>
                             Observaciones de casa
-                            <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionescasa" textarea-required ng-model="angeda.observacionescasa" enable-bootstrap-title="true"></wysiwyg>
+                            <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionescasa" textarea-required ng-model="agenda.observacionesCasa" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <h2>hola</h2>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="save(agenda)">Save changes</button>
             </div>
 
 

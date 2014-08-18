@@ -1,7 +1,8 @@
 ﻿<div class="row">
     <div class="col-md-2">
         &nbsp;
-        <p><a class="btn btn-info" href="#/profesores/new" role="button">Nuevo Profesor</a></p>
+        <!--<p><a class="btn btn-info" href="#/profesores/new" role="button">Nuevo Profesor</a></p>-->
+        <button role="button" class="btn" ng-click="editProfesor('new')" data-toggle="modal" href="#editModal">Nuevo</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
@@ -25,29 +26,17 @@
                         {{profesor.claseId}}
                     </td>
                     <td>
-                        <btn ng-click="mostrarClases(profesor)">Asignar Clase</btn>
+                        <!--<button role="button" class="btn" ng-click="editProfesor(profesor)" data-toggle="modal" href="#editModal">Edit</button>-->
+                        
+                        <button role="button" class="btn" ng-click="mostrarClases(profesor)" data-toggle="modal" href="#asignarModal">Asignar Clase</button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <div>
-            <form>
-                <h2>Profesor: {{profesor.nombre}}</h2>
-                <label>Clases</label>
-                <table>
-                    <tr data-ng-repeat="clase in clases">
-                        <td>{{clase.nombre}}</td>
-                        <td>
-                            <btn ng-click="asignarClase(clase.id)">Asignar</btn>
-                        </td>
-                    </tr>
-                </table>
+        <div class="modal fade" ng-include="'app/views/newProfesor.html'" id="editModal" role="dialog"></div>
 
-                <div data-ng-hide="message == ''" class="alert alert-danger">
-                    {{message}}
-                </div>
-            </form>
-        </div>
+        <div class="modal fade" ng-include="'app/views/asignarClase.html'" id="asignarModal" role="dialog"></div>
+        
     </div>
 </div>

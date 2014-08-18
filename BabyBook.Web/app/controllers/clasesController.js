@@ -45,7 +45,6 @@
         }
     };
 
-
     var addClase = function () {
         $scope.clase.CentroId = $rootScope.centroSeleccionado;
 
@@ -63,6 +62,24 @@
             $scope.message = error.error_description;
         });
     };
+
+    $scope.editClase = function (clase) {
+
+        if (clase === 'new')
+        {
+            $scope.newClase = true;
+
+            $scope.clase = {
+                id: 0,
+                nombre: '',
+                centroId: $rootScope.centroSeleccionado
+            }
+
+        } else {
+            $scope.newClase = false;
+            $scope.clase = clase;
+        }
+    }
 
     $scope.cargarAlumnos = function () {
 
@@ -112,7 +129,7 @@
 
     };
 
-    $scope.asignarAlumnos = function(claseId) {
+    $scope.asignarAlumnos = function(claseId, cursoId) {
         //console.log($scope.alumnos);
 
         var asignaciones = [];
@@ -122,7 +139,7 @@
         }).forEach(function(element, index, array) {
             var asignacion = {
                 alumnoId: element.id,
-                cursoId: $scope.cursoSeleccionado.id,
+                cursoId: cursoId,
                 claseId: claseId
             };
 
@@ -132,7 +149,7 @@
         clasesService.asignarAlumnos(asignaciones);
     };
 
-    $scope.eliminarAsignacion = function (claseId) {
+    $scope.eliminarAsignacion = function (claseId, cursoId) {
 
         var asignaciones = [];
 
@@ -141,7 +158,7 @@
         }).forEach(function (element, index, array) {
             var asignacion = {
                 alumnoId: element.id,
-                cursoId: $scope.cursoSeleccionado.id,
+                cursoId: cursoId,
                 claseId: claseId
             };
 

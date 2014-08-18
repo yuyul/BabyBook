@@ -1,7 +1,8 @@
 ﻿<div class="row">
     <div class="col-md-2">
         &nbsp;
-        <p><a class="btn btn-info" href="#/cursos/new" role="button">Nuevo Curso</a></p>
+        <!--<p><a class="btn btn-info" href="#/cursos/new" role="button">Nuevo Curso</a></p>-->
+        <button role="button" class="btn" ng-click="editCurso('new')" data-toggle="modal" href="#editModal">Nuevo</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
@@ -33,10 +34,12 @@
                         <input type="checkbox" ng-model="curso.activo" />
                     </td>
                     <td>
-                        <a href="#/cursos/edit/{{curso.id}}">Editar</a>
+                        <!--<a href="#/cursos/edit/{{curso.id}}">Editar</a>-->
+                        <button role="button" class="btn" ng-click="editCurso(curso)" data-toggle="modal" href="#editModal">Edit</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="modal fade" ng-include="'app/views/newCurso.html'" id="editModal" role="dialog"></div>
     </div>
 </div>

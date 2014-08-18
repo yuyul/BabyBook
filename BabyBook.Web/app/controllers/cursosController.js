@@ -14,6 +14,8 @@
 
     $scope.message = '';
 
+    $scope.curDate = '';
+
     if ($routeParams.id === undefined) {
         cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function(results) {
             $scope.cursos = results.data;
@@ -45,6 +47,22 @@
                 $scope.message = err.error_description;
             });
             
+        }
+    };
+
+    $scope.editCurso = function (curso) {
+        if (curso === 'new') {
+            $scope.newCurso = true;
+            $scope.curso = {
+                id: '0',
+                descripcion: '',
+                fechaInicio: '',
+                fechafin: '',
+                centroId: $rootScope.centroSeleccionado
+            };
+        } else {
+            $scope.newCurso = false;
+            $scope.curso = curso;
         }
     };
 

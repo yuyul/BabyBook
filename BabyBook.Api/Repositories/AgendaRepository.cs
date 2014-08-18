@@ -25,5 +25,30 @@ namespace BabyBook.Api.Repositories
             return _ctx.ControlDiarios.Find(controlId);
         }
 
+        public ControlDiario SaveControl(ControlDiario control)
+        {
+            ControlDiario editControl;
+            if (control.Id == 0)
+            {
+                editControl = _ctx.ControlDiarios.Add(control);
+            
+            } else {
+                editControl = _ctx.ControlDiarios.Find(control.Id);
+
+                editControl.ObservacionesCasa = control.ObservacionesCasa;
+                editControl.ObservacionesCentro = control.ObservacionesCentro;
+
+                editControl.EstadoDia = control.EstadoDia;
+                editControl.Siesta = control.Siesta;
+                editControl.Comida = control.Comida;
+                editControl.Merienda = control.Merienda;
+                editControl.Deposicion = control.Deposicion;
+            }
+
+            _ctx.SaveChanges();
+
+            return editControl;
+        }
+
     }
 }

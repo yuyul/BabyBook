@@ -37,7 +37,6 @@
         $scope.profesor.CentroId = $rootScope.centroSeleccionado;
 
         profesoresService.createProfesor($scope.profesor).then(function(response) {
-            $location.path('/home');
         }, function(err) {
             $scope.message = err.error_description;
         });

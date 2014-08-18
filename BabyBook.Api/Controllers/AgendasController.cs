@@ -38,8 +38,9 @@ namespace BabyBook.Api.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ControlDiario value)
         {
+            _repository.SaveControl(value);
         }
 
         // PUT api/<controller>/5

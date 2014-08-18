@@ -1,9 +1,20 @@
-﻿<form>
-    <h2>Nueva Clase</h2>
-    <label>Nombre</label>
-    <input type="text" class="form-control" placeholder="NombreClase" data-ng-model="clase.nombre" />
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">Guardar</button>
-    <div data-ng-hide="message == ''" class="alert alert-danger">
-        {{message}}
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2>Clase</h2>
+        </div>
+
+<form>
+    <div class="modal-body">
+        <label>Nombre</label>
+        <input type="text" class="form-control" placeholder="NombreClase" data-ng-model="clase.nombre" />
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">Guardar</button>
+        <div data-ng-hide="message == ''" class="alert alert-danger">
+            {{message}}
+        </div>
     </div>
 </form>

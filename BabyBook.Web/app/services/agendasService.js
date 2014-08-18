@@ -17,8 +17,18 @@
 
     };
 
+    var _saveControl = function (control) {
+        return $http.post(serviceBase + 'api/agendas', control).then(function (response) {
+            return response;
+        }, function(error)
+        {
+            console.log('error');
+        });
+    };
+
     agendasServiceFactory.getByAlumnoId = _getByAlumnoId;
     agendasServiceFactory.getById = _getById;
+    agendasServiceFactory.saveControl = _saveControl;
 
     return agendasServiceFactory;
 

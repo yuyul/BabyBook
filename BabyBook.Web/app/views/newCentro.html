@@ -1,11 +1,22 @@
-﻿<form>
-    <h2>Nuevo Centro</h2>
-    <label>Nombre</label>
-    <input type="text" class="form-control" placeholder="NombreCentro" data-ng-model="centro.Nombre"/>
-    <label>Dirección</label>
-    <input type="text" class="form-control" placeholder="Direccion del Centro" data-ng-model="centro.Direccion"/>
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addCentro()">Guardar</button>
-    <div data-ng-hide="message == ''" class="alert alert-danger">
-        {{message}}
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        </div>
+
+<form>
+    <div class="modal-body">
+        <h2>Nuevo Centro</h2>
+        <label>Nombre</label>
+        <input type="text" class="form-control" placeholder="NombreCentro" data-ng-model="centro.Nombre"/>
+        <label>Dirección</label>
+        <input type="text" class="form-control" placeholder="Direccion del Centro" data-ng-model="centro.Direccion"/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addCentro()">Guardar</button>
+        <div data-ng-hide="message == ''" class="alert alert-danger">
+            {{message}}
+        </div>
     </div>
 </form>

@@ -90,9 +90,11 @@
     <Content Include="app\services\profesoresService.js" />
     <Content Include="app\services\usuariosService.js" />
     <Content Include="app\views\agenda\agenda.html" />
+    <Content Include="app\views\asignarClase.html" />
     <Content Include="app\views\agenda\controldiario.html" />
     <Content Include="app\views\agenda\testcontroldiario.html" />
     <Content Include="app\views\alumnos.html" />
+    <Content Include="app\views\asignaAlumno.html" />
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\clases.html" />
     <Content Include="app\views\cursos.html" />
@@ -111,6 +113,10 @@
     <Content Include="app\views\usuarios.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\classic.css" />
+    <Content Include="content\css\classic.date.css" />
+    <Content Include="content\css\themes\default.css" />
+    <Content Include="content\css\themes\default.date.css" />
     <Content Include="content\css\themes\bootstrap.min.css" />
     <Content Include="content\css\colorpicker.css" />
     <Content Include="content\css\loading-bar.css" />
@@ -133,6 +139,10 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\PickADate.js" />
+    <Content Include="scripts\picker.date.js" />
+    <Content Include="scripts\picker.js" />
+    <Content Include="scripts\picker.time.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,28 @@
-﻿<form>
-    <h2>Nuevo Curso</h2>
-    <label>Descripción</label>
-    <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion"/>
-    <label>Fecha Inicio</label>
-    <input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="curso.fechaInicio"/>
-    <label>Fecha Fin</label>
-    <input type="text" class="form-control" placeholder="31/12/2000" data-ng-model="curso.fechaFin"/>
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createCurso()">Guardar</button>
-    <div data-ng-hide="message == ''" class="alert alert-danger">
-        {{message}}
-    </div>
-</form>
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2>Control diario</h2>
+            <h3>Fecha: {{agenda.fecha | date : 'dd-MM-yyyy'}}</h3>
+        </div>
+        <div class="modal-body">
+            <form>
+                <h2>Nuevo Curso</h2>
+                <label>Descripción</label>
+                <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion"/>
+                <label>Fecha Inicio</label>
+                <!--<input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="curso.fechaInicio"/>-->
+                <input type="text" class="form-control" pick-a-date="curso.fechaInicio" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />
+                <label>Fecha Fin</label>
+                <!--<input type="text" class="form-control" placeholder="31/12/2000" data-ng-model="curso.fechaFin"/>-->
+                <input type="text" class="form-control" pick-a-date="curso.fechaFin" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createCurso()">Guardar</button>
+            <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+        </div>

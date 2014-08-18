@@ -31,5 +31,16 @@
         $scope.seleccionaCentro = function (centroId) {
             $rootScope.centroSeleccionado = centroId;
         };
+
+        $scope.editCentro = function (centro) {
+
+            if (centro === 'new') {
+                $scope.centro = {
+                    nombre: '',
+                    direccion: ''
+                };
+            } 
+
+        };
     }
 ]);

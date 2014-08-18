@@ -22,49 +22,20 @@
                     </td>
                     <td>
                         <!--<btn ng-click="asignarAlumnos(clase.id)">Asignar Alumnos</btn>-->
-                        <btn ng-click="mostrarAlumnos(clase)">Asignar Alumnos</btn>
-                        <btn ng-click="verAlumnos(clase)">Ver</btn>
-                        <a href="/#clases/edit/{{clase.id}}">Editar</a>
+                        <!--<btn ng-click="mostrarAlumnos(clase)">Asignar Alumnos</btn>-->
+                        <!--<btn ng-click="verAlumnos(clase)">Ver</btn>-->
+                        <!--<a href="/#clases/edit/{{clase.id}}">Editar</a>-->
+                        <button role="button" class="btn" ng-click="editClase(clase)" data-toggle="modal" href="#editModal">Edit</button>
+                        <button role="button" class="btn" ng-click="verAlumnos(clase)" data-toggle="modal" href="#asignaModal">Ver Alumnos</button>
+                        <button role="button" class="btn" ng-click="mostrarAlumnos(clase)" data-toggle="modal" href="#asignaModal">Asignar Alumnos</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         
-        <div>
-            <label>Curso</label>
-                        <select class="form-control" ng-model="cursoSeleccionado" ng-options="curso as curso.descripcion for curso in cursos" ng-change="cargarAlumnos()"></select>
-                        {{cursoSeleccionado.id}}
-            <!--<div ng-show="isAsignacion">-->
-            <div>
-                <form>
-                    <h2>Clase: {{clase.nombre}}</h2>
-                    
-                    <label>Alumnos</label>
-                    <table>
-                        <tr data-ng-repeat="alumno in alumnos">
-                            <td>{{alumno.nombre + ' ' + alumno.primerApellido + ' ' + alumno.segundoApellido}}</td>
-                            <td><input type="checkbox" name="seleccionado" data-ng-model="alumno.seleccionado"></></td>
-                        </tr>
-                    </table>
+        <div class="modal fade" ng-include="'app/views/newClase.html'" id="editModal" role="dialog"></div>
 
-
-                    <btn ng-show="isAsignacion" ng-click="asignarAlumnos(clase.id)">Asignar</btn>
-                    <btn ng-show="isVerAlumnos" ng-click="eliminarAsignacion(clase.id)">Eliminar</btn>
-
-                    <div data-ng-hide="message == ''" class="alert alert-danger">
-                        {{message}}
-                    </div>
-                </form>
-            </div>
-
-            <!--<div ng-show="isVerAlumnos">
-                <h2>Alumnos</h2>
-                <table>
-                    <tr data-ng-repeat="alumno in alumnos">
-                        <td>{{alumno.nombre + ' ' + alumno.primerApellido + ' ' + alumno.segundoApellido}}</td>
-                    </tr>
-                </table>
-            </div>-->
-        </div>
+        <div class="modal fade" ng-include="'app/views/asignaAlumno.html'" id="asignaModal" role="dialog"></div>
+        
     </div>
 </div>

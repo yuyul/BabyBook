@@ -2,27 +2,36 @@
 
     $scope.controles = [];
     $scope.agenda = {};
+    $scope.newControl = '';
 
     agendasService.getByAlumnoId($routeParams.id).then(function(results) {
         $scope.controles = results.data;
     });
     
-    $scope.verControl = function (control)
+    $scope.editControl = function (control)
     {
-        $scope.agenda = control;
+        if (control === 'new') {
+            $scope.newControl = true;
+            $scope.control = {
+                fecha: '',
+                alumnoId: $routeParams.id,
+                observacionesCasa: '',
+                observacionesCentro: '',
+                estadoDia: '',
+                comida: '',
+                siesta: '',
+                merienda: '',
+                deposicion: ''
+            }
+        } else {
+            $scope.newControl = false;
+            $scope.agenda = control;
+        }
+        
     }
 
-    $scope.editEvent = function (event) {
-        $scope.opts = ['on', 'off'];
-
-        if (event === 'new') {
-            $scope.newEvent = true;
-            $scope.event = { name: '', shortname: '', phonenumber: '', state: '', voteoptions: [{ id: 1, name: '' }] };
-        }
-        else {
-            $scope.newEvent = false;
-            $scope.event = event;
-        }
+    $scope.save = function (control) {
+        agendasService.saveControl(control);
     };
 
 }]);

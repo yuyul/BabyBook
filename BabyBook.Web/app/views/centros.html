@@ -1,7 +1,8 @@
 ﻿<div class="row">
     <div class="col-md-2">
         &nbsp;
-        <p><a class="btn btn-info" href="#/centros/new" role="button">Nuevo Centro</a></p>
+        <!--<p><a class="btn btn-info" href="#/centros/new" role="button">Nuevo Centro</a></p>-->
+        <button role="button" class="btn" ng-click="editCentro('new')" data-toggle="modal" href="#editModal">Nuevo</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
@@ -28,10 +29,12 @@
                         {{centro.fechaAlta}}
                     </td>
                     <td>
-                        <btn ng-click="seleccionaCentro(centro.id)">Selecciona</btn>
+                        <!--<btn ng-click="seleccionaCentro(centro.id)">Selecciona</btn>-->
+                        <button role="button" class="btn" ng-click="seleccionaCentro(centro.id)" data-toggle="modal" href="#editModal">Seleccionar</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="modal fade" ng-include="'app/views/newCentro.html'" id="editModal" role="dialog"></div>
     </div>
 </div>

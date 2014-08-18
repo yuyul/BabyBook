@@ -1,5 +1,12 @@
-﻿<form>
-    <h2>Nuevo Profesor</h2>
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2>Profesor</h2>
+        </div>
+<div class="modal-body">
+<form>
     <label>Nombre</label>
     <input type="text" class="form-control" placeholder="NombreProfesor" data-ng-model="profesor.nombre" />
 
@@ -12,8 +19,12 @@
     <label>Email</label>
     <input type="text" class="form-control" placeholder="Email" data-ng-model="profesor.email" />
 
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">Guardar</button>
+    
+</form>
+
+    <div class="modal-footer">
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save()">Guardar</button>
     <div data-ng-hide="message == ''" class="alert alert-danger">
         {{message}}
     </div>
-</form>
+    </div>

@@ -71,6 +71,8 @@ namespace BabyBook.Api.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> UploadAlumno()
         {
+            bool updateFoto = false;
+
             if (!Request.Content.IsMimeMultipartContent())
             {
                 this.Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
@@ -93,28 +95,40 @@ namespace BabyBook.Api.Controllers
                 }
 
                 File.Move(uploadFileInfo.FullName, uploadFileInfo.DirectoryName + '\\' + originalFileName);
+                updateFoto = true;
             }
 
 
             Alumno fileUploadObj = (Alumno)GetFormData<Alumno>(result);
 
-            fileUploadObj.FechaAlta = DateTime.Today;
+            
             fileUploadObj.Foto = originalFileName;
 
-            _repository.AddAlumno(fileUploadObj);
+            Alumno returnData ;
+            if (fileUploadObj.Id == 0)
+            {
+                fileUploadObj.FechaAlta = DateTime.Today;
+                returnData = _repository.AddAlumno(fileUploadObj);
+            }
+            else
+            {
+                if (updateFoto) fileUploadObj.Foto = originalFileName;
 
-            var returnData = "ReturnTest";
+                returnData = _repository.UpdateAlumno(fileUploadObj.Id, fileUploadObj);
+            }
+
+            
             return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
             
         }
 
         // PUT api/alumnos/5
-        public void Put(int id, [FromBody]Alumno value)
+        /*public void Put(int id, [FromBody]Alumno value)
         {
             _repository.UpdateAlumno(id, value);
-        }
+        }*/
 
-        public async Task<HttpResponseMessage> UpdateAlumno(int id)
+        /*public async Task<HttpResponseMessage> UpdateAlumno(int id)
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -151,7 +165,7 @@ namespace BabyBook.Api.Controllers
 
             var returnData = "ReturnTest";
             return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
-        }
+        }*/
 
         // DELETE api/alumnos/5
         public void Delete(int id)

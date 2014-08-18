@@ -1,7 +1,8 @@
 ﻿<div class="row">
     <div class="col-md-2">
         &nbsp;
-        <p><a class="btn btn-info" href="#/alumnos/new" role="button">Nuevo Alumno</a></p>
+        <!--<p><a class="btn btn-info" href="#/alumnos/new" role="button">Nuevo Alumno</a></p>-->
+        <button role="button" class="btn" ng-click="editAlumno('new')" data-toggle="modal" href="#editModal">Nuevo</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
@@ -27,16 +28,19 @@
                         {{alumno.primerApellido + ' ' + alumno.segundoApellido}}
                     </td>
                     <td>
-                        {{alumno.fechaNacimiento}}
+                        {{alumno.fechaNacimiento | date: 'dd-MM-yyyy'}}
                     </td>
                     <td>
-                        {{alumno.fechaAlta}}
+                        {{alumno.fechaAlta | date: 'dd-MM-yyyy'}}
                     </td>
                     <td>
-                        <a href="#/alumnos/edit/{{alumno.id}}">Editar</a>
+                        <!--<a href="#/alumnos/edit/{{alumno.id}}">Editar</a>-->
+                        <button role="button" class="btn" ng-click="editAlumno(alumno)" data-toggle="modal" href="#editModal">Edit</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" ng-include="'app/views/newAlumno.html'" id="editModal" role="dialog"></div>
 </div>
