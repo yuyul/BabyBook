@@ -43,11 +43,25 @@ namespace BabyBook.Api.Controllers
             return _repository.GetSinAsignar(id);
         }
 
+        [ActionName("getalumnossinasignarByCentroCurso")]
+        [HttpGet]
+        public IEnumerable<Alumno> GetAlumnosSinAsignarByCentroCurso(int centroId, int cursoId)
+        {
+            return _repository.GetSinAsignarByCentroCurso(centroId, cursoId);
+        }
+
         [ActionName("getalumnosbyclase")]
         [HttpGet]
         public IEnumerable<Alumno> GetAlumnosByClase(int id)
         {
             return _repository.GetAlumnoByClase(id);
+        }
+
+        [ActionName("getalumnosbyclasecurso")]
+        [HttpGet]
+        public IEnumerable<Alumno> GetAlumnoByClaseCurso(int claseId, int cursoId)
+        {
+            return _repository.GetAlumnoByClaseCurso(claseId, cursoId);
         }
 
         [ActionName("getalumnosbyprofesorcurso")]
@@ -56,6 +70,14 @@ namespace BabyBook.Api.Controllers
             var userName = User.Identity.Name;
 
             return _repository.GetAlumnoByProfesorCurso(userName);
+        }
+
+        [ActionName("getalumnosbyfamiliar")]
+        public IEnumerable<Alumno> GetAlumnosByFamiliar()
+        {
+            var userName = User.Identity.Name;
+
+            return _repository.GetAlumnosByFamiliar(userName);
         }
 
         // POST api/alumnos

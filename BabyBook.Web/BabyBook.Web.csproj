@@ -57,6 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\familiaresController.js" />
+    <Content Include="app\views\asignaFamiliar.html" />
+    <Content Include="app\views\familiar\alumnos.html" />
+    <Content Include="app\views\verFamiliares.html" />
+    <Content Include="content\css\ng-quick-date-default-theme.css" />
+    <Content Include="content\css\ng-quick-date-plus-default-theme.css" />
+    <Content Include="content\css\ng-quick-date.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
@@ -145,6 +152,8 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\ng-quick-date.js" />
+    <Content Include="scripts\ng-quick-date.min.js" />
     <Content Include="scripts\PickADate.js" />
     <Content Include="scripts\picker.date.js" />
     <Content Include="scripts\picker.js" />

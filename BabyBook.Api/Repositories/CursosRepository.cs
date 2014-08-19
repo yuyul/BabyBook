@@ -22,7 +22,8 @@ namespace BabyBook.Api.Repositories
 
         public IEnumerable<Curso> GetByCentro(int centroId)
         {
-            return _ctx.Cursos.Where(c => c.CentroId == centroId && c.Activo==true);
+            //return _ctx.Cursos.Where(c => c.CentroId == centroId && c.Activo==true);
+            return _ctx.Cursos.Where(c => c.CentroId == centroId );
         }
 
         public Curso AddCurso(Curso curso)
@@ -43,6 +44,7 @@ namespace BabyBook.Api.Repositories
             updatedCurso.FechaInicio = curso.FechaInicio;
             updatedCurso.FechaFin = curso.FechaFin.Date;
             updatedCurso.Descripcion = curso.Descripcion;
+            updatedCurso.Activo = curso.Activo;
 
             _ctx.SaveChanges();
 

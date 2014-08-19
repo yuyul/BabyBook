@@ -49,6 +49,29 @@ namespace BabyBook.Api.Repositories
 
         }
 
+        public IEnumerable<Alumno> GetSinAsignarByCentroCurso(int centroId, int cursoId)
+        {
+            /*var query = (
+                from a  in _ctx.Alumnos
+                join b in _ctx.AlumnosClases on a.Id equals b.AlumnoId into inners
+                from ab in inners.DefaultIfEmpty()
+                select a
+                );
+
+            return query.ToList();*/
+
+            var query = (from Alumnoes in _ctx.Alumnos
+                         join AlumnoClases in _ctx.AlumnosClases on new { Id = Alumnoes.Id , CursoId = cursoId} equals new { Id = AlumnoClases.AlumnoId, AlumnoClases.CursoId } into AlumnoClases_join
+                         from AlumnoClases in AlumnoClases_join.DefaultIfEmpty()
+                         where
+                           AlumnoClases.AlumnoId == null &&
+                           Alumnoes.CentroId == centroId &&
+                           Alumnoes.FechaBaja == null 
+                         select Alumnoes);
+            return query.ToList();
+
+        }
+
         public IEnumerable<Alumno> GetAlumnoByClase(int claseId)
         {
             var query = (
@@ -63,6 +86,21 @@ namespace BabyBook.Api.Repositories
 
             return query.ToList();
 
+        }
+
+        public IEnumerable<Alumno> GetAlumnoByClaseCurso(int claseId, int cursoId)
+        {
+            var query = (
+                from Alumnoes in _ctx.Alumnos
+                join AlumnoClases in _ctx.AlumnosClases
+                      on new { Alumnoes.Id, ClaseId = claseId, CursoId = cursoId}
+                  equals new { Id = AlumnoClases.AlumnoId, AlumnoClases.ClaseId, AlumnoClases.CursoId }
+                where
+                  Alumnoes.FechaBaja == null
+                select Alumnoes
+               );
+
+            return query.ToList();   
         }
 
         public Alumno AddAlumno(Alumno alumno)
@@ -125,6 +163,22 @@ namespace BabyBook.Api.Repositories
                   Alumnoes.FechaBaja == null
                 select Alumnoes
             );
+
+            return query.ToList();
+        }
+
+        public IEnumerable<Alumno> GetAlumnosByFamiliar(string userName)
+        {
+            string userId = _userManager.FindByName(userName).Id;
+
+            var query = (
+                from Alumnoes in _ctx.Alumnos
+                join AlumnoFamiliars in _ctx.AlumnosFamiliares on new { Id = Alumnoes.Id } equals new { Id = AlumnoFamiliars.AlumnoId }
+                join Familiars in _ctx.Familiares on new { Id = AlumnoFamiliars.FamiliarId } equals new { Id = Familiars.Id }
+                where
+                  Familiars.UserId == userId
+                select Alumnoes
+                );
 
             return query.ToList();
         }

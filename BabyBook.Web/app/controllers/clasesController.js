@@ -18,7 +18,9 @@
 
     $scope.alumnos = [];
     $scope.cursos = [];
+
     $scope.cursoSeleccionado = '';
+
     $scope.message = '';
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
@@ -65,8 +67,7 @@
 
     $scope.editClase = function (clase) {
 
-        if (clase === 'new')
-        {
+        if (clase === 'new') {
             $scope.newClase = true;
 
             $scope.clase = {
@@ -79,24 +80,29 @@
             $scope.newClase = false;
             $scope.clase = clase;
         }
-    }
+    };
 
-    $scope.cargarAlumnos = function () {
+    $scope.cargarAlumnos = function (cursoId) {
 
         if ($scope.isAsignacion) {
-            alumnosService.getAlumnosSinAsignar($rootScope.centroSeleccionado).then(function (results) {
+            alumnosService.getAlumnosSinAsignarByCentroCurso($rootScope.centroSeleccionado, cursoId).then(function (results) {
                 $scope.alumnos = results.data;
             }, function (error) {
                 console.log('error');
             });
         } else {
-            alumnosService.getAlumnosByClase($scope.clase.id).then(function (results) {
+            //alumnosService.getAlumnosByClase($scope.clase.id).then(function (results) {
+            //    $scope.alumnos = results.data;
+            //}, function (error) {
+            //    console.log('error')
+            //});
+            alumnosService.getAlumnosByClaseCurso($scope.clase.id, cursoId).then(function (results) {
                 $scope.alumnos = results.data;
             }, function (error) {
                 console.log('error')
             });
         }
-    }
+    };
 
     $scope.mostrarAlumnos = function (clase) {
         $scope.isAsignacion = true;
@@ -176,5 +182,9 @@
         }, function (error) {
             console.log('error');
         });
-    }
+    };
+
+    $scope.muestraCurso = function (curso) {
+        alert(curso.id);
+    };
 }]);

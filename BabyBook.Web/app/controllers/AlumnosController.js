@@ -1,6 +1,7 @@
 ﻿app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '$location', '$routeParams', function ($scope, alumnosService, $rootScope, $location, $routeParams) {
 
     $scope.alumnos = [];
+    $scope.familiares = [];
 
     $scope.alumno = {
         id: '',
@@ -72,18 +73,14 @@
         }
     };
 
-    /*$scope.createAlumno = function () {
+    $scope.addFamiliar = function (familiar) {
+        alumnosService.addFamiliar($scope.alumno.id, familiar);
+    };
 
-        if ($scope.alumno.id === '') {
-            $scope.alumno.CentroId = $rootScope.centroSeleccionado;
-
-            alumnosService.createAlumno($scope.alumno).then(function (response) {
-                $location.path('/home');
-            }, function (err) {
-                $scope.message = err.error_description;
-            });
-        } else {
-            alumnosService.updateAlumno($scope.alumno.id, $scope.alumno, $scope.files[0]);
-        }
-    };*/
+    $scope.verFamiliares = function (alumno) {
+        $scope.alumno = alumno;
+        alumnosService.getFamiliaresByAlumno(alumno.id).then(function (results) {
+            $scope.familiares = results.data;
+        });
+    };
 }]);

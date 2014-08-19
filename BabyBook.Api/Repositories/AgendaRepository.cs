@@ -30,6 +30,7 @@ namespace BabyBook.Api.Repositories
             ControlDiario editControl;
             if (control.Id == 0)
             {
+                control.Fecha = control.Fecha.Date;
                 editControl = _ctx.ControlDiarios.Add(control);
             
             } else {

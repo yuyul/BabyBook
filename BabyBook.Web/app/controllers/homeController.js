@@ -7,6 +7,7 @@
     $scope.isAdmin = authentication.roleName === "Admin";
     $scope.isGestor = authentication.roleName === "Gestor";
     $scope.isProfesor = authentication.roleName === "Profesor";
+    $scope.isFamiliar = authentication.roleName === "Familiar";
 
     $scope.authentication = authentication;
 

@@ -36,6 +36,8 @@
                     <td>
                         <!--<a href="#/alumnos/edit/{{alumno.id}}">Editar</a>-->
                         <button role="button" class="btn" ng-click="editAlumno(alumno)" data-toggle="modal" href="#editModal">Edit</button>
+                        <!--<button role="button" class="btn" ng-click="seleccionaAlumno(alumno)" data-toggle="modal" href="#asignaFamiliarModal">Familiares</button>-->
+                        <button role="button" class="btn" ng-click="verFamiliares(alumno)" data-toggle="modal" href="#verFamiliares">Ver Familiares</button>
                     </td>
                 </tr>
             </tbody>
@@ -43,4 +45,6 @@
     </div>
 
     <div class="modal fade" ng-include="'app/views/newAlumno.html'" id="editModal" role="dialog"></div>
+    <div class="modal fade" ng-include="'app/views/asignaFamiliar.html'" id="asignaFamiliarModal" role="dialog"></div>
+    <div class="modal fade" ng-include="'app/views/verFamiliares.html'" id="verFamiliares" role="dialog"></div>
 </div>

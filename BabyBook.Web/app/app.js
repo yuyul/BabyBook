@@ -1,4 +1,4 @@
-﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'wysiwyg.module', 'angularFileUpload', 'ui.bootstrap']);
+﻿var app = angular.module('BabyBookApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'wysiwyg.module', 'angularFileUpload', 'ngQuickDate']);
 
 app.config(function($routeProvider) {
 
@@ -111,6 +111,12 @@ app.config(function($routeProvider) {
             controller: "agendasController",
             templateUrl: "/app/views/agenda/agenda.html"
 
+        });
+
+    $routeProvider.when("/familiar/alumnos",
+        {
+            controller: "familiaresController",
+            templateUrl: "/app/views/familiar/alumnos.html"
         });
 
     $routeProvider.when("/data",

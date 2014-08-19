@@ -125,6 +125,7 @@
     <Compile Include="Controllers\CentrosController.cs" />
     <Compile Include="Controllers\ClasesController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\FamiliaresController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProfesoresController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -177,8 +178,17 @@
     <Compile Include="Migrations\201408141351526_ControlDiario.Designer.cs">
       <DependentUpon>201408141351526_ControlDiario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408191147269_indicealumnofecha.cs" />
+    <Compile Include="Migrations\201408191147269_indicealumnofecha.Designer.cs">
+      <DependentUpon>201408191147269_indicealumnofecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408191336430_familiares.cs" />
+    <Compile Include="Migrations\201408191336430_familiares.Designer.cs">
+      <DependentUpon>201408191336430_familiares.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
+    <Compile Include="Models\AlumnoFamiliar.cs" />
     <Compile Include="Models\BbContext.cs" />
     <Compile Include="Models\BbDbInitializer.cs" />
     <Compile Include="Models\Centro.cs" />
@@ -186,6 +196,7 @@
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\AlumnoClase.cs" />
     <Compile Include="Models\ControlDiario.cs" />
+    <Compile Include="Models\Familiar.cs" />
     <Compile Include="Models\Profesor.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\UserApp.cs" />
@@ -198,6 +209,7 @@
     <Compile Include="Repositories\CentroRepository.cs" />
     <Compile Include="Repositories\ClaseRepository.cs" />
     <Compile Include="Repositories\CursosRepository.cs" />
+    <Compile Include="Repositories\FamiliarRepository.cs" />
     <Compile Include="Repositories\ProfesorRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -250,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408141351526_ControlDiario.resx">
       <DependentUpon>201408141351526_ControlDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408191147269_indicealumnofecha.resx">
+      <DependentUpon>201408191147269_indicealumnofecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408191336430_familiares.resx">
+      <DependentUpon>201408191336430_familiares.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

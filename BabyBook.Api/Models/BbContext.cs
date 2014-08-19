@@ -24,6 +24,8 @@ namespace BabyBook.Api.Models
         public virtual DbSet<Curso> Cursos { get; set; }
         public virtual DbSet<AlumnoClase> AlumnosClases { get; set; }
         public virtual DbSet<ControlDiario> ControlDiarios { get; set; }
+        public virtual DbSet<Familiar> Familiares { get; set; }
+        public virtual DbSet<AlumnoFamiliar> AlumnosFamiliares { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

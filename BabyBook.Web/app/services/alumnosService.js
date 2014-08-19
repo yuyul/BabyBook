@@ -62,14 +62,44 @@
         });
     };
 
+    var _getAlumnosSinAsignarByCentroCurso = function (centroId, cursoId) {
+        return $http.get(serviceBase + 'api/alumnos/getalumnossinasignarbycentrocurso?centroId=' + centroId + '&cursoId=' + cursoId).then(function (results) {
+            return results;
+        });
+    };
+
     var _getAlumnosByClase = function (claseId) {
         return $http.get(serviceBase + 'api/alumnos/getalumnosbyclase/' + claseId).then(function (results) {
             return results;
         });
     };
 
+    var _getAlumnosByClaseCurso = function (claseId, cursoId) {
+        return $http.get(serviceBase + 'api/alumnos/getalumnosbyclasecurso?claseId=' + claseId + '&cursoId=' + cursoId).then(function (results) {
+            return results;
+        });
+
+    };
     var _getAlumnosByProfesor = function () {
         return $http.get(serviceBase + 'api/alumnos/getalumnosbyprofesorcurso').then(function (results) {
+            return results;
+        });
+    };
+
+    var _addFamiliar = function (alumnoId, familiar) {
+        return $http.post(serviceBase + 'api/familiares/nuevoFamiliar?alumnoId=' + alumnoId, familiar).then(function (response) {
+            return response;
+        });
+    };
+
+    var _getfamiliaresbyalumno = function (alumnoId) {
+        return $http.get(serviceBase + 'api/familiares/getfamiliaresbyalumno/' + alumnoId).then(function (results) {
+            return results;
+        });
+    };
+
+    var _getAlumnosByFamiliar = function () {
+        return $http.get(serviceBase + 'api/alumnos/getalumnosbyfamiliar').then(function (results) {
             return results;
         });
     };
@@ -82,6 +112,12 @@
     alumnosServiceFactory.getAlumnosByClase = _getAlumnosByClase;
     alumnosServiceFactory.getAlumnosByProfesor = _getAlumnosByProfesor;
     alumnosServiceFactory.uploadAlumno = _uploadAlumno;
+    alumnosServiceFactory.getAlumnosByClaseCurso = _getAlumnosByClaseCurso;
+    alumnosServiceFactory.getAlumnosSinAsignarByCentroCurso = _getAlumnosSinAsignarByCentroCurso;
+
+    alumnosServiceFactory.addFamiliar = _addFamiliar;
+    alumnosServiceFactory.getFamiliaresByAlumno = _getfamiliaresbyalumno;
+    alumnosServiceFactory.getAlumnosByFamiliar = _getAlumnosByFamiliar;
 
     return alumnosServiceFactory;
 

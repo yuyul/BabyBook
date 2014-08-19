@@ -5,11 +5,14 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             <h2>Control diario</h2>
             <!--<div ng-show="newControl"><h3>Fecha </h3><input type="text" pick-a-date="control.fecha" pick-a-date-options="{ format: 'dd/mm/yyyy'}" /></div>-->
-            <div ng-show="newControl">
+            <!--<div ng-show="newControl">
                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
+            </div>-->
+            <div ng-show="newControl">
+                <quick-datepicker ng-model="control.fecha" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
             </div>
             <div ng-hide="newControl"><h3>Fecha: {{control.fecha | date : 'dd-MM-yyyy'}}</h3></div>
         </div>
@@ -21,13 +24,13 @@
                         <label>Ha pasado el día </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="1" />Mal</input>
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="1" />Mal
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="2" />Regular</input>
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="2" />Regular
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="3" />Bien</input>
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="3" />Bien
                     </div>
                 </div>
 
@@ -36,13 +39,13 @@
                         <label>Ha comido</label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="1" />Mal</input>
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="1" />Mal
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="2" />Regular</input>
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="2" />Regular
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="3" />Bien</input>
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="3" />Bien
                     </div>
                 </div>
 
@@ -51,13 +54,13 @@
                         <label>Ha dormido la siesta </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="1" />Mal</input>
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="1" />Mal
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="2" />Regular</input>
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="2" />Regular
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="3" />Bien</input>
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="3" />Bien
                     </div>
                 </div>
 
@@ -66,13 +69,13 @@
                         <label>Ha merendado </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="1" />Mal</input>
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="1" />Mal
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="2" />Regular</input>
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="2" />Regular
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="3" />Bien</input>
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="3" />Bien
                     </div>
                 </div>
 
@@ -81,13 +84,13 @@
                         <label>ha hecho caca </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="1" />Mal</input>
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="1" />Mal
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="2" />Regular</input>
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="2" />Regular
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="3" />Bien</input>
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="3" />Bien
                     </div>
                 </div>
 
@@ -96,7 +99,7 @@
                         <label>
                             Observaciones de la escuela
                         </label>
-                        <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="control.observacionesCentro" textarea-required ng-model="agenda.observacionesCentro" enable-bootstrap-title="true"></wysiwyg>
+                        <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesCentro" textarea-required ng-model="control.observacionesCentro" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
 
@@ -104,13 +107,13 @@
                     <div class="col-md-12"
                         <label>
                             Observaciones de casa
-                            <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="control.observacionesCasa" textarea-required ng-model="agenda.observacionesCasa" enable-bootstrap-title="true"></wysiwyg>
+                            <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesCasa" textarea-required ng-model="control.observacionesCasa" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="save(control)">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save(control)">Save changes</button>
             </div>
 
 

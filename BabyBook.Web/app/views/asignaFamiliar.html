@@ -1,0 +1,30 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h2>Asigna Familiar</h2>
+        </div>
+
+        <div class="modal-body">
+            <form>
+                <label>Nombre</label>
+                <input type="text" class="form-control" ng-model="familiar.nombre" placeholder="Nombre" />
+                <label>Primer Apellido</label>
+                <input type="text" class="form-control" ng-model="familiar.primerApellido" placeholder="Primer Apellido" />
+                <label>Segundo Apellido</label>
+                <input type="text" class="form-control" ng-model="familiar.segundoApellido" placeholder="Segudno Apellido" />
+                <label>Email</label>
+                <input type="text" class="form-control" ng-model="familiar.email" placeholder="Email" />
+                <label>DNI</label>
+                <input type="text" class="form-control" ng-model="familiar.dni" placeholder="DNI" />
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addFamiliar(familiar)">Save</button>
+        </div>
+
+    </div>
+</div>

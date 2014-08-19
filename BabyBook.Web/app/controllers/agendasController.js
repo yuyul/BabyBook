@@ -31,41 +31,31 @@
     }
 
     $scope.save = function (control) {
-        agendasService.saveControl(control);
+        var save = true;
+        if ($scope.newControl) {
+            var result = $scope.controles.filter(function (elem) {
+                var fecha = new Date(elem.fecha);
+
+                return fecha.getDate() == control.fecha.getDate() && fecha.getMonth() == control.fecha.getMonth() && fecha.getFullYear() == control.fecha.getFullYear();
+            });
+
+            if (result.length > 0)
+            {
+                save = false;
+                alert('Ya existe un control para el día seleccionado. Los datos no serán guardados.');
+            }
+        }
+
+        if (save) {
+            agendasService.saveControl(control);
+
+            setTimeout(function () {
+                agendasService.getByAlumnoId($routeParams.id).then(function (results) {
+                    $scope.controles = results.data;
+                });
+            }, 1000);
+        }
     };
 
-    $scope.today = function () {
-        $scope.dt = new Date();
-    };
-    $scope.today();
-
-    $scope.clear = function () {
-        $scope.dt = null;
-    };
-
-    // Disable weekend selection
-    $scope.disabled = function (date, mode) {
-        return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-    };
-
-    $scope.toggleMin = function () {
-        $scope.minDate = $scope.minDate ? null : new Date();
-    };
-    $scope.toggleMin();
-
-    $scope.open = function ($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        $scope.opened = true;
-    };
-
-    $scope.dateOptions = {
-        formatYear: 'yy',
-        startingDay: 1
-    };
-
-    $scope.initDate = new Date('2016-15-20');
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    
 }]);

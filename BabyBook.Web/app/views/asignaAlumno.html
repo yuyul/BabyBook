@@ -8,7 +8,7 @@
 
         <div class="modal-body">
             <label>Curso</label>
-                <select class="form-control" ng-model="cursoSeleccionado" ng-options="curso as curso.descripcion for curso in cursos" ng-change="cargarAlumnos()"></select>
+                <select class="form-control" ng-options="curso as curso.descripcion for curso in cursos" ng-model="curso"  ng-change="cargarAlumnos(curso.id)"></select>
             <div>
                 <form>
                     <h2>Clase: {{clase.nombre}}</h2>
@@ -33,8 +33,8 @@
                     </table>
 
             
-                    <btn ng-show="isAsignacion" data-dismiss="modal" ng-click="asignarAlumnos(clase.id, cursoSeleccionado.id)">Asignar</btn>
-                    <btn ng-show="isVerAlumnos" data-dismiss="modal" ng-click="eliminarAsignacion(clase.id, cursoSeleccionado.id)">Eliminar</btn>
+                    <btn ng-show="isAsignacion" data-dismiss="modal" ng-click="asignarAlumnos(clase.id, curso.id)">Asignar</btn>
+                    <btn ng-show="isVerAlumnos" data-dismiss="modal" ng-click="eliminarAsignacion(clase.id, curso.id)">Eliminar</btn>
 
                     <div data-ng-hide="message == ''" class="alert alert-danger">
                         {{message}}

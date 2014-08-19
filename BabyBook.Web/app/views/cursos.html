@@ -25,10 +25,10 @@
                         {{curso.descripcion}}
                     </td>
                     <td>
-                        {{curso.fechaInicio}}
+                        {{curso.fechaInicio | date:"dd/MM/yyyy"}}
                     </td>
                     <td>
-                        {{curso.fechaFin}}
+                        {{curso.fechaFin | date:"dd/MM/yyyy"}}
                     </td>
                     <td>
                         <input type="checkbox" ng-model="curso.activo" />

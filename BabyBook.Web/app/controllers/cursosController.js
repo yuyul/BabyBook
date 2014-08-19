@@ -14,8 +14,6 @@
 
     $scope.message = '';
 
-    $scope.curDate = '';
-
     if ($routeParams.id === undefined) {
         cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function(results) {
             $scope.cursos = results.data;

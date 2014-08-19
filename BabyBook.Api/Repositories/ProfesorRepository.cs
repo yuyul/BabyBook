@@ -41,7 +41,7 @@ namespace BabyBook.Api.Repositories
             UserModel user = new UserModel();
 
             user.UserName = profesor.Nombre;
-            user.Password = profesor.Nombre;
+            user.Password = profesor.Nombre + "123";
             user.Email = profesor.Email;
 
             UserApp userapp = _userRepository.RegisterUser(user, "Profesor");
@@ -54,7 +54,7 @@ namespace BabyBook.Api.Repositories
 
             SendMail envioMail = new SendMail();
 
-            envioMail.EnvioMail("julian.caro@gmail.com", "Alta Usuario", "Se ha dado de alta su usuario como profesor.");
+            envioMail.EnvioMail("julian.caro@gmail.com", "Alta Usuario", "Se ha dado de alta su usuario como profesor. Usuario: " + user.UserName + " Password: " + user.Password);
             
 
             return newProfesor;

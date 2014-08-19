@@ -12,11 +12,18 @@
                 <label>Descripción</label>
                 <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion"/>
                 <label>Fecha Inicio</label>
+                <br />
                 <!--<input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="curso.fechaInicio"/>-->
-                <input type="text" class="form-control" pick-a-date="curso.fechaInicio" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />
+                <!--<input type="text" class="form-control" pick-a-date="curso.fechaInicio" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />-->
+                <quick-datepicker ng-model="curso.fechaInicio" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <br />
                 <label>Fecha Fin</label>
+                <br />
                 <!--<input type="text" class="form-control" placeholder="31/12/2000" data-ng-model="curso.fechaFin"/>-->
-                <input type="text" class="form-control" pick-a-date="curso.fechaFin" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />
+                <!--<input type="text" class="form-control" pick-a-date="curso.fechaFin" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />-->
+                <quick-datepicker ng-model="curso.fechaFin" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <br />
+                Curso activo: <input type="checkbox" ng-model="curso.activo" />
             </form>
 
         </div>
