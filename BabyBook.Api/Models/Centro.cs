@@ -8,6 +8,7 @@ using System.Web;
 
 namespace BabyBook.Api.Models
 {
+    [Table("Centros")]
     public class Centro
     {
         public Centro()

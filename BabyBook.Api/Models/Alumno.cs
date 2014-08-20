@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BabyBook.Api.Models
 {
+    [Table("Alumnos")]
     public class Alumno
     {
         public Alumno()

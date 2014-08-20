@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201408191336430_familiares.Designer.cs">
       <DependentUpon>201408191336430_familiares.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408201304349_renombradotablas.cs" />
+    <Compile Include="Migrations\201408201304349_renombradotablas.Designer.cs">
+      <DependentUpon>201408201304349_renombradotablas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\AlumnoFamiliar.cs" />
@@ -268,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408191336430_familiares.resx">
       <DependentUpon>201408191336430_familiares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408201304349_renombradotablas.resx">
+      <DependentUpon>201408201304349_renombradotablas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,6 +7,7 @@ using System.Web;
 
 namespace BabyBook.Api.Models
 {
+    [Table("Profesores")]
     public class Profesor
     {
         public int Id { get; set; }
