@@ -57,16 +57,137 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.min.js">
+      <DependentUpon>app.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\adminCentrosController.min.js">
+      <DependentUpon>adminCentrosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\agendasController.min.js">
+      <DependentUpon>agendasController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\AlumnosController.min.js">
+      <DependentUpon>AlumnosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\centrosController.min.js">
+      <DependentUpon>centrosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\clasesController.min.js">
+      <DependentUpon>clasesController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\controllers.js">
+      <DependentUpon>controllers.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\controllers.min.js">
+      <DependentUpon>controllers.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\cursosController.min.js">
+      <DependentUpon>cursosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\dataController.min.js">
+      <DependentUpon>dataController.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\familiaresController.js" />
+    <Content Include="app\controllers\familiaresController.min.js">
+      <DependentUpon>familiaresController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\homeController.min.js">
+      <DependentUpon>homeController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\homeyController.min.js">
+      <DependentUpon>homeyController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\indexController.min.js">
+      <DependentUpon>indexController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\loginController.min.js">
+      <DependentUpon>loginController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\profesoresController.min.js">
+      <DependentUpon>profesoresController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\signupController.min.js">
+      <DependentUpon>signupController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\usuariosController.min.js">
+      <DependentUpon>usuariosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\services.js">
+      <DependentUpon>services.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\services\services.min.js">
+      <DependentUpon>services.js.bundle</DependentUpon>
+    </Content>
     <Content Include="app\views\asignaFamiliar.html" />
     <Content Include="app\views\familiar\alumnos.html" />
     <Content Include="app\views\verFamiliares.html" />
     <Content Include="content\css\ng-quick-date-default-theme.css" />
     <Content Include="content\css\ng-quick-date-plus-default-theme.css" />
     <Content Include="content\css\ng-quick-date.css" />
+    <Content Include="content\fonts\flaticon.css" />
+    <Content Include="content\fonts\flaticon.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\app.min.js.map">
+      <DependentUpon>app.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\adminCentrosController.min.js.map">
+      <DependentUpon>adminCentrosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\agendasController.min.js.map">
+      <DependentUpon>agendasController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\AlumnosController.min.js.map">
+      <DependentUpon>AlumnosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\centrosController.min.js.map">
+      <DependentUpon>centrosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\clasesController.min.js.map">
+      <DependentUpon>clasesController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\cursosController.min.js.map">
+      <DependentUpon>cursosController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\dataController.min.js.map">
+      <DependentUpon>dataController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\familiaresController.min.js.map">
+      <DependentUpon>familiaresController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\homeController.min.js.map">
+      <DependentUpon>homeController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\homeyController.min.js.map">
+      <DependentUpon>homeyController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\indexController.min.js.map">
+      <DependentUpon>indexController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\loginController.min.js.map">
+      <DependentUpon>loginController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\profesoresController.min.js.map">
+      <DependentUpon>profesoresController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\signupController.min.js.map">
+      <DependentUpon>signupController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\usuariosController.min.js.map">
+      <DependentUpon>usuariosController.js</DependentUpon>
+    </Content>
+    <None Include="app\controllers\controllers.js.bundle" />
+    <Content Include="app\controllers\controllers.min.js.map">
+      <DependentUpon>controllers.js.bundle</DependentUpon>
+    </Content>
+    <None Include="app\services\services.js.bundle" />
+    <Content Include="app\services\services.min.js.map">
+      <DependentUpon>services.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="content\fonts\flaticon.eot" />
+    <Content Include="content\fonts\flaticon.ttf" />
+    <Content Include="content\fonts\flaticon.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,6 +266,8 @@
     <Content Include="scripts\angular-file-upload.min.js" />
     <Content Include="scripts\angular-local-storage.js" />
     <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-translate.js" />
+    <Content Include="scripts\angular-translate.min.js" />
     <Content Include="scripts\angular-wysiwyg.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\bootstrap-colorpicker-module.js" />

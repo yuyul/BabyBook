@@ -20,7 +20,9 @@
         $route.reload();
     };
 
-    centrosService.getCentrosByUser().then(function (results) {
-        $scope.centros = results.data;
-    });
+    if (authentication.isAuth) {
+        centrosService.getCentrosByUser().then(function (results) {
+            $scope.centros = results.data;
+        });
+    }
 }]);

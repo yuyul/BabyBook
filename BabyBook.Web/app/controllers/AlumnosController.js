@@ -3,6 +3,8 @@
     $scope.alumnos = [];
     $scope.familiares = [];
 
+    $scope.consulta = "";
+
     $scope.alumno = {
         id: '',
         nombre: '',

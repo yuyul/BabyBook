@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="controllers.js">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/app/controllers/adminCentrosController.js</file>
+  <file>/app/controllers/agendasController.js</file>
+  <file>/app/controllers/AlumnosController.js</file>
+  <file>/app/controllers/centrosController.js</file>
+  <file>/app/controllers/clasesController.js</file>
+  <file>/app/controllers/cursosController.js</file>
+  <file>/app/controllers/dataController.js</file>
+  <file>/app/controllers/familiaresController.js</file>
+  <file>/app/controllers/homeController.js</file>
+  <file>/app/controllers/homeyController.js</file>
+  <file>/app/controllers/indexController.js</file>
+  <file>/app/controllers/loginController.js</file>
+  <file>/app/controllers/profesoresController.js</file>
+  <file>/app/controllers/signupController.js</file>
+  <file>/app/controllers/usuariosController.js</file>
+</bundle>

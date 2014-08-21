@@ -10,7 +10,7 @@
     <link href="content/css/loading-bar.css" rel="stylesheet" />
     <link href="content/css/colorpicker.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <link href="content/fonts/flaticon.css" rel="stylesheet" />
     <link href="content/css/classic.css" rel="stylesheet" />
         <link href="content/css/classic.date.css" rel="stylesheet" />
     <link href="content/css/ng-quick-date.css" rel="stylesheet" />
@@ -24,14 +24,23 @@
                 <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/">Home</a>
+                <a class="navbar-brand" href="#/">{{ "INICIO" | translate }}</a>
             </div>
+
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}} ({{authentication.roleName}}) [{{centroSeleccionado}}]</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">{{ "SALUDO" | translate }} {{authentication.userName}} ({{authentication.roleName}}) [{{centroSeleccionado}}]</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">{{ 'BTN_LOGIN' | translate }}</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">{{ 'BTN_SIGNUP' | translate }}</a></li>
+                    <li class="dropdown">
+                        <a  class="dropdown-toggle" data-toggle="dropdown">{{"IDIOMA" | translate}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="changeLanguage('es')" translate="BUTTON_LANG_ES"></a></li>
+                            <li><a ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN"></a></li>
+                            <li><a ng-click="changeLanguage('ca')" translate="BUTTON_LANG_CA"></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,6 +50,7 @@
             <div class="page-header text-center">
                 <h1>BabyBook Web</h1>
             </div>
+            <p>{{ 'HEADLINE' | translate }}</p>
             <!--<p>This single page application is built using AngularJS, it is using OAuth bearer token authentication, ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity to generate tokens and register users.</p>-->
         </div>
     </div>
@@ -72,40 +82,19 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
     <script src="scripts/angular-local-storage.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
-    <script src="scripts/picker.js"></script>
+    <script src="scripts/angular-translate.js"></script>
+    <!--<script src="scripts/picker.js"></script>
     <script src="scripts/picker.date.js"></script>
-    <script src="scripts/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.11.0.js"></script>-->
     <!-- Load app main script -->
     <script src="app/app.js"></script>
         <script src="scripts/bootstrap-colorpicker-module.js"></script>
     <script src="scripts/angular-wysiwyg.js"></script>
-    <script src="scripts/PickADate.js"></script>
+   <!-- <script src="scripts/PickADate.js"></script>-->
     <script src="scripts/ng-quick-date.min.js"></script>
     <!-- Load services -->
-    <script src="app/services/authInterceptorService.js"></script>
-    <script src="app/services/authService.js"></script>
-    <script src="app/services/centrosService.js"></script>
-    <script src="app/services/usuariosService.js"></script>
-    <script src="app/services/profesoresService.js"></script>
-    <script src="app/services/clasesService.js"></script>
-    <script src="app/services/cursosService.js"></script>
-    <script src="app/services/alumnosService.js"></script>
-    <script src="app/services/agendasService.js"></script>
+    <script src="app/services/services.js"></script>
     <!-- Load controllers -->
-    <script src="app/controllers/homeController.js"></script>
-    <script src="app/controllers/indexController.js"></script>
-    <script src="app/controllers/loginController.js"></script>
-    <script src="app/controllers/signupController.js"></script>
-    <script src="app/controllers/centrosController.js"></script>
-    <script src="app/controllers/adminCentrosController.js"></script>
-    <script src="app/controllers/usuariosController.js"></script>
-    <script src="app/controllers/profesoresController.js"></script>
-    <script src="app/controllers/clasesController.js"></script>
-    <script src="app/controllers/cursosController.js"></script>
-    <script src="app/controllers/homeyController.js"></script>
-    <script src="app/controllers/AlumnosController.js"></script>
-    <script src="app/controllers/dataController.js"></script>
-    <script src="app/controllers/agendasController.js"></script>
-    <script src="app/controllers/familiaresController.js"></script>
+    <script src="app/controllers/controllers.js"></script>
 </body>
 </html>

@@ -117,6 +117,7 @@ namespace BabyBook.Api.Controllers
                 }
 
                 File.Move(uploadFileInfo.FullName, uploadFileInfo.DirectoryName + '\\' + originalFileName);
+
                 updateFoto = true;
             }
 

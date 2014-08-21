@@ -1,42 +1,60 @@
 ﻿<div class="row" data-ng-show="authentication.isAuth">
     <div data-ng-show="isAdmin">
-        <h2>Administrador</h2>
-        <p><a class="btn btn-info" href="#/admin/centros" role="button">Ver Centros</a></p>
-        <p><a class="btn btn-info" href="#/admin/usuarios" role="button">Ver Usuarios</a></p>
+        <h2>{{ 'ROLES.ADMIN' | translate }}</h2>
+        <p><a class="btn btn-info" href="#/admin/centros" role="button">{{ 'CENTROS' | translate }}</a></p>
+        <p><a class="btn btn-info" href="#/admin/usuarios" role="button">{{ 'USUARIOS' | translate }}</a></p>
     </div>
 
     <div data-ng-show="isGestor">
-        <h2>Gestor</h2>
+        <h2>{{ 'ROLES.GESTOR' | translate }}</h2>
         <div ng-hide="centerSelected">
-            <h1>No ha seleccionado ningun centro con el que trabajar, seleccione uno de los siguientes.</h1>
-            <table>
+            <h1>{{ 'NO_CENTRO' | translate }}</h1>
+            <!--<table>
                 <tr data-ng-repeat="centro in centros">
                     <td>{{ centro.nombre }}</td>
                     <td><btn ng-click="seleccionaCentro(centro.id)">Seleccionar</btn></td>
                 </tr>
-            </table>
+            </table>-->
+            <div class="row">
+                <div class="col-4 col-sm-4 col-lg-4" ng-repeat="centro in centros">
+                    <a class="btn btn-success" ng-click="seleccionaCentro(centro.id)" role="button">
+                        <span class="flaticon flaticon-school47"></span>
+                        <h2>{{centro.nombre}}</h2>
 
-            <h1>o cree un nuevo <p><a class="btn btn-info" href="#/centros/new" role="button">centro</a></p></h1>
+                    </a>
+                </div>
+            </div>
+            <h1>{{ 'CREAR_CENTRO' | translate }}<p><a class="btn btn-info" href="#/centros" role="button">centro</a></p></h1>
         </div>
 
-        <div ng-show="centerSelected">
-            <p><a class="btn btn-info" href="#/centros" role="button">Ver Centros</a></p>
-            <p><a class="btn btn-info" href="#/profesores" role="button">Ver Profesores</a></p>
-            <p><a class="btn btn-info" href="#/clases" role="button">Ver Clases</a></p>
-            <p><a class="btn btn-info" href="#/cursos" role="button">Ver Cursos</a></p>
-            <p><a class="btn btn-info" href="#/alumnos" role="button">Ver Alumnos</a></p>
+        <div class="row" ng-show="centerSelected">
+            <div class="col-md-6 col-md-offset-3">
+                <p><a class="btn btn-info btn-block" href="#/centros" role="button"><span class="flaticon flaticon-school47"></span> {{ 'CENTROS' | translate }}</a></p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <p><a class="btn btn-info btn-block" href="#/profesores" role="button"><span class="flaticon flaticon-teacher10"></span> {{ 'PROFESORES' | translate }}</a></p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <p><a class="btn btn-info btn-block" href="#/clases" role="button"><span class="flaticon flaticon-students3"></span> {{ 'CLASES' | translate }}</a></p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <p><a class="btn btn-info btn-block" href="#/cursos" role="button"><span class="flaticon flaticon-round15"></span> {{ 'CURSOS' | translate }}</a></p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <p><a class="btn btn-info btn-block" href="#/alumnos" role="button"><span class="flaticon flaticon-kids1"></span> {{ 'ALUMNOS' | translate }}</a></p>
+            </div>
         </div>
     </div>
 
     <div data-ng-show="isProfesor">
-        <h2>Profesor</h2>
+       <h2>{{ 'ROLES.PROFESOR' | translate }}</h2>
 
-            <p><a class="btn btn-info" href="#/profesor/alumnos" role="button">Ver Alumnos</a></p>
+            <p><a class="btn btn-info" href="#/profesor/alumnos" role="button">{{ 'ALUMNOS' | translate }}</a></p>
     </div>
 
     <div data-ng-show="isFamiliar">
-        <h2>Familiar</h2>
-            <p><a class="btn btn-info" href="#/familiar/alumnos" role="button">Ver Alumnos</a></p>
+        <h2>{{ 'ROLES.FAMILIAR' | translate }}</h2>
+            <p><a class="btn btn-info" href="#/familiar/alumnos" role="button">{{ 'ALUMNOS' | translate }}</a></p>
     </div>
 </div>
 
@@ -46,13 +64,13 @@
     </div>
     <div class="col-md-4">
         <h2>Login</h2>
-        <p class="text-primary">If you have Username and Password, you can use the button below to access the secured content using a token.</p>
-        <p><a class="btn btn-info" href="#/login" role="button">Login &raquo;</a></p>
+        <p class="text-primary">{{ 'LOGIN' | translate }}</p>
+        <p><a class="btn btn-info" href="#/login" role="button">{{ 'BTN_LOGIN' | translate }} &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Sign Up</h2>
-        <p class="text-primary">Use the button below to create Username and Password to access the secured content using a token.</p>
-        <p><a class="btn btn-info" href="#/signup" role="button">Sign Up &raquo;</a></p>
+        <p class="text-primary">{{ 'SIGNUP' | translate }}</p>
+        <p><a class="btn btn-info" href="#/signup" role="button">{{ 'BTN_SIGNUP' | translate }} &raquo;</a></p>
     </div>
     <div class="col-md-2">
         &nbsp;
