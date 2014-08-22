@@ -17,9 +17,9 @@
         <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido"/>
         <label>Fecha Nacimiento</label>
         <input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="alumno.fechaNacimiento" />
-        <img src="http://localhost:61073/Public/alumnos/{{alumno.foto}}" />
+        <img id="myPicture" src="http://localhost:61073/Public/alumnos/{{alumno.foto}}" />
 
-          <input type="file" ng-file-select="onFileSelect($files)">
+          <input type="file" id="myFile" ng-file-select="onFileSelect($files)">
 
     
     </div>

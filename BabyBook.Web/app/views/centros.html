@@ -29,8 +29,11 @@
                         {{centro.fechaAlta | date:"dd/MM/yyyy"}}
                     </td>
                     <td>
+
                         <!--<btn ng-click="seleccionaCentro(centro.id)">Selecciona</btn>-->
-                        <button role="button" class="btn" ng-click="seleccionaCentro(centro.id)" data-toggle="modal" href="#editModal">Seleccionar</button>
+                        <button role="button" class="btn" ng-click="editCentro(centro)" data-toggle="modal" href="#editModal"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <!--<button role="button" class="btn" ng-click="seleccionaCentro(centro.id)" data-toggle="modal" href="#editModal">Seleccionar</button>-->
+                        <button role="button" class="btn" ng-click="deleteCentro(centro.id)"><span class="glyphicon glyphicon-remove"></span></button>
                     </td>
                 </tr>
             </tbody>

@@ -13,7 +13,8 @@
         fechaAlta: '',
         fechaBaja: '',
         fechaNacimiento: '',
-        centroId: ''
+        centroId: '',
+        foto:''
     };
     
     $scope.message = '';
@@ -45,7 +46,8 @@
                 primerApellido: '',
                 segundoApellido: '',
                 fechaNacimiento: '',
-                centroId: $rootScope.centroSeleccionado
+                centroId: $rootScope.centroSeleccionado,
+                foto: ''
             };
         } else {
             $scope.newAlumno = false;
@@ -55,24 +57,14 @@
 
     $scope.save = function (alumno) {
 
-        /*var alumno = {
-            nombre: $scope.alumno.nombre,
-            primerApellido: $scope.alumno.primerApellido,
-            segundoApellido: $scope.alumno.segundoApellido,
-            fechaNacimiento: $scope.alumno.fechaNacimiento,
-            centroId: $rootScope.centroSeleccionado
-        };*/
-
         alumnosService.uploadAlumno(alumno, $scope.files[0]);
 
-        if ($scope.newAlumno) {
-            setTimeout(function () {
-                alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
-                    $scope.alumnos = results.data;
-                });
-            }, 3000);
+        setTimeout(function () {
+            alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.alumnos = results.data;
+            });
+        }, 3000);
 
-        }
     };
 
     $scope.addFamiliar = function (familiar) {

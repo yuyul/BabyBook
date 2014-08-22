@@ -96,7 +96,8 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
         fechaAlta: '',
         fechaBaja: '',
         fechaNacimiento: '',
-        centroId: ''
+        centroId: '',
+        foto:''
     };
     
     $scope.message = '';
@@ -128,7 +129,8 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
                 primerApellido: '',
                 segundoApellido: '',
                 fechaNacimiento: '',
-                centroId: $rootScope.centroSeleccionado
+                centroId: $rootScope.centroSeleccionado,
+                foto: ''
             };
         } else {
             $scope.newAlumno = false;
@@ -138,24 +140,14 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
 
     $scope.save = function (alumno) {
 
-        /*var alumno = {
-            nombre: $scope.alumno.nombre,
-            primerApellido: $scope.alumno.primerApellido,
-            segundoApellido: $scope.alumno.segundoApellido,
-            fechaNacimiento: $scope.alumno.fechaNacimiento,
-            centroId: $rootScope.centroSeleccionado
-        };*/
-
         alumnosService.uploadAlumno(alumno, $scope.files[0]);
 
-        if ($scope.newAlumno) {
-            setTimeout(function () {
-                alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
-                    $scope.alumnos = results.data;
-                });
-            }, 3000);
+        setTimeout(function () {
+            alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.alumnos = results.data;
+            });
+        }, 3000);
 
-        }
     };
 
     $scope.addFamiliar = function (familiar) {
@@ -178,11 +170,13 @@ app.controller('centrosController', [
         $scope.centros = [];
 
         $scope.centro = {
-            Nombre: '',
-            Direccion: ''
+            id: 0,
+            nombre: '',
+            direccion: ''
         };
 
         $scope.message = '';
+        $scope.newCentro = '';
 
         centrosService.getCentrosByUser().then(function(results) {
 
@@ -191,12 +185,20 @@ app.controller('centrosController', [
             console.log('error');
         });
 
-        $scope.addCentro = function() {
-            centrosService.addCentro($scope.centro).then(function(response) {
-                $location.path('/home');
-            }, function(err) {
-                $scope.message = err.error_description;
-            });
+        $scope.save = function(centro) {
+
+            if ($scope.newCentro) {
+                centrosService.addCentro($scope.centro).then(function (response) {
+                }, function (err) {
+                    $scope.message = err.error_description;
+                });
+            } else {
+                centrosService.updateCentro(centro).then(function (response) {
+
+                }, function (err) {
+                    $scope.message = err.error_description;
+                });
+            }
 
         };
 
@@ -207,12 +209,30 @@ app.controller('centrosController', [
         $scope.editCentro = function (centro) {
 
             if (centro === 'new') {
+                $scope.newCentro = true;
                 $scope.centro = {
+                    id: 0,
                     nombre: '',
                     direccion: ''
                 };
-            } 
+            } else {
+                $scope.newCentro = false;
+                $scope.centro = centro;
+            }
 
+        };
+
+        $scope.deleteCentro = function (centroId) {
+            centrosService.deleteCentro(centroId);
+
+            setTimeout(function () {
+                centrosService.getCentrosByUser().then(function (results) {
+
+                    $scope.centros = results.data;
+                }, function (error) {
+                    console.log('error');
+                });
+            }, 3000);
         };
     }
 ]);

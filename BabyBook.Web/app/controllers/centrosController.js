@@ -6,11 +6,13 @@
         $scope.centros = [];
 
         $scope.centro = {
-            Nombre: '',
-            Direccion: ''
+            id: 0,
+            nombre: '',
+            direccion: ''
         };
 
         $scope.message = '';
+        $scope.newCentro = '';
 
         centrosService.getCentrosByUser().then(function(results) {
 
@@ -19,12 +21,20 @@
             console.log('error');
         });
 
-        $scope.addCentro = function() {
-            centrosService.addCentro($scope.centro).then(function(response) {
-                $location.path('/home');
-            }, function(err) {
-                $scope.message = err.error_description;
-            });
+        $scope.save = function(centro) {
+
+            if ($scope.newCentro) {
+                centrosService.addCentro($scope.centro).then(function (response) {
+                }, function (err) {
+                    $scope.message = err.error_description;
+                });
+            } else {
+                centrosService.updateCentro(centro).then(function (response) {
+
+                }, function (err) {
+                    $scope.message = err.error_description;
+                });
+            }
 
         };
 
@@ -35,12 +45,30 @@
         $scope.editCentro = function (centro) {
 
             if (centro === 'new') {
+                $scope.newCentro = true;
                 $scope.centro = {
+                    id: 0,
                     nombre: '',
                     direccion: ''
                 };
-            } 
+            } else {
+                $scope.newCentro = false;
+                $scope.centro = centro;
+            }
 
+        };
+
+        $scope.deleteCentro = function (centroId) {
+            centrosService.deleteCentro(centroId);
+
+            setTimeout(function () {
+                centrosService.getCentrosByUser().then(function (results) {
+
+                    $scope.centros = results.data;
+                }, function (error) {
+                    console.log('error');
+                });
+            }, 3000);
         };
     }
 ]);

@@ -47,6 +47,20 @@ namespace BabyBook.Api.Controllers
             return Ok(_repository.AddCentro(userName, centro));
         }
 
+        [ActionName("UpdateCentro")]
+        [HttpPut]
+        public IHttpActionResult UpdateCentro(int id, [FromBody]Centro centro)
+        {
+            return Ok(_repository.UpdateCentro(id, centro));
+
+        }
+
+        [ActionName("DeleteCentro")]
+        [HttpDelete]
+        public IHttpActionResult DeleteCentro(int id)
+        {
+            return Ok(_repository.DeleteCentro(id));
+        }
         //public IEnumerable<Centro> Get()
         //{
 

@@ -20,24 +20,39 @@ namespace BabyBook.Api.Repositories
 
         public Familiar AddFamiliar(int alumnoId, Familiar familiar)
         {
+            bool isNewFamiliar = true;
+            int idFamiliar = 0;
+            Familiar tFamiliar = _ctx.Familiares.Where(f => f.DNI == familiar.DNI).First();
+
             UserModel user = new UserModel();
 
             user.UserName = familiar.DNI;
             user.Password = "123456";
             user.Email = familiar.Email;
 
-            UserApp userapp = _userRepository.RegisterUser(user, "Familiar");
+            if (tFamiliar == null)
+            {
 
-            familiar.UserId = userapp.Id;
 
-            Familiar newFamiliar = _ctx.Familiares.Add(familiar);
 
-            _ctx.SaveChanges();
-            
+                UserApp userapp = _userRepository.RegisterUser(user, "Familiar");
+
+                familiar.UserId = userapp.Id;
+
+                tFamiliar = _ctx.Familiares.Add(familiar);
+
+                _ctx.SaveChanges();
+
+                idFamiliar = tFamiliar.Id;
+            }else{
+                idFamiliar = tFamiliar.Id;
+                isNewFamiliar = false;
+            }
+
             AlumnoFamiliar nuevaAsignacion = new AlumnoFamiliar();
 
             nuevaAsignacion.AlumnoId = alumnoId;
-            nuevaAsignacion.FamiliarId = newFamiliar.Id;
+            nuevaAsignacion.FamiliarId = idFamiliar;
 
             _ctx.AlumnosFamiliares.Add(nuevaAsignacion);
 
@@ -46,12 +61,14 @@ namespace BabyBook.Api.Repositories
             //enviar mail
             Alumno alumnoasignado = _ctx.Alumnos.Find(alumnoId);
 
-            SendMail envioMail = new SendMail();
+            if (isNewFamiliar)
+            {
+                SendMail envioMail = new SendMail();
 
-            envioMail.EnvioMail("julian.caro@gmail.com", "Alta Familiar", "Se ha dado de alta su usuario como Familiar del alumno " + alumnoasignado.Nombre + " . Usuario: " + user.UserName + " Password: " + user.Password);
-       
+                envioMail.EnvioMail("julian.caro@gmail.com", "Alta Familiar", "Se ha dado de alta su usuario como Familiar del alumno " + alumnoasignado.Nombre + " . Usuario: " + user.UserName + " Password: " + user.Password);
+            }
 
-            return newFamiliar;
+            return tFamiliar;
         }
 
         public IEnumerable<Familiar> GetFamiliaresByAlumno(int alumnoId)

@@ -55,6 +55,18 @@ namespace BabyBook.Api.Repositories
             return newCentro;
         }
 
+        public Centro UpdateCentro(int id, Centro centro)
+        {
+            Centro updateCentro = _ctx.Centros.Find(id);
+
+            updateCentro.Nombre = centro.Nombre;
+            updateCentro.Direccion = centro.Direccion;
+
+            _ctx.SaveChanges();
+
+            return updateCentro;
+        }
+
         public bool DeleteCentro(int centroId)
         {
             Centro centro = _ctx.Centros.Find(centroId);
