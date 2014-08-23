@@ -32,15 +32,18 @@
                         </tr>
                     </table>
 
-            
-                    <btn ng-show="isAsignacion" data-dismiss="modal" ng-click="asignarAlumnos(clase.id, curso.id)">Asignar</btn>
-                    <btn ng-show="isVerAlumnos" data-dismiss="modal" ng-click="eliminarAsignacion(clase.id, curso.id)">Eliminar</btn>
-
-                    <div data-ng-hide="message == ''" class="alert alert-danger">
-                        {{message}}
-                    </div>
                 </form>
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-lg btn-info btn-block" ng-show="isAsignacion" ng-click="asignarAlumnos(clase.id, curso.id)">Asignar</button>
+                <button class="btn btn-lg btn-info btn-block" ng-show="isVerAlumnos" ng-click="eliminarAsignacion(clase.id, curso.id)">Eliminar</button>
 
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+                <div data-ng-hide="messageok == ''" class="alert alert-success">
+                    {{messageok}}
+                </div>
+            </div>
         </div>
     </div>

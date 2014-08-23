@@ -23,8 +23,11 @@
 </form>
 
     <div class="modal-footer">
-        <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save()">Guardar</button>
-    <div data-ng-hide="message == ''" class="alert alert-danger">
-        {{message}}
-    </div>
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save(profesor)">Guardar</button>
+        <div data-ng-hide="message == ''" class="alert alert-danger">
+            {{message}}
+        </div>
+        <div data-ng-hide="messageok == ''" class="alert alert-success">
+            {{messageok}}
+        </div>
     </div>

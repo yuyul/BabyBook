@@ -1,13 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<bundle minify="true" runOnBuild="true" output="services.js">
-  <!--The order of the <file> elements determines the order of them when bundled.-->
-  <file>/app/services/agendasService.js</file>
-  <file>/app/services/alumnosService.js</file>
-  <file>/app/services/authInterceptorService.js</file>
-  <file>/app/services/authService.js</file>
-  <file>/app/services/centrosService.js</file>
-  <file>/app/services/clasesService.js</file>
-  <file>/app/services/cursosService.js</file>
-  <file>/app/services/profesoresService.js</file>
-  <file>/app/services/usuariosService.js</file>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determin whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>true</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+    <file>/app/services/agendasService.js</file>
+    <file>/app/services/alumnosService.js</file>
+    <file>/app/services/authInterceptorService.js</file>
+    <file>/app/services/authService.js</file>
+    <file>/app/services/centrosService.js</file>
+    <file>/app/services/clasesService.js</file>
+    <file>/app/services/cursosService.js</file>
+    <file>/app/services/profesoresService.js</file>
+    <file>/app/services/usuariosService.js</file>
+  </files>
 </bundle>

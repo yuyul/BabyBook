@@ -12,6 +12,7 @@
         };
 
         $scope.message = '';
+        $scope.messageok = '';
         $scope.newCentro = '';
 
         centrosService.getCentrosByUser().then(function(results) {
@@ -25,12 +26,14 @@
 
             if ($scope.newCentro) {
                 centrosService.addCentro($scope.centro).then(function (response) {
+                    $scope.messageok = "Centro guardado correctamente";
                 }, function (err) {
                     $scope.message = err.error_description;
                 });
+                cargarCentros();
             } else {
                 centrosService.updateCentro(centro).then(function (response) {
-
+                    $scope.messageok = "Centro guardado correctamente";
                 }, function (err) {
                     $scope.message = err.error_description;
                 });
@@ -60,15 +63,19 @@
 
         $scope.deleteCentro = function (centroId) {
             centrosService.deleteCentro(centroId);
+            cargarCentros();
 
-            setTimeout(function () {
-                centrosService.getCentrosByUser().then(function (results) {
+        };
+
+        var cargarCentros = function() {
+            setTimeout(function() {
+                centrosService.getCentrosByUser().then(function(results) {
 
                     $scope.centros = results.data;
-                }, function (error) {
+                }, function(error) {
                     console.log('error');
                 });
-            }, 3000);
+            }, 1000);
         };
     }
 ]);

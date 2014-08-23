@@ -6,6 +6,7 @@
     $scope.clases = [];
 
     $scope.profesor = {
+        id: 0,
         nombre: '',
         primerApellido: '',
         segundoApelido: '',
@@ -15,8 +16,10 @@
     };
 
     $scope.message = '';
+    $scope.messageok = '';
 
     $scope.alumnos = [];
+    $scope.claseSeleccionada = 0;
 
     if ($location.path() == "/profesores") {
         profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -33,18 +36,47 @@
         //$scope.message = $location.path();
     }
 
-    $scope.save = function() {
-        $scope.profesor.CentroId = $rootScope.centroSeleccionado;
+    $scope.editProfesor = function (profesor) {
+        $scope.message = '';
+        $scope.messageok = '';
+        if (profesor === 'new') {
+            $scope.newProfesor = true;
+            $scope.profesor = {
+                id: 0,
+                nombre: '',
+                primerApellido: '',
+                segundoApelido: '',
+                email: '',
+                centroId: $rootScope.centroSeleccionado,
+                claseId: ''
+            };
+        } else {
+            $scope.newProfesor = false;
+            $scope.profesor = profesor;
+        }
+    }
 
-        profesoresService.createProfesor($scope.profesor).then(function(response) {
-        }, function(err) {
-            $scope.message = err.error_description;
-        });
+    $scope.save = function(profesor) {
+
+        if ($scope.newProfesor) {
+            profesoresService.createProfesor(profesor).then(function (response) {
+                $scope.messageok = "Profesor guardado correctamente";
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+            cargarProfesores();
+        } else {
+            profesoresService.updateProfesor(profesor).then(function(response) {
+                $scope.messageok = "Profesor guardado correctamente";
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+        }
     };
 
     $scope.mostrarClases = function (profesor) {
         $scope.profesor = profesor;
-
+        $scope.claseSeleccionada = profesor.claseId;
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
             $scope.clases = results.data;
         }, function (error) {
@@ -53,14 +85,26 @@
 
     };
 
-    $scope.asignarClase = function (claseId) {
-        $scope.profesor.claseId = claseId;
+    $scope.asignarClase = function (profesor) {
 
-        profesoresService.updateProfesor($scope.profesor).then(function (response) {
+        profesoresService.updateProfesor(profesor).then(function (response) {
+            $scope.messageok = "Asignación guardada correctamente";
         }, function (error) {
+            $scope.message = error.error_description;
             console.log('error');
         });
+        cargarProfesores();
 
+    };
+
+    var cargarProfesores = function () {
+        setTimeout(function () {
+            profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.profesores = results.data;
+            }, function (error) {
+                console.log('error');
+            });
+        }, 1000);
     };
 
 }]);

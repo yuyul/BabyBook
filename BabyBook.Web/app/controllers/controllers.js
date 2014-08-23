@@ -1,4 +1,4 @@
-///#source 1 1 /app/controllers/adminCentrosController.js
+﻿///#source 1 1 /app/controllers/adminCentrosController.js
 app.controller('adminCentrosController', [
     '$scope', 'centrosService', '$rootScope', function ($scope, centrosService, $rootScope) {
 
@@ -176,6 +176,7 @@ app.controller('centrosController', [
         };
 
         $scope.message = '';
+        $scope.messageok = '';
         $scope.newCentro = '';
 
         centrosService.getCentrosByUser().then(function(results) {
@@ -189,12 +190,14 @@ app.controller('centrosController', [
 
             if ($scope.newCentro) {
                 centrosService.addCentro($scope.centro).then(function (response) {
+                    $scope.messageok = "Centro guardado correctamente";
                 }, function (err) {
                     $scope.message = err.error_description;
                 });
+                cargarCentros();
             } else {
                 centrosService.updateCentro(centro).then(function (response) {
-
+                    $scope.messageok = "Centro guardado correctamente";
                 }, function (err) {
                     $scope.message = err.error_description;
                 });
@@ -224,15 +227,19 @@ app.controller('centrosController', [
 
         $scope.deleteCentro = function (centroId) {
             centrosService.deleteCentro(centroId);
+            cargarCentros();
 
-            setTimeout(function () {
-                centrosService.getCentrosByUser().then(function (results) {
+        };
+
+        var cargarCentros = function() {
+            setTimeout(function() {
+                centrosService.getCentrosByUser().then(function(results) {
 
                     $scope.centros = results.data;
-                }, function (error) {
+                }, function(error) {
                     console.log('error');
                 });
-            }, 3000);
+            }, 1000);
         };
     }
 ]);
@@ -261,6 +268,7 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
     $scope.cursoSeleccionado = '';
 
     $scope.message = '';
+    $scope.messageok = '';
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
 
@@ -305,7 +313,7 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
     };
 
     $scope.editClase = function (clase) {
-
+        borraMensajes();
         if (clase === 'new') {
             $scope.newClase = true;
 
@@ -330,15 +338,10 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
                 console.log('error');
             });
         } else {
-            //alumnosService.getAlumnosByClase($scope.clase.id).then(function (results) {
-            //    $scope.alumnos = results.data;
-            //}, function (error) {
-            //    console.log('error')
-            //});
             alumnosService.getAlumnosByClaseCurso($scope.clase.id, cursoId).then(function (results) {
                 $scope.alumnos = results.data;
             }, function (error) {
-                console.log('error')
+                console.log('error');
             });
         }
     };
@@ -350,13 +353,7 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
         $scope.alumnos = [];
 
         cargaCursos();
-
-        /*alumnosService.getAlumnosSinAsignar($rootScope.centroSeleccionado).then(function(results) {
-            $scope.alumnos = results.data;
-        }, function(error) {
-            console.log('error');
-        });*/
-
+        borraMensajes();
     };
 
     $scope.verAlumnos = function (clase) {
@@ -364,14 +361,9 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
         $scope.isAsignacion = false;
         $scope.clase = clase;
         $scope.alumnos = [];
+
         cargaCursos();
-
-        /*alumnosService.getAlumnosByClase(claseId).then(function (results) {
-            $scope.alumnos = results.data;
-        }, function (error) {
-            console.log('error')
-        });*/
-
+        borraMensajes();
     };
 
     $scope.asignarAlumnos = function(claseId, cursoId) {
@@ -391,11 +383,14 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
             asignaciones.push(asignacion);
         });
 
-        clasesService.asignarAlumnos(asignaciones);
+        clasesService.asignarAlumnos(asignaciones).then(function(response) {
+            $scope.messageok = "Asignación guardada correctamente";
+        }, function(error) {
+            $scope.message = error.error_description;
+        });
     };
 
     $scope.eliminarAsignacion = function (claseId, cursoId) {
-
         var asignaciones = [];
 
         $scope.alumnos.filter(function (element) {
@@ -410,7 +405,11 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
             asignaciones.push(asignacion);
         });
 
-        clasesService.eliminarAsignacion(asignaciones);
+        clasesService.eliminarAsignacion(asignaciones).then(function(response) {
+            $scope.messageok = "Asignación eliminada correctamente";
+        }, function(error) {
+            $scope.message = error.error_description;
+        });
     };
 
    
@@ -426,6 +425,11 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
     $scope.muestraCurso = function (curso) {
         alert(curso.id);
     };
+
+    var borraMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
+    }
 }]);
 ///#source 1 1 /app/controllers/cursosController.js
 app.controller('cursosController', ['$scope', '$location', 'cursosService', '$rootScope', '$routeParams', function ($scope, $location, cursosService, $rootScope, $routeParams) {
@@ -596,6 +600,7 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
     $scope.clases = [];
 
     $scope.profesor = {
+        id: 0,
         nombre: '',
         primerApellido: '',
         segundoApelido: '',
@@ -605,8 +610,10 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
     };
 
     $scope.message = '';
+    $scope.messageok = '';
 
     $scope.alumnos = [];
+    $scope.claseSeleccionada = 0;
 
     if ($location.path() == "/profesores") {
         profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -623,18 +630,47 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
         //$scope.message = $location.path();
     }
 
-    $scope.save = function() {
-        $scope.profesor.CentroId = $rootScope.centroSeleccionado;
+    $scope.editProfesor = function (profesor) {
+        $scope.message = '';
+        $scope.messageok = '';
+        if (profesor === 'new') {
+            $scope.newProfesor = true;
+            $scope.profesor = {
+                id: 0,
+                nombre: '',
+                primerApellido: '',
+                segundoApelido: '',
+                email: '',
+                centroId: $rootScope.centroSeleccionado,
+                claseId: ''
+            };
+        } else {
+            $scope.newProfesor = false;
+            $scope.profesor = profesor;
+        }
+    }
 
-        profesoresService.createProfesor($scope.profesor).then(function(response) {
-        }, function(err) {
-            $scope.message = err.error_description;
-        });
+    $scope.save = function(profesor) {
+
+        if ($scope.newProfesor) {
+            profesoresService.createProfesor(profesor).then(function (response) {
+                $scope.messageok = "Profesor guardado correctamente";
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+            cargarProfesores();
+        } else {
+            profesoresService.updateProfesor(profesor).then(function(response) {
+                $scope.messageok = "Profesor guardado correctamente";
+            }, function(err) {
+                $scope.message = err.error_description;
+            });
+        }
     };
 
     $scope.mostrarClases = function (profesor) {
         $scope.profesor = profesor;
-
+        $scope.claseSeleccionada = profesor.claseId;
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
             $scope.clases = results.data;
         }, function (error) {
@@ -643,14 +679,26 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
 
     };
 
-    $scope.asignarClase = function (claseId) {
-        $scope.profesor.claseId = claseId;
+    $scope.asignarClase = function (profesor) {
 
-        profesoresService.updateProfesor($scope.profesor).then(function (response) {
+        profesoresService.updateProfesor(profesor).then(function (response) {
+            $scope.messageok = "Asignación guardada correctamente";
         }, function (error) {
+            $scope.message = error.error_description;
             console.log('error');
         });
+        cargarProfesores();
 
+    };
+
+    var cargarProfesores = function () {
+        setTimeout(function () {
+            profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.profesores = results.data;
+            }, function (error) {
+                console.log('error');
+            });
+        }, 1000);
     };
 
 }]);

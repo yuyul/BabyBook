@@ -22,6 +22,7 @@
     $scope.cursoSeleccionado = '';
 
     $scope.message = '';
+    $scope.messageok = '';
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
 
@@ -66,7 +67,7 @@
     };
 
     $scope.editClase = function (clase) {
-
+        borraMensajes();
         if (clase === 'new') {
             $scope.newClase = true;
 
@@ -91,15 +92,10 @@
                 console.log('error');
             });
         } else {
-            //alumnosService.getAlumnosByClase($scope.clase.id).then(function (results) {
-            //    $scope.alumnos = results.data;
-            //}, function (error) {
-            //    console.log('error')
-            //});
             alumnosService.getAlumnosByClaseCurso($scope.clase.id, cursoId).then(function (results) {
                 $scope.alumnos = results.data;
             }, function (error) {
-                console.log('error')
+                console.log('error');
             });
         }
     };
@@ -111,13 +107,7 @@
         $scope.alumnos = [];
 
         cargaCursos();
-
-        /*alumnosService.getAlumnosSinAsignar($rootScope.centroSeleccionado).then(function(results) {
-            $scope.alumnos = results.data;
-        }, function(error) {
-            console.log('error');
-        });*/
-
+        borraMensajes();
     };
 
     $scope.verAlumnos = function (clase) {
@@ -125,14 +115,9 @@
         $scope.isAsignacion = false;
         $scope.clase = clase;
         $scope.alumnos = [];
+
         cargaCursos();
-
-        /*alumnosService.getAlumnosByClase(claseId).then(function (results) {
-            $scope.alumnos = results.data;
-        }, function (error) {
-            console.log('error')
-        });*/
-
+        borraMensajes();
     };
 
     $scope.asignarAlumnos = function(claseId, cursoId) {
@@ -152,11 +137,14 @@
             asignaciones.push(asignacion);
         });
 
-        clasesService.asignarAlumnos(asignaciones);
+        clasesService.asignarAlumnos(asignaciones).then(function(response) {
+            $scope.messageok = "Asignación guardada correctamente";
+        }, function(error) {
+            $scope.message = error.error_description;
+        });
     };
 
     $scope.eliminarAsignacion = function (claseId, cursoId) {
-
         var asignaciones = [];
 
         $scope.alumnos.filter(function (element) {
@@ -171,7 +159,11 @@
             asignaciones.push(asignacion);
         });
 
-        clasesService.eliminarAsignacion(asignaciones);
+        clasesService.eliminarAsignacion(asignaciones).then(function(response) {
+            $scope.messageok = "Asignación eliminada correctamente";
+        }, function(error) {
+            $scope.message = error.error_description;
+        });
     };
 
    
@@ -187,4 +179,9 @@
     $scope.muestraCurso = function (curso) {
         alert(curso.id);
     };
+
+    var borraMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
+    }
 }]);

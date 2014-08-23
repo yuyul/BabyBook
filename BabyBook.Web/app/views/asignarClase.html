@@ -6,21 +6,28 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             <h2>Asignar Clase</h2>
         </div>
-<div class="modal-body">
-    <form>
-        <h2>Profesor: {{profesor.nombre}}</h2>
-        <label>Clases</label>
-        <table>
-            <tr data-ng-repeat="clase in clases">
-                <td>{{clase.nombre}}</td>
-                <td>
-                    <btn data-dismiss="modal" ng-click="asignarClase(clase.id)">Asignar</btn>
-                </td>
-            </tr>
-        </table>
-
-        <div data-ng-hide="message == ''" class="alert alert-danger">
-            {{message}}
+        <div class="modal-body">
+            <form>
+                <h2>Profesor: {{profesor.nombre}}</h2>
+                <label>Clases</label>
+                <table>
+                    <tr data-ng-repeat="clase in clases">
+                        <td>
+                            <input type="radio" name="claseSelect" data-ng-model="profesor.claseId" value="{{clase.id}}" />
+                            {{clase.nombre}}
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
-    </form>
+        <div class="modal-footer">
+            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="asignarClase(profesor)">Guardar</button>
+            <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+            <div data-ng-hide="messageok == ''" class="alert alert-success">
+                {{messageok}}
+            </div>
+        </div>
+    </div>
 </div>
