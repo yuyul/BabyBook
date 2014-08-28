@@ -1,4 +1,4 @@
-﻿///#source 1 1 /app/controllers/adminCentrosController.js
+///#source 1 1 /app/controllers/adminCentrosController.js
 app.controller('adminCentrosController', [
     '$scope', 'centrosService', '$rootScope', function ($scope, centrosService, $rootScope) {
 
@@ -699,6 +699,12 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
                 console.log('error');
             });
         }, 1000);
+    };
+
+    $scope.eliminarProfesor = function (profesorId) {
+        profesoresService.deleteProfesor(profesorId).then(function (response) {
+            cargarProfesores();
+        });
     };
 
 }]);

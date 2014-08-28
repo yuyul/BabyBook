@@ -107,4 +107,10 @@
         }, 1000);
     };
 
+    $scope.eliminarProfesor = function (profesorId) {
+        profesoresService.deleteProfesor(profesorId).then(function (response) {
+            cargarProfesores();
+        });
+    };
+
 }]);

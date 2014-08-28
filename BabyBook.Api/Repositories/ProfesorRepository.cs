@@ -22,8 +22,37 @@ namespace BabyBook.Api.Repositories
         public IEnumerable<Profesor> GetByCentro(int centroId)
         {
             List<Profesor> profesores = _ctx.Profesores.Where(p => p.CentroId == centroId).ToList();
+            
+
+            //var query = (from Alumnoes in _ctx.Alumnos
+            //             join AlumnoClases in _ctx.AlumnosClases on new { Id = Alumnoes.Id } equals new { Id = AlumnoClases.AlumnoId } into AlumnoClases_join
+            //             from AlumnoClases in AlumnoClases_join.DefaultIfEmpty()
+            //             where
+            //               AlumnoClases.AlumnoId == null &&
+            //               Alumnoes.CentroId == centroId &&
+            //               Alumnoes.FechaBaja == null
+            //             select Alumnoes);
+
+            foreach(Profesor profesor in profesores)
+            {
+                UserApp user = _ctx.Users.Find(profesor.UserId);
+
+                if (user != null)
+                {
+                    profesor.Email = user.Email;
+                }
+            }
+
 
             return profesores;
+
+        }
+
+        private Profesor cambiaEmail(Profesor profe, string Email)
+        {
+            profe.Email = Email;
+
+            return profe;
         }
 
         public IEnumerable<Profesor> GetAll()
@@ -72,6 +101,15 @@ namespace BabyBook.Api.Repositories
             _ctx.SaveChanges();
 
             return editProfesor;
+        }
+
+        public void DeleteProfesor(int profesorId)
+        {
+            Profesor removeProfesor = _ctx.Profesores.Find(profesorId);
+
+            _ctx.Profesores.Remove(removeProfesor);
+
+            _ctx.SaveChanges();
         }
     }
 }
