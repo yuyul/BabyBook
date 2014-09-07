@@ -460,6 +460,7 @@ app.factory('profesoresService', [
             });
         };
 
+<<<<<<< HEAD
         var _deleteProfesor = function(profesorId) {
             return $http.delete(serviceBase + 'api/profesores/deleteProfesor/' + profesorId).then(function(response) {
                 return response;
