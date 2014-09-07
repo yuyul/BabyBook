@@ -1,18 +1,23 @@
 ﻿<div class="row">
+    <div class="col-md-4">
+        <h2>{{ 'CENTROS' | translate }}</h2>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-2">
         &nbsp;
         <!--<p><a class="btn btn-info" href="#/centros/new" role="button">Nuevo Centro</a></p>-->
-        <button role="button" class="btn" ng-click="editCentro('new')" data-toggle="modal" href="#editModal">Nuevo</button>
+        <button role="button" class="btn" ng-click="editCentro('new')" data-toggle="modal" href="#editModal">{{ 'NUEVO' | translate}}</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Centro ID</th>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Fecha Alta</th>
-                    <th>Acciones</th>
+                    <th>{{ 'CENTRO_CAMPOS.ID' | translate}}</th>
+                    <th>{{ 'CENTRO_CAMPOS.NOMBRE' | translate}}</th>
+                    <th>{{ 'CENTRO_CAMPOS.DIRECCION' | translate}}</th>
+                    <th>{{ 'CENTRO_CAMPOS.FECHA_ALTA' | translate}}</th>
+                    <th>{{ 'ACCIONES' | translate}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,11 +35,8 @@
                         {{centro.fechaAlta | date:"dd/MM/yyyy"}}
                     </td>
                     <td>
-
-                        <!--<btn ng-click="seleccionaCentro(centro.id)">Selecciona</btn>-->
-                        <button role="button" class="btn" ng-click="editCentro(centro)" data-toggle="modal" href="#editModal"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <!--<button role="button" class="btn" ng-click="seleccionaCentro(centro.id)" data-toggle="modal" href="#editModal">Seleccionar</button>-->
-                        <button role="button" class="btn" ng-click="deleteCentro(centro.id)"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button role="button" class="btn" ng-click="editCentro(centro)" data-toggle="modal" href="#editModal">{{ 'EDITAR' | translate}}</button>
+                        <button role="button" class="btn" ng-click="deleteCentro(centro.id)">{{ 'ELIMINAR' | translate}}</button>
                     </td>
                 </tr>
             </tbody>

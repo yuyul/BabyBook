@@ -3,23 +3,24 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Clase</h2>
+            <h2 data-ng-show="isVerAlumnos">{{ 'VER_ALUMNOS' | translate }}</h2>
+            <h2 data-ng-show="isAsignacion">{{ 'ASIGNAR_ALUMNOS' | translate }}</h2>
         </div>
 
         <div class="modal-body">
-            <label>Curso</label>
+            <label>{{ 'CURSO' | translate }}</label>
                 <select class="form-control" ng-options="curso as curso.descripcion for curso in cursos" ng-model="curso"  ng-change="cargarAlumnos(curso.id)"></select>
             <div>
                 <form>
-                    <h2>Clase: {{clase.nombre}}</h2>
+                    <h2>{{ 'CLASE' | translate }}: {{clase.nombre}}</h2>
                     
-                    <label>Alumnos</label>
+                    <label>{{ 'ALUMNOS' | translate }}</label>
                     <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Primer Apellido</th>
-                            <th>Segundo Apellido</th>
+                            <th>{{ 'ALUMNO_CAMPOS.NOMBRE' | translate }}</th>
+                            <th>{{ 'ALUMNO_CAMPOS.PRIMER_APELLIDO' | translate }}</th>
+                            <th>{{ 'ALUMNO_CAMPOS.SEGUNDO_APELLIDO' | translate }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -35,8 +36,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-lg btn-info btn-block" ng-show="isAsignacion" ng-click="asignarAlumnos(clase.id, curso.id)">Asignar</button>
-                <button class="btn btn-lg btn-info btn-block" ng-show="isVerAlumnos" ng-click="eliminarAsignacion(clase.id, curso.id)">Eliminar</button>
+                <button class="btn btn-lg btn-info btn-block" ng-show="isAsignacion" ng-click="asignarAlumnos(clase.id, curso.id)">{{ 'ASIGNAR_ALUMNOS' | translate }}</button>
+                <button class="btn btn-lg btn-info btn-block" ng-show="isVerAlumnos" ng-click="eliminarAsignacion(clase.id, curso.id)">{{ 'ELIMINAR' | translate}}</button>
 
                 <div data-ng-hide="message == ''" class="alert alert-danger">
                     {{message}}

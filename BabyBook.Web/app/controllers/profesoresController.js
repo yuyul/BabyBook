@@ -97,6 +97,11 @@
 
     };
 
+    $scope.deleteProfesor = function(profesorId) {
+        profesoresService.deleteProfesor(profesorId);
+        cargarProfesores();
+    };
+
     var cargarProfesores = function () {
         setTimeout(function () {
             profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {

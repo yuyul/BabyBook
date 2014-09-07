@@ -5,6 +5,15 @@
 
     $scope.consulta = "";
 
+    $scope.familiar = {
+        id: 0,
+        nombre: '',
+        primerApellido: '',
+        segundoApellido: '',
+        email: '',
+        dni: ''
+    };
+
     $scope.alumno = {
         id: '',
         nombre: '',
@@ -67,8 +76,37 @@
 
     };
 
+    $scope.editFamiliar = function(familiar) {
+
+        if (familiar === 'new') {
+            $scope.newFamiliar = true;
+            $scope.familiar = {
+                id: 0,
+                nombre: '',
+                primerApellido: '',
+                segundoApellido: '',
+                email: '',
+                dni: ''
+            };
+        } else {
+            $scope.familiar = familiar;
+            $scope.newFamiliar = false;
+        }
+
+    };
+
     $scope.addFamiliar = function (familiar) {
-        alumnosService.addFamiliar($scope.alumno.id, familiar);
+        if ($scope.newFamiliar) {
+            alumnosService.addFamiliar($scope.alumno.id, familiar);
+        } else {
+            alumnosService.updateFamiliar(familiar.id, familiar);
+        }
+        cargarFamiliares();
+    };
+
+    $scope.deleteAsignacion = function(familiarId) {
+        alumnosService.deleteAsignacion(familiarId, $scope.alumno.id);
+        cargarFamiliares();
     };
 
     $scope.verFamiliares = function (alumno) {
@@ -77,4 +115,27 @@
             $scope.familiares = results.data;
         });
     };
+
+    $scope.deleteAlumno = function(alumnoId) {
+        alumnosService.deleteAlumno(alumnoId);
+        cargarAlumnos();
+    };
+
+    var cargarAlumnos = function() {
+        setTimeout(function() {
+            alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function(results) {
+                $scope.alumnos = results.data;
+            });
+        }, 3000);
+    }
+
+    var cargarFamiliares = function() {
+        
+        setTimeout(function () {
+            alumnosService.getFamiliaresByAlumno($scope.alumno.id).then(function (results) {
+                $scope.familiares = results.data;
+            });
+        }, 3000);
+
+    }
 }]);

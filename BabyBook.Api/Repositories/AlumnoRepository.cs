@@ -182,5 +182,17 @@ namespace BabyBook.Api.Repositories
 
             return query.ToList();
         }
+
+        public void DeleteAlumno(int alumnoId)
+        {
+            Alumno deleteAlumno = _ctx.Alumnos.Find(alumnoId);
+
+            if (deleteAlumno != null)
+            {
+                deleteAlumno.FechaBaja = DateTime.Today;
+
+                _ctx.SaveChanges();
+            }
+        }
     }
 }

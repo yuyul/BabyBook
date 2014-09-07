@@ -1,16 +1,16 @@
-﻿<h2>Agenda</h2>
+﻿<h2>{{ 'AGENDA' | translate }}</h2>
 
 
 <div class="row">
     <div class="col-md-2">
-        <button role="button" class="btn" ng-click="editControl('new')" data-toggle="modal" href="#editModal">Nuevo</button>
+        <button role="button" class="btn" ng-click="editControl('new')" data-toggle="modal" href="#editModal">{{ 'NUEVO' | translate }}</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
+                    <th>{{ 'FECHA' | translate}}</th>
+                    <th>{{ 'ACCIONES' | translate}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                         {{control.fecha | date: 'dd-MM-yyyy'}}
                     </td>
                     <td>
-                        <button role="button" class="btn" ng-click="editControl(control)" data-toggle="modal" href="#editModal">Edit</button>
+                        <button role="button" class="btn" ng-click="editControl(control)" data-toggle="modal" href="#editModal">{{ 'VER_AGENDA' | translate}}</button>
                     </td>
                 </tr>
             </tbody>

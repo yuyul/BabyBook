@@ -109,6 +109,7 @@
     <Content Include="app\controllers\signupController.min.js">
       <DependentUpon>signupController.js</DependentUpon>
     </Content>
+    <Content Include="app\controllers\usuarioController.js" />
     <Content Include="app\controllers\usuariosController.min.js">
       <DependentUpon>usuariosController.js</DependentUpon>
     </Content>
@@ -120,10 +121,13 @@
     </Content>
     <Content Include="app\views\asignaFamiliar.html" />
     <Content Include="app\views\familiar\alumnos.html" />
+    <Content Include="app\views\usuario.html" />
     <Content Include="app\views\verFamiliares.html" />
+    <Content Include="content\css\carousel.css" />
     <Content Include="content\css\ng-quick-date-default-theme.css" />
     <Content Include="content\css\ng-quick-date-plus-default-theme.css" />
     <Content Include="content\css\ng-quick-date.css" />
+    <Content Include="content\css\starter-template.css" />
     <Content Include="content\fonts\flaticon.css" />
     <Content Include="content\fonts\flaticon.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
@@ -188,6 +192,7 @@
     <Content Include="content\fonts\flaticon.eot" />
     <Content Include="content\fonts\flaticon.ttf" />
     <Content Include="content\fonts\flaticon.woff" />
+    <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -229,9 +234,7 @@
     <Content Include="app\views\centros.html" />
     <Content Include="app\views\clases.html" />
     <Content Include="app\views\cursos.html" />
-    <Content Include="app\views\data.html" />
     <Content Include="app\views\home.html" />
-    <Content Include="app\views\homey.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\newAlumno.html" />
     <Content Include="app\views\newCentro.html" />
@@ -256,6 +259,9 @@
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="content\fonts\glyphicons-halflings-white.png" />
     <Content Include="content\fonts\glyphicons-halflings.png" />
+    <Content Include="content\images\1278234902_1.jpg" />
+    <Content Include="content\images\guarderias-avisan-junta-1--644x362.jpg" />
+    <Content Include="content\images\guarderias5.jpg" />
     <Content Include="content\images\muñeco.jpg" />
     <Content Include="Index.html" />
     <Content Include="scripts\angular-file-upload-html5-shim.js" />

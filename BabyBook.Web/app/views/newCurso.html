@@ -3,33 +3,32 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Control diario</h2>
-            <h3>Fecha: {{agenda.fecha | date : 'dd-MM-yyyy'}}</h3>
+            <h2 data-ng-show="newCurso">{{ 'NUEVO' | translate}}</h2>
+            <h2 data-ng-hide="newCurso">{{ 'EDITAR' | translate }}</h2>
+            <h2>{{ 'CURSO' | translate}}</h2>
         </div>
         <div class="modal-body">
             <form>
-                <h2>Nuevo Curso</h2>
-                <label>Descripción</label>
-                <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion"/>
-                <label>Fecha Inicio</label>
+                <label>{{ 'CURSO_CAMPOS.DESCRIPCION' | translate}}</label>
+                <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion" />
+                <label>{{ 'CURSO_CAMPOS.FECHA_INICIO' | translate}}</label>
                 <br />
-                <!--<input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="curso.fechaInicio"/>-->
-                <!--<input type="text" class="form-control" pick-a-date="curso.fechaInicio" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />-->
                 <quick-datepicker ng-model="curso.fechaInicio" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
                 <br />
-                <label>Fecha Fin</label>
+                <label>{{ 'CURSO_CAMPOS.FECHA_FIN' | translate}}</label>
                 <br />
-                <!--<input type="text" class="form-control" placeholder="31/12/2000" data-ng-model="curso.fechaFin"/>-->
-                <!--<input type="text" class="form-control" pick-a-date="curso.fechaFin" pick-a-date-options="{ format: 'dd/mm/yyyy'}" />-->
                 <quick-datepicker ng-model="curso.fechaFin" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
                 <br />
-                Curso activo: <input type="checkbox" ng-model="curso.activo" />
+                {{ 'CURSO_CAMPOS.ACTIVO' | translate }}: <input type="checkbox" ng-model="curso.activo" />
             </form>
 
         </div>
         <div class="modal-footer">
-            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createCurso()">Guardar</button>
+            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createCurso()">{{ 'GUARDAR' | translate }}</button>
             <div data-ng-hide="message == ''" class="alert alert-danger">
                 {{message}}
+            </div>
+            <div data-ng-hide="messageok == ''" class="alert alert-success">
+                {{messageok}}
             </div>
         </div>

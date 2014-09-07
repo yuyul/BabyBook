@@ -25,6 +25,7 @@
     $scope.messageok = '';
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
+    $scope.newClase = true;
 
     if ($routeParams.id === undefined) {
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function(results) {
@@ -46,13 +47,14 @@
         } else {
             updateClase();
         }
+        cargarClases();
     };
 
     var addClase = function () {
         $scope.clase.CentroId = $rootScope.centroSeleccionado;
 
         clasesService.createClase($scope.clase).then(function (response) {
-            $location.path('/home');
+            $scope.messageok = "Clase guardada corretamente";
         }, function (err) {
             $scope.message = err.error_description;
         });
@@ -60,7 +62,7 @@
 
     var updateClase = function () {
         clasesService.updateClase($scope.clase).then(function (response) {
-            $location('/home');
+            $scope.messageok = "Clase guardada correctamente";
         }, function (error) {
             $scope.message = error.error_description;
         });
@@ -184,4 +186,14 @@
         $scope.message = '';
         $scope.messageok = '';
     }
+
+    var cargarClases = function () {
+        setTimeout(function () {
+            clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.clases = results.data;
+            }, function (error) {
+                console.log('error');
+            });
+        }, 1000);
+    };
 }]);

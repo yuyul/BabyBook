@@ -25,5 +25,6 @@
     <file>/app/controllers/profesoresController.js</file>
     <file>/app/controllers/signupController.js</file>
     <file>/app/controllers/usuariosController.js</file>
+    <file>/app/controllers/usuarioController.js</file>
   </files>
 </bundle>

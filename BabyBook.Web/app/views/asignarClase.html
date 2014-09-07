@@ -4,12 +4,12 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Asignar Clase</h2>
+            <h2>{{ 'ASIGNAR_CLASE' | translate}}</h2>
         </div>
         <div class="modal-body">
             <form>
-                <h2>Profesor: {{profesor.nombre}}</h2>
-                <label>Clases</label>
+                <h2>{{ 'PROFESOR' | translate}}: {{profesor.nombre}}</h2>
+                <label>{{ 'CLASES' | translate}}</label>
                 <table>
                     <tr data-ng-repeat="clase in clases">
                         <td>
@@ -21,7 +21,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="asignarClase(profesor)">Guardar</button>
+            <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="asignarClase(profesor)">{{ 'GUARDAR' | translate}}</button>
             <div data-ng-hide="message == ''" class="alert alert-danger">
                 {{message}}
             </div>

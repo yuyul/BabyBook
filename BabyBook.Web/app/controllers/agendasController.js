@@ -11,9 +11,11 @@
     $scope.editControl = function (control)
     {
         if (control === 'new') {
+
+            var fecha = new Date();
             $scope.newControl = true;
             $scope.control = {
-                fecha: '',
+                fecha: fecha,
                 alumnoId: $routeParams.id,
                 observacionesCasa: '',
                 observacionesCentro: '',

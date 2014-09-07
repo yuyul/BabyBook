@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201408201304349_renombradotablas.Designer.cs">
       <DependentUpon>201408201304349_renombradotablas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409052103281_emailmapeado.cs" />
+    <Compile Include="Migrations\201409052103281_emailmapeado.Designer.cs">
+      <DependentUpon>201409052103281_emailmapeado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\AlumnoFamiliar.cs" />
@@ -220,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -275,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408201304349_renombradotablas.resx">
       <DependentUpon>201408201304349_renombradotablas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409052103281_emailmapeado.resx">
+      <DependentUpon>201409052103281_emailmapeado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

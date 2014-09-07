@@ -51,8 +51,11 @@ namespace BabyBook.Api.Controllers
         }
 
         // DELETE api/profesores/5
+        [ActionName("deleteProfesor")]
+        [HttpDelete]
         public void Delete(int id)
         {
+            _repository.DeleteProfesor(id);
         }
     }
 }

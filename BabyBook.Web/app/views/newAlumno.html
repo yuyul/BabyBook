@@ -3,32 +3,36 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Alumno</h2>
+            <h2>{{ 'ALUMNO' | translate }}</h2>
         </div>
 
         
-<form>
-    <div class="modal-body">
-        <label>Nombre</label>
-        <input type="text" class="form-control" placeholder="NombreAlumno" data-ng-model="alumno.nombre"/>
-        <label>Primer Apellido</label>
-        <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="alumno.primerApellido"/>
-        <label>Segundo Apellido</label>  
-        <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido"/>
-        <label>Fecha Nacimiento</label>
-        <input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="alumno.fechaNacimiento" />
-        <img id="myPicture" src="http://localhost:61073/Public/alumnos/{{alumno.foto}}" />
+        <form>
+            <div class="modal-body">
+                <label>{{ 'ALUMNO_CAMPOS.NOMBRE' | translate }}</label>
+                <input type="text" class="form-control" placeholder="NombreAlumno" data-ng-model="alumno.nombre" />
+                <label>{{ 'ALUMNO_CAMPOS.PRIMER_APELLIDO' | translate }}</label>
+                <input type="text" class="form-control" placeholder="PrimerApellido" data-ng-model="alumno.primerApellido" />
+                <label>{{ 'ALUMNO_CAMPOS.SEGUNDO_APELLIDO' | translate }}</label>
+                <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido" />
+                <label>{{ 'ALUMNO_CAMPOS.FECHA_NACIMIENTO' | translate }}</label>
+                <!--<input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="alumno.fechaNacimiento" />-->
+                <quick-datepicker ng-model="alumno.fechaNacimiento" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <br />
+                <label>{{ 'FOTO' | translate}}</label>
+                <img id="myPicture" src="http://localhost:61073/Public/alumnos/{{alumno.foto}}" />
 
-          <input type="file" id="myFile" ng-file-select="onFileSelect($files)">
+                <input type="file" id="myFile" ng-file-select="onFileSelect($files)">
 
-    
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save(alumno)">{{ 'GUARADR' | translate }}</button>
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </div>
+        </form>
     </div>
-     
-     <div class="modal-footer">
-        <!--<button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="createAlumno()">Guardar</button>-->
-        <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save(alumno)">Guardar</button>
-        <div data-ng-hide="message == ''" class="alert alert-danger">
-            {{message}}
-        </div>
-     </div>
-</form>
+</div>

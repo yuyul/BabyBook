@@ -14,7 +14,6 @@ namespace BabyBook.Api.Models
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         
-        [NotMapped]
         public string Email { get; set; }
 
         public string DNI { get; set; }

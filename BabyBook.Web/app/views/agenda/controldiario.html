@@ -3,111 +3,105 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Control diario</h2>
-            <!--<div ng-show="newControl"><h3>Fecha </h3><input type="text" pick-a-date="control.fecha" pick-a-date-options="{ format: 'dd/mm/yyyy'}" /></div>-->
-            <!--<div ng-show="newControl">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>-->
+            <h2>{{ 'CONTROL_DIARIO' | translate}}</h2>
             <div ng-show="newControl">
                 <quick-datepicker ng-model="control.fecha" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
             </div>
-            <div ng-hide="newControl"><h3>Fecha: {{control.fecha | date : 'dd-MM-yyyy'}}</h3></div>
+            <div ng-hide="newControl"><h3>{{ 'FECHA' | translate }}: {{control.fecha | date : 'dd/MM/yyyy'}}</h3></div>
         </div>
 
         <form>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Ha pasado el día </label>
+                        <label>{{ 'HA_PASADO_DIA' | translate}} </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="1" />Mal
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="1" />{{ 'ESTADO.MAL' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="2" />Regular
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="2" />{{ 'ESTADO.REGULAR' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="3" />Bien
+                        <input type="radio" name="estadodia" ng-model="control.estadoDia" ng-value="3" />{{ 'ESTADO.BIEN' | translate}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Ha comido</label>
+                        <label>{{ 'HA_COMIDO' | translate}}</label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="1" />Mal
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="1" />{{ 'ESTADO.MAL' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="2" />Regular
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="2" />{{ 'ESTADO.REGULAR' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="comida" ng-model="control.comida" ng-value="3" />Bien
+                        <input type="radio" name="comida" ng-model="control.comida" ng-value="3" />{{ 'ESTADO.BIEN' | translate}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Ha dormido la siesta </label>
+                        <label>{{ 'HA_DORMIDO' | translate }} </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="1" />Mal
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="1" />{{ 'ESTADO.MAL' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="2" />Regular
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="2" />{{ 'ESTADO.REGULAR' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="3" />Bien
+                        <input type="radio" name="siesta" ng-model="control.siesta" ng-value="3" />{{ 'ESTADO.BIEN' | translate}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Ha merendado </label>
+                        <label>{{ 'HA_MERENDADO' | translate}} </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="1" />Mal
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="1" />{{ 'ESTADO.MAL' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="2" />Regular
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="2" />{{ 'ESTADO.REGULAR' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="3" />Bien
+                        <input type="radio" name="merienda" ng-model="control.merienda" ng-value="3" />{{ 'ESTADO.BIEN' | translate}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-3">
-                        <label>ha hecho caca </label>
+                        <label>{{ 'DEPOSICIONES' | translate}} </label>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="1" />Mal
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="1" />{{ 'ESTADO.MAL' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="2" />Regular
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="2" />{{ 'ESTADO.REGULAR' | translate}}
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="3" />Bien
+                        <input type="radio" name="deposicion" ng-model="control.deposicion" ng-value="3" />{{ 'ESTADO.BIEN' | translate}}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12"
+                    <div class="col-md-12">
                         <label>
-                            Observaciones de la escuela
+                            {{ 'OBSERVACIONES_ESCUELA' | translate}}
                         </label>
                         <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesCentro" textarea-required ng-model="control.observacionesCentro" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12"
+                    <div class="col-md-12">
                         <label>
-                            Observaciones de casa
-                            <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesCasa" textarea-required ng-model="control.observacionesCasa" enable-bootstrap-title="true"></wysiwyg>
+                         {{ 'OBSERVACIONES_CASA' | translate}}
+                        </label>
+                        <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="observacionesCasa" textarea-required ng-model="control.observacionesCasa" enable-bootstrap-title="true"></wysiwyg>
                     </div>
                 </div>
             </div>

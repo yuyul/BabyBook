@@ -1,15 +1,20 @@
 ﻿<div class="row">
+    <div class="col-md-12">
+        <h2>{{ 'CLASES' | translate}}</h2>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-2">
         &nbsp;
-        <p><a class="btn btn-info" href="#/clases/new" role="button">Nueva Clase</a></p>
+        <button role="button" class="btn" ng-click="editClase('new')" data-toggle="modal" href="#editModal">{{ 'NUEVO' | translate}}</button>
     </div>
     <div class="col-md-8">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
+                    <th>{{ 'CLASE_CAMPOS.ID' | translate}}</th>
+                    <th>{{ 'CLASE_CAMPOS.NOMBRE' | translate}}</th>
+                    <th>{{ 'ACCIONES' | translate}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,13 +26,9 @@
                         {{clase.nombre}}
                     </td>
                     <td>
-                        <!--<btn ng-click="asignarAlumnos(clase.id)">Asignar Alumnos</btn>-->
-                        <!--<btn ng-click="mostrarAlumnos(clase)">Asignar Alumnos</btn>-->
-                        <!--<btn ng-click="verAlumnos(clase)">Ver</btn>-->
-                        <!--<a href="/#clases/edit/{{clase.id}}">Editar</a>-->
-                        <button role="button" class="btn" ng-click="editClase(clase)" data-toggle="modal" href="#editModal">Edit</button>
-                        <button role="button" class="btn" ng-click="verAlumnos(clase)" data-toggle="modal" href="#asignaModal">Ver Alumnos</button>
-                        <button role="button" class="btn" ng-click="mostrarAlumnos(clase)" data-toggle="modal" href="#asignaModal">Asignar Alumnos</button>
+                        <button role="button" class="btn" ng-click="editClase(clase)" data-toggle="modal" href="#editModal">{{ 'EDITAR' | translate }}</button>
+                        <button role="button" class="btn" ng-click="verAlumnos(clase)" data-toggle="modal" href="#asignaModal">{{ 'VER_ALUMNOS' | translate}}</button>
+                        <button role="button" class="btn" ng-click="mostrarAlumnos(clase)" data-toggle="modal" href="#asignaModal">{{ 'ASIGNAR_ALUMNOS' | translate }}</button>
                     </td>
                 </tr>
             </tbody>

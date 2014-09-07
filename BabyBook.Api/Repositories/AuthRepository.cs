@@ -89,6 +89,16 @@ namespace BabyBook.Api.Repositories
             return await _userManager.CreateIdentityAsync(user, CookieAuthenticationDefaults.AuthenticationType);
         }
 
+        public void DeleteUser(UserApp user)
+        {
+            _userManager.Delete(user);
+        }
+
+        public UserApp GetUserById(string userId)
+        {
+            return _userManager.FindById(userId);
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();

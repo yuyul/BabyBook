@@ -145,54 +145,14 @@ namespace BabyBook.Api.Controllers
             
         }
 
-        // PUT api/alumnos/5
-        /*public void Put(int id, [FromBody]Alumno value)
-        {
-            _repository.UpdateAlumno(id, value);
-        }*/
-
-        /*public async Task<HttpResponseMessage> UpdateAlumno(int id)
-        {
-            if (!Request.Content.IsMimeMultipartContent())
-            {
-                this.Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
-            }
-
-            var provider = GetMultipartProvider();
-            var result = await Request.Content.ReadAsMultipartAsync(provider);
-
-            var originalFileName = "";
-
-            if (result.FileData.Count > 0)
-            {
-                originalFileName = GetDeserializedFileName(result.FileData.First());
-
-                var uploadFileInfo = new FileInfo(result.FileData.First().LocalFileName);
-
-                if (File.Exists(uploadFileInfo.DirectoryName + '\\' + originalFileName))
-                {
-                    File.Delete(uploadFileInfo.DirectoryName + '\\' + originalFileName);
-                }
-
-                File.Move(uploadFileInfo.FullName, uploadFileInfo.DirectoryName + '\\' + originalFileName);
-
-            }
-
-
-            Alumno fileUploadObj = (Alumno)GetFormData<Alumno>(result);
-
-            fileUploadObj.FechaAlta = DateTime.Today;
-            if (originalFileName != "") fileUploadObj.Foto = originalFileName;
-
-            _repository.UpdateAlumno(id, fileUploadObj);
-
-            var returnData = "ReturnTest";
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
-        }*/
+       
 
         // DELETE api/alumnos/5
+        [ActionName("deleteAlumno")]
+        [HttpDelete]
         public void Delete(int id)
         {
+            _repository.DeleteAlumno(id);
         }
 
         // You could extract these two private methods to a separate utility class since

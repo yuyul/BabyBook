@@ -32,9 +32,11 @@ app.controller('agendasController', ['$scope', '$routeParams', 'agendasService',
     $scope.editControl = function (control)
     {
         if (control === 'new') {
+
+            var fecha = new Date();
             $scope.newControl = true;
             $scope.control = {
-                fecha: '',
+                fecha: fecha,
                 alumnoId: $routeParams.id,
                 observacionesCasa: '',
                 observacionesCentro: '',
@@ -87,6 +89,15 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
     $scope.familiares = [];
 
     $scope.consulta = "";
+
+    $scope.familiar = {
+        id: 0,
+        nombre: '',
+        primerApellido: '',
+        segundoApellido: '',
+        email: '',
+        dni: ''
+    };
 
     $scope.alumno = {
         id: '',
@@ -150,8 +161,37 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
 
     };
 
+    $scope.editFamiliar = function(familiar) {
+
+        if (familiar === 'new') {
+            $scope.newFamiliar = true;
+            $scope.familiar = {
+                id: 0,
+                nombre: '',
+                primerApellido: '',
+                segundoApellido: '',
+                email: '',
+                dni: ''
+            };
+        } else {
+            $scope.familiar = familiar;
+            $scope.newFamiliar = false;
+        }
+
+    };
+
     $scope.addFamiliar = function (familiar) {
-        alumnosService.addFamiliar($scope.alumno.id, familiar);
+        if ($scope.newFamiliar) {
+            alumnosService.addFamiliar($scope.alumno.id, familiar);
+        } else {
+            alumnosService.updateFamiliar(familiar.id, familiar);
+        }
+        cargarFamiliares();
+    };
+
+    $scope.deleteAsignacion = function(familiarId) {
+        alumnosService.deleteAsignacion(familiarId, $scope.alumno.id);
+        cargarFamiliares();
     };
 
     $scope.verFamiliares = function (alumno) {
@@ -160,6 +200,29 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
             $scope.familiares = results.data;
         });
     };
+
+    $scope.deleteAlumno = function(alumnoId) {
+        alumnosService.deleteAlumno(alumnoId);
+        cargarAlumnos();
+    };
+
+    var cargarAlumnos = function() {
+        setTimeout(function() {
+            alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function(results) {
+                $scope.alumnos = results.data;
+            });
+        }, 3000);
+    }
+
+    var cargarFamiliares = function() {
+        
+        setTimeout(function () {
+            alumnosService.getFamiliaresByAlumno($scope.alumno.id).then(function (results) {
+                $scope.familiares = results.data;
+            });
+        }, 3000);
+
+    }
 }]);
 ///#source 1 1 /app/controllers/centrosController.js
 app.controller('centrosController', [
@@ -271,6 +334,7 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
     $scope.messageok = '';
     $scope.isAsignacion = false;
     $scope.isVerAlumnos = false;
+    $scope.newClase = true;
 
     if ($routeParams.id === undefined) {
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function(results) {
@@ -292,13 +356,14 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
         } else {
             updateClase();
         }
+        cargarClases();
     };
 
     var addClase = function () {
         $scope.clase.CentroId = $rootScope.centroSeleccionado;
 
         clasesService.createClase($scope.clase).then(function (response) {
-            $location.path('/home');
+            $scope.messageok = "Clase guardada corretamente";
         }, function (err) {
             $scope.message = err.error_description;
         });
@@ -306,7 +371,7 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
 
     var updateClase = function () {
         clasesService.updateClase($scope.clase).then(function (response) {
-            $location('/home');
+            $scope.messageok = "Clase guardada correctamente";
         }, function (error) {
             $scope.message = error.error_description;
         });
@@ -430,6 +495,16 @@ app.controller('clasesController', ['$scope', '$location', 'clasesService', '$ro
         $scope.message = '';
         $scope.messageok = '';
     }
+
+    var cargarClases = function () {
+        setTimeout(function () {
+            clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.clases = results.data;
+            }, function (error) {
+                console.log('error');
+            });
+        }, 1000);
+    };
 }]);
 ///#source 1 1 /app/controllers/cursosController.js
 app.controller('cursosController', ['$scope', '$location', 'cursosService', '$rootScope', '$routeParams', function ($scope, $location, cursosService, $rootScope, $routeParams) {
@@ -447,6 +522,8 @@ app.controller('cursosController', ['$scope', '$location', 'cursosService', '$ro
     };
 
     $scope.message = '';
+    $scope.messageok = '';
+    $scope.newCurso = true;
 
     if ($routeParams.id === undefined) {
         cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function(results) {
@@ -468,21 +545,23 @@ app.controller('cursosController', ['$scope', '$location', 'cursosService', '$ro
             $scope.curso.centroId = $rootScope.centroSeleccionado;
 
             cursosService.createCurso($scope.curso).then(function(response) {
-                
+                $scope.messageok = "Curso guardado correctamente";
             }, function(err) {
                 $scope.message = err.error_description;
             });
         } else {
             cursosService.updateCurso($scope.curso).then(function(response) {
-                
+                $scope.messageok = "Curso actualizado correctamente";
             }, function(err) {
                 $scope.message = err.error_description;
             });
             
         }
+        cargarCursos();
     };
 
     $scope.editCurso = function (curso) {
+        limpiarMensajes();
         if (curso === 'new') {
             $scope.newCurso = true;
             $scope.curso = {
@@ -498,7 +577,20 @@ app.controller('cursosController', ['$scope', '$location', 'cursosService', '$ro
         }
     };
 
+    var limpiarMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
+    };
 
+    var cargarCursos = function () {
+        setTimeout(function () {
+            cursosService.getCursosByCentro($rootScope.centroSeleccionado).then(function (results) {
+                $scope.cursos = results.data;
+            }, function (error) {
+                console.log('error');
+            });
+        }, 1000);
+    };
 }]);
 ///#source 1 1 /app/controllers/dataController.js
 app.controller('dataController', function ($scope) {
@@ -556,6 +648,11 @@ app.controller('indexController', ['$translate', '$scope', '$location', 'authSer
         authService.logOut();
         $rootScope.centroSeleccionado = "";
         $location.path('/home');
+    };
+
+    $scope.cambiarCentro = function() {
+        $rootScope.centroSeleccionado = "";
+        $location.path("/");
     };
 
     $scope.changeLanguage = function (langkey) {
@@ -691,6 +788,11 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
 
     };
 
+    $scope.deleteProfesor = function(profesorId) {
+        profesoresService.deleteProfesor(profesorId);
+        cargarProfesores();
+    };
+
     var cargarProfesores = function () {
         setTimeout(function () {
             profesoresService.getProfesoresByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -759,3 +861,7 @@ app.controller('usuariosController', [
 
     }
 ]);
+///#source 1 1 /app/controllers/usuarioController.js
+app.controller("usuarioController", ['$scope', function($scope) {
+    $scope.message = '';
+}]);

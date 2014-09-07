@@ -8,6 +8,11 @@
         $location.path('/home');
     };
 
+    $scope.cambiarCentro = function() {
+        $rootScope.centroSeleccionado = "";
+        $location.path("/");
+    };
+
     $scope.changeLanguage = function (langkey) {
         $translate.use(langkey);
     };

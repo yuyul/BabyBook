@@ -68,10 +68,30 @@ namespace BabyBook.Api.Repositories
             editProfesor.PrimerApellido = profesor.PrimerApellido;
             editProfesor.SegundoApellido = profesor.SegundoApellido;
             editProfesor.ClaseId = profesor.ClaseId;
+            editProfesor.Email = profesor.Email;
 
             _ctx.SaveChanges();
 
             return editProfesor;
+        }
+
+        public void DeleteProfesor(int id)
+        {
+            Profesor deleteProfesor = _ctx.Profesores.Find(id);
+
+            if (deleteProfesor != null)
+            {
+                UserApp user = _userRepository.GetUserById(deleteProfesor.UserId);
+
+                if (user != null)
+                {
+                    _userRepository.DeleteUser(user);
+                }
+
+                _ctx.Profesores.Remove(deleteProfesor);
+                _ctx.SaveChanges();
+            }
+
         }
     }
 }

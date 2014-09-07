@@ -23,9 +23,16 @@
             });
         };
 
+        var _deleteProfesor = function(profesorId) {
+            return $http.delete(serviceBase + 'api/profesores/deleteProfesor/' + profesorId).then(function(response) {
+                return response;
+            });
+        };
+
         profesoresServiceFactory.getProfesoresByCentro = _getProfesoresByCentro;
         profesoresServiceFactory.createProfesor = _createProfesor;
         profesoresServiceFactory.updateProfesor = _updateProfesor;
+        profesoresServiceFactory.deleteProfesor = _deleteProfesor;
 
         return profesoresServiceFactory;
     }

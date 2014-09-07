@@ -22,7 +22,6 @@ namespace BabyBook.Api.Models
         public int? ClaseId { get; set; }
         public virtual Clase Clase { get; set; }
 
-        [NotMapped]
         public string Email { get; set; }
 
         public string UserId { get; set; }

@@ -28,9 +28,23 @@ namespace BabyBook.Api.Controllers
 
         [ActionName("nuevoFamiliar")]
         [HttpPost]
-        public Familiar nuevoFamiliar(int alumnoId, [FromBody]Familiar familiar)
+        public Familiar NuevoFamiliar(int alumnoId, [FromBody]Familiar familiar)
         {
             return _repository.AddFamiliar(alumnoId, familiar);
+        }
+
+        [ActionName("updateFamiliar")]
+        [HttpPut]
+        public Familiar UpdateFamiliar(int familiarId, [FromBody] Familiar familiar)
+        {
+            return _repository.UpdateFamilar(familiarId, familiar);
+        }
+
+        [ActionName("deleteAsignacion")]
+        [HttpDelete]
+        public void DeleteAsignacion(int familiarId, int alumnoId)
+        {
+            _repository.DeleteAsignacion(familiarId, alumnoId);
         }
     }
 }

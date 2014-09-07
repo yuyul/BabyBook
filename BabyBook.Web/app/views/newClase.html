@@ -3,18 +3,27 @@
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-            <h2>Clase</h2>
+            <h2 data-ng-show="newClase">{{ 'NUEVO' | translate }}</h2>
+            <h2 data-ng-hide="newClase">{{ 'EDITAR' | translate }}</h2>
+            <h2>{{ 'CLASE' | translate}}</h2>
         </div>
 
-<form>
-    <div class="modal-body">
-        <label>Nombre</label>
-        <input type="text" class="form-control" placeholder="NombreClase" data-ng-model="clase.nombre" />
+        <form>
+            <div class="modal-body">
+                <label>{{ 'CLASE_CAMPOS.NOMBRE' | translate }}</label>
+                <input type="text" class="form-control" placeholder="NombreClase" data-ng-model="clase.nombre" />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">{{ 'GUARDAR' | translate }}</button>
+                <div data-ng-hide="messageok == ''" class="alert alert-success">
+                    {{messageok}}
+                </div>
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="save()">Guardar</button>
-        <div data-ng-hide="message == ''" class="alert alert-danger">
-            {{message}}
-        </div>
-    </div>
-</form>
+</div>
+
+

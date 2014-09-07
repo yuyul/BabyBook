@@ -50,11 +50,11 @@
         });
     };
 
-   /* var _updateAlumno = function (alumno) {
-        return $http.put(serviceBase + 'api/alumnos/' + alumno.id, alumno).then(function (response) {
+    var _deleteAlumno = function(alumnoId) {
+        return $http.delete(serviceBase + 'api/alumnos/deleteAlumno/' + alumnoId).then(function(response) {
             return response;
         });
-    };*/
+    };
 
     var _getAlumnosSinAsignar = function (centroId) {
         return $http.get(serviceBase + 'api/alumnos/getalumnossinasignar/' + centroId).then(function (results) {
@@ -92,6 +92,18 @@
         });
     };
 
+    var _updateFamiliar = function(familiarId, familiar) {
+        return $http.put(serviceBase + 'api/familiares/updateFamiliar?familiarId=' + familiarId, familiar).then(function(response) {
+            return response;
+        });
+    };
+
+    var _deleteAsignacion = function(familiarId, alumnoId) {
+        return $http.delete(serviceBase + 'api/familiares/deleteAsignacion?familiarId=' + familiarId + '&alumnoId=' + alumnoId).then(function(response) {
+            return response;
+        });
+    };
+
     var _getfamiliaresbyalumno = function (alumnoId) {
         return $http.get(serviceBase + 'api/familiares/getfamiliaresbyalumno/' + alumnoId).then(function (results) {
             return results;
@@ -114,8 +126,12 @@
     alumnosServiceFactory.uploadAlumno = _uploadAlumno;
     alumnosServiceFactory.getAlumnosByClaseCurso = _getAlumnosByClaseCurso;
     alumnosServiceFactory.getAlumnosSinAsignarByCentroCurso = _getAlumnosSinAsignarByCentroCurso;
+    alumnosServiceFactory.deleteAlumno = _deleteAlumno;
 
     alumnosServiceFactory.addFamiliar = _addFamiliar;
+    alumnosServiceFactory.updateFamiliar = _updateFamiliar;
+    alumnosServiceFactory.deleteAsignacion = _deleteAsignacion;
+
     alumnosServiceFactory.getFamiliaresByAlumno = _getfamiliaresbyalumno;
     alumnosServiceFactory.getAlumnosByFamiliar = _getAlumnosByFamiliar;
 

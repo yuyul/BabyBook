@@ -22,7 +22,7 @@ namespace BabyBook.Api.Repositories
         {
             bool isNewFamiliar = true;
             int idFamiliar = 0;
-            Familiar tFamiliar = _ctx.Familiares.Where(f => f.DNI == familiar.DNI).First();
+            Familiar tFamiliar = _ctx.Familiares.Where(f => f.DNI == familiar.DNI).FirstOrDefault();
 
             UserModel user = new UserModel();
 
@@ -83,6 +83,32 @@ namespace BabyBook.Api.Repositories
                 );
 
             return query.ToList();
+        }
+
+        public Familiar UpdateFamilar(int id, Familiar familiar)
+        {
+            Familiar updateFamiliar = _ctx.Familiares.Find(id);
+
+            updateFamiliar.Nombre = familiar.Nombre;
+            updateFamiliar.PrimerApellido = familiar.PrimerApellido;
+            updateFamiliar.SegundoApellido = familiar.SegundoApellido;
+            updateFamiliar.DNI = familiar.DNI;
+            updateFamiliar.Email = familiar.Email;
+
+            _ctx.SaveChanges();
+
+            return updateFamiliar;
+        }
+
+        public void DeleteAsignacion(int familiarId, int alumnoId)
+        {
+            AlumnoFamiliar asignacion =_ctx.AlumnosFamiliares.Where(a => a.AlumnoId == alumnoId && a.FamiliarId == familiarId).FirstOrDefault();
+
+            if (asignacion != null)
+            {
+                _ctx.AlumnosFamiliares.Remove(asignacion);
+                _ctx.SaveChanges();
+            }
         }
 
     }
