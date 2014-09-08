@@ -38,7 +38,7 @@ namespace BabyBook.Api.Models
                 var result = UserManager.AddToRole(user.Id, Name);
             }
 
-            int contador = 0;
+            /*int contador = 0;
 
             for (contador = 1; contador < 10; contador++)
             {
@@ -67,7 +67,7 @@ namespace BabyBook.Api.Models
                 context.Alumnos.Add(new Alumno() { Nombre = "Alumno" + centro.Id, Centro = centro, FechaAlta = DateTime.Today });
             }
 
-            context.SaveChanges();
+            context.SaveChanges();*/
 
             base.Seed(context);
         }
