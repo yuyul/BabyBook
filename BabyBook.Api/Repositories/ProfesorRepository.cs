@@ -40,7 +40,7 @@ namespace BabyBook.Api.Repositories
         {
             UserModel user = new UserModel();
 
-            user.UserName = profesor.Nombre;
+            user.UserName = profesor.Email;
             user.Password = profesor.Nombre + "123";
             user.Email = profesor.Email;
 

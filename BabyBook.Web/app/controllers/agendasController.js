@@ -49,6 +49,10 @@
         }
 
         if (save) {
+            if ($scope.newControl) {
+                control.fecha = (control.fecha.getMonth() + 1) + '/' + control.fecha.getDate() + '/' + control.fecha.getFullYear();
+            }
+
             agendasService.saveControl(control);
 
             setTimeout(function () {

@@ -46,7 +46,7 @@
         };
 
         $scope.editCentro = function (centro) {
-
+            limpiaMensajes();
             if (centro === 'new') {
                 $scope.newCentro = true;
                 $scope.centro = {
@@ -77,5 +77,10 @@
                 });
             }, 1000);
         };
+
+        var limpiaMensajes = function() {
+            $scope.message = '';
+            $scope.messageok = '';
+        }
     }
 ]);

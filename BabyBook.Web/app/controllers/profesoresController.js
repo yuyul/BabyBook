@@ -37,8 +37,7 @@
     }
 
     $scope.editProfesor = function (profesor) {
-        $scope.message = '';
-        $scope.messageok = '';
+        limpiaMensajes();
         if (profesor === 'new') {
             $scope.newProfesor = true;
             $scope.profesor = {
@@ -75,6 +74,7 @@
     };
 
     $scope.mostrarClases = function (profesor) {
+        limpiaMensajes();
         $scope.profesor = profesor;
         $scope.claseSeleccionada = profesor.claseId;
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -117,5 +117,10 @@
             cargarProfesores();
         });
     };
+
+    var limpiaMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
+    }
 
 }]);

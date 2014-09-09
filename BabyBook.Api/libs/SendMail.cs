@@ -37,10 +37,7 @@ namespace BabyBook.Api.libs
             }
             catch (System.Net.Mail.SmtpException ex)
             {
-
                 Console.WriteLine(ex.Message);
-                Console.ReadLine();
-
             }
 
             return true;

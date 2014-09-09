@@ -124,12 +124,14 @@
     <Content Include="app\views\usuario.html" />
     <Content Include="app\views\verFamiliares.html" />
     <Content Include="content\css\carousel.css" />
+    <Content Include="content\css\font-awesome.min.css" />
     <Content Include="content\css\ng-quick-date-default-theme.css" />
     <Content Include="content\css\ng-quick-date-plus-default-theme.css" />
     <Content Include="content\css\ng-quick-date.css" />
     <Content Include="content\css\starter-template.css" />
     <Content Include="content\fonts\flaticon.css" />
     <Content Include="content\fonts\flaticon.svg" />
+    <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
@@ -192,6 +194,10 @@
     <Content Include="content\fonts\flaticon.eot" />
     <Content Include="content\fonts\flaticon.ttf" />
     <Content Include="content\fonts\flaticon.woff" />
+    <Content Include="content\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -279,6 +285,7 @@
     <Content Include="scripts\bootstrap-colorpicker-module.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-2.0.3.min.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\ng-quick-date.js" />

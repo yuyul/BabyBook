@@ -13,11 +13,11 @@
                 <input type="text" class="form-control" placeholder="Descripción" data-ng-model="curso.descripcion" />
                 <label>{{ 'CURSO_CAMPOS.FECHA_INICIO' | translate}}</label>
                 <br />
-                <quick-datepicker ng-model="curso.fechaInicio" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <quick-datepicker ng-model="curso.fechaInicio" disable-timepicker='true'></quick-datepicker>
                 <br />
                 <label>{{ 'CURSO_CAMPOS.FECHA_FIN' | translate}}</label>
                 <br />
-                <quick-datepicker ng-model="curso.fechaFin" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <quick-datepicker ng-model="curso.fechaFin" disable-timepicker='true'></quick-datepicker>
                 <br />
                 {{ 'CURSO_CAMPOS.ACTIVO' | translate }}: <input type="checkbox" ng-model="curso.activo" />
             </form>

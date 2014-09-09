@@ -63,7 +63,7 @@ app.factory('alumnosService', ['$http', '$upload', function ($http, $upload) {
                 console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
             }).success(function (data, status, headers, config) {
                 console.log(data);
-                return data;
+                return true;
             });
     };
 
@@ -460,7 +460,6 @@ app.factory('profesoresService', [
             });
         };
 
-<<<<<<< HEAD
         var _deleteProfesor = function(profesorId) {
             return $http.delete(serviceBase + 'api/profesores/deleteProfesor/' + profesorId).then(function(response) {
                 return response;

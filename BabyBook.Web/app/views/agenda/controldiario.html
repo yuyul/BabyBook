@@ -5,7 +5,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             <h2>{{ 'CONTROL_DIARIO' | translate}}</h2>
             <div ng-show="newControl">
-                <quick-datepicker ng-model="control.fecha" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <quick-datepicker ng-model="control.fecha" disable-timepicker='true' ></quick-datepicker>
             </div>
             <div ng-hide="newControl"><h3>{{ 'FECHA' | translate }}: {{control.fecha | date : 'dd/MM/yyyy'}}</h3></div>
         </div>

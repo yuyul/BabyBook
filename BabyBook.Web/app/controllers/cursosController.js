@@ -32,6 +32,9 @@
 
     $scope.createCurso = function () {
 
+        $scope.curso.fechaFin = ($scope.curso.fechaFin.getMonth() + 1) + '/' + $scope.curso.fechaFin.getDate() + '/' + $scope.curso.fechaFin.getFullYear();
+        $scope.curso.fechaInicio = ($scope.curso.fechaInicio.getMonth() + 1) + '/' + $scope.curso.fechaInicio.getDate() + '/' + $scope.curso.fechaInicio.getFullYear();
+
         if ($scope.newCurso) {
             $scope.curso.centroId = $rootScope.centroSeleccionado;
 

@@ -1,4 +1,4 @@
-///#source 1 1 /app/controllers/adminCentrosController.js
+﻿///#source 1 1 /app/controllers/adminCentrosController.js
 app.controller('adminCentrosController', [
     '$scope', 'centrosService', '$rootScope', function ($scope, centrosService, $rootScope) {
 
@@ -70,6 +70,10 @@ app.controller('agendasController', ['$scope', '$routeParams', 'agendasService',
         }
 
         if (save) {
+            if ($scope.newControl) {
+                control.fecha = (control.fecha.getMonth() + 1) + '/' + control.fecha.getDate() + '/' + control.fecha.getFullYear();
+            }
+
             agendasService.saveControl(control);
 
             setTimeout(function () {
@@ -112,6 +116,7 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
     };
     
     $scope.message = '';
+    $scope.messageok = '';
 
     $scope.files = [];
 
@@ -150,19 +155,17 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
     }
 
     $scope.save = function (alumno) {
-
+        if ($scope.newAlumno) {
+            alumno.fechaNacimiento = (alumno.fechaNacimiento.getMonth() + 1) + '/' + alumno.fechaNacimiento.getDate() + '/' + alumno.fechaNacimiento.getFullYear();
+        }
         alumnosService.uploadAlumno(alumno, $scope.files[0]);
 
-        setTimeout(function () {
-            alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function (results) {
-                $scope.alumnos = results.data;
-            });
-        }, 3000);
+        cargarAlumnos();
 
     };
 
     $scope.editFamiliar = function(familiar) {
-
+        limpiaMensajes();
         if (familiar === 'new') {
             $scope.newFamiliar = true;
             $scope.familiar = {
@@ -195,6 +198,7 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
     };
 
     $scope.verFamiliares = function (alumno) {
+        limpiaMensajes();
         $scope.alumno = alumno;
         alumnosService.getFamiliaresByAlumno(alumno.id).then(function (results) {
             $scope.familiares = results.data;
@@ -211,7 +215,7 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
             alumnosService.getAlumnosByCentro($rootScope.centroSeleccionado).then(function(results) {
                 $scope.alumnos = results.data;
             });
-        }, 3000);
+        }, 2000);
     }
 
     var cargarFamiliares = function() {
@@ -222,6 +226,11 @@ app.controller('alumnosController', ['$scope', 'alumnosService', '$rootScope', '
             });
         }, 3000);
 
+    }
+
+    var limpiaMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
     }
 }]);
 ///#source 1 1 /app/controllers/centrosController.js
@@ -273,7 +282,7 @@ app.controller('centrosController', [
         };
 
         $scope.editCentro = function (centro) {
-
+            limpiaMensajes();
             if (centro === 'new') {
                 $scope.newCentro = true;
                 $scope.centro = {
@@ -304,6 +313,11 @@ app.controller('centrosController', [
                 });
             }, 1000);
         };
+
+        var limpiaMensajes = function() {
+            $scope.message = '';
+            $scope.messageok = '';
+        }
     }
 ]);
 ///#source 1 1 /app/controllers/clasesController.js
@@ -541,6 +555,9 @@ app.controller('cursosController', ['$scope', '$location', 'cursosService', '$ro
 
     $scope.createCurso = function () {
 
+        $scope.curso.fechaFin = ($scope.curso.fechaFin.getMonth() + 1) + '/' + $scope.curso.fechaFin.getDate() + '/' + $scope.curso.fechaFin.getFullYear();
+        $scope.curso.fechaInicio = ($scope.curso.fechaInicio.getMonth() + 1) + '/' + $scope.curso.fechaInicio.getDate() + '/' + $scope.curso.fechaInicio.getFullYear();
+
         if ($scope.newCurso) {
             $scope.curso.centroId = $rootScope.centroSeleccionado;
 
@@ -728,8 +745,7 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
     }
 
     $scope.editProfesor = function (profesor) {
-        $scope.message = '';
-        $scope.messageok = '';
+        limpiaMensajes();
         if (profesor === 'new') {
             $scope.newProfesor = true;
             $scope.profesor = {
@@ -766,6 +782,7 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
     };
 
     $scope.mostrarClases = function (profesor) {
+        limpiaMensajes();
         $scope.profesor = profesor;
         $scope.claseSeleccionada = profesor.claseId;
         clasesService.getClasesByCentro($rootScope.centroSeleccionado).then(function (results) {
@@ -808,6 +825,11 @@ app.controller('profesoresController', ['$scope', '$location', 'profesoresServic
             cargarProfesores();
         });
     };
+
+    var limpiaMensajes = function() {
+        $scope.message = '';
+        $scope.messageok = '';
+    }
 
 }]);
 ///#source 1 1 /app/controllers/signupController.js

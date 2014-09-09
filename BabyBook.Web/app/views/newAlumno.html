@@ -16,21 +16,24 @@
                 <label>{{ 'ALUMNO_CAMPOS.SEGUNDO_APELLIDO' | translate }}</label>
                 <input type="text" class="form-control" placeholder="SegundoApellido" data-ng-model="alumno.segundoApellido" />
                 <label>{{ 'ALUMNO_CAMPOS.FECHA_NACIMIENTO' | translate }}</label>
-                <!--<input type="text" class="form-control" placeholder="01/01/2000" data-ng-model="alumno.fechaNacimiento" />-->
-                <quick-datepicker ng-model="alumno.fechaNacimiento" disable-timepicker='true' date-format="dd/MM/yyyy"></quick-datepicker>
+                <quick-datepicker ng-model="alumno.fechaNacimiento" disable-timepicker='true'></quick-datepicker>
                 <br />
                 <label>{{ 'FOTO' | translate}}</label>
+                <br/>
                 <img id="myPicture" src="http://localhost:61073/Public/alumnos/{{alumno.foto}}" />
-
+                <br/>
                 <input type="file" id="myFile" ng-file-select="onFileSelect($files)">
 
 
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save(alumno)">{{ 'GUARADR' | translate }}</button>
+                <button class="btn btn-lg btn-info btn-block" type="submit" data-dismiss="modal" data-ng-click="save(alumno)">{{ 'GUARDAR' | translate }}</button>
                 <div data-ng-hide="message == ''" class="alert alert-danger">
                     {{message}}
+                </div>
+                <div data-ng-hide="messageok == ''" class="alert alert-success">
+                    {{messageok}}
                 </div>
             </div>
         </form>

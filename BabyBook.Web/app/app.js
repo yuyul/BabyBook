@@ -226,9 +226,9 @@ var translations_en = {
         BIEN: 'Well'
     },
     VER_DETALLES_AGENDA: 'View diary',
-    SOBRE_BB1: "BabyBook intenta ser un substitut virtual de les agendes físiques utilitzades a diari a les llar d’infants. On les educadores deixen constància de com ha estat el fill, si ha dinat correctament, si ha dormit bé la migdiada, i altres temes importants per als pares.  A més els pares poden posar també informació important per a les educadores com pot ser que el alumne ha de prendre un xarop, ha passat mala nit.",
-    SOBRE_BB2: "BabyBook també te un mòdul que permet configurar els vincles entre alumnes, educadores i familiars. On el gestor de la llar d’infants podrà introduir les dades necessàries d’aquesta. El gestor podrà introduir les classes, les educadores, els alumnes i els familiars d’aquests.",
-    SOBRE_BB3: "BabyBook permetrà crear les associacions de classes, educadores, alumnes i familiars, perquè les educadores i familiars pugin comunicar-se mitjançant l’agenda virtual."
+    SOBRE_BB1: "BabyBook intended to be a substitute for physical virtual diaries used daily in kindergarten. Where educators are proof of how the child was, whether eating properly, whether asleep or nap, and other topics important to parents. In addition, parents can also get important information to educators and the student may have to take a syrup has gone bad night.",
+    SOBRE_BB2: "BabyBook also has a module that allows you to configure links between students, educators and families. Where the manager of the nursery can enter the details of this. The manager can enter the classes, educators, students and families of those.",
+    SOBRE_BB3: "BabyBook will create the class associations, educators, students and families, educators and families to raise communicate through virtual calendar."
 }
 
 var translations_es = {
@@ -331,9 +331,9 @@ var translations_es = {
         BIEN: 'Bien'
     },
     VER_DETALLES_AGENDA: 'Ver Agenda',
-    SOBRE_BB1: "BabyBook intenta ser un substitut virtual de les agendes físiques utilitzades a diari a les llar d’infants. On les educadores deixen constància de com ha estat el fill, si ha dinat correctament, si ha dormit bé la migdiada, i altres temes importants per als pares.  A més els pares poden posar també informació important per a les educadores com pot ser que el alumne ha de prendre un xarop, ha passat mala nit.",
-    SOBRE_BB2: "BabyBook també te un mòdul que permet configurar els vincles entre alumnes, educadores i familiars. On el gestor de la llar d’infants podrà introduir les dades necessàries d’aquesta. El gestor podrà introduir les classes, les educadores, els alumnes i els familiars d’aquests.",
-    SOBRE_BB3: "BabyBook permetrà crear les associacions de classes, educadores, alumnes i familiars, perquè les educadores i familiars pugin comunicar-se mitjançant l’agenda virtual."
+    SOBRE_BB1: "BabyBook intenta ser un sustituo virtual de las agendas físicas utilizadas diariamente en las guarderías. Donde las educadoras dejan constancia de como ha esta el alumno, si ha comido correctamente, si ha dormido bien la siesta i otros temas importantes para los padres. Además los padres también pueden enviar información para las educadores como podria ser que el alumno ha de tomar un jarabe, ha pasado mala noche, etc...",
+    SOBRE_BB2: "BabyBook también tiene un módulo que permite configurar los vinsulos entre alumnos, educadores y familiares. Donde el gestor de la guardería podra introducir los datos necesarios. El gestor podrá introducir las clases, educadoras, alumnos y los familiares de estos.",
+    SOBRE_BB3: "BabyBook permitirá crear las asociaciones entre clases, educadoras, alumnos y familiares, para que las educadoras y familiares puedan comunicarse utilizando la agenda virtual."
 }
 
 var translations_ca = {
